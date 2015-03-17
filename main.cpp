@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 08:14:03 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 10:02:03 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -19,25 +19,31 @@
 
 int							main(void)
 {
-	Game	*g;
+	// Game	*g;
 
-	try
-	{
-		g = new Game();
-	}
-	catch (std::exception)
-	{
+	// try
+	// {
+	// 	g = new Game();
+	// }
+	// catch (std::exception)
+	// {
 		
-	}
+	// }
 	Pig	p;
-	
-	Shape *s = &p;
-	// Shape s(TEST_TAB, TEST_TAB, TEST_TAB);
 
-	std::cout << *s << std::endl;
+	Pig *p_ptr = &p;
+	AObject *a_ptr = &p;
+
+	
+	// std::cout << p.getShape() << std::endl;
+
+	
+
 	
 	(void)p;
+	(void)p_ptr;
+	(void)a_ptr;
 
-	delete g;
+	// delete g;
 	return (0);
 }

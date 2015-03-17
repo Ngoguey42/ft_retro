@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:58:27 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 08:08:11 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 10:53:42 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -16,17 +16,25 @@
 //# include <string>
 # include <iostream>
 # include <AObject.class.hpp>
+# include <AMovPatternDefault.class.hpp>
 //# include <stdexcept>
 
-class Pig : public AObject
+class Pig : public AObject, public AMovPatternDefault
 {
 public:
 	Pig();
 	virtual ~Pig();
 
-	virtual std::string const   &getName() const;
-	virtual bool				getDoesMove() const;
-	virtual bool				getDoesShoot() const;
+	std::string const			&getName() const;
+	Shape const					&getShape() const;
+	bool						getDoesMove() const;
+	bool						getDoesShoot() const;
+
+	int							getPosX(void) const;
+	int							getPosY(void) const;
+	void						setPosX(int x);
+	void						setPosY(int y);
+	void						setPosXY(int x, int y);
 	// Pig();
 
 protected:
@@ -35,9 +43,7 @@ private:
 	Pig							&operator=(Pig const &rhs);
 
 	static std::string const	_mobName;
-	static char const			_fgChars[MAX_SHAPE_HEIGHT][MAX_SHAPE_WIDTH];
-	static char const			_fgColors[MAX_SHAPE_HEIGHT][MAX_SHAPE_WIDTH];
-	static char const			_bgColors[MAX_SHAPE_HEIGHT][MAX_SHAPE_WIDTH];
+	static Shape const			_mobShape;
 	static bool const			_doesMove;
 	static bool const			_doesShoot;
 	

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:58:55 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 08:28:20 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 08:58:33 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -27,6 +27,17 @@ Shape::Shape(char const fgChars[MAX_SHAPE_HEIGHT][MAX_SHAPE_WIDTH],
 	std::memcpy(this->_fgChars, fgChars, sizeof(this->_fgChars));
 	std::memcpy(this->_fgColors, fgColors, sizeof(this->_fgColors));
 	std::memcpy(this->_bgColors, bgColors, sizeof(this->_bgColors));
+	
+	return ;
+}
+
+Shape::Shape(Shape const &src)
+{
+	std::cout << "[Shape](cpy) Ctor called" << std::endl;
+	std::memcpy(this->_fgChars, src.getFgChars(), sizeof(this->_fgChars));
+	std::memcpy(this->_fgColors, src.getFgColors(), sizeof(this->_fgColors));
+	std::memcpy(this->_bgColors, src.getBgColors(), sizeof(this->_bgColors));	
+	
 	return ;
 }
 
@@ -42,6 +53,8 @@ Shape::~Shape()
 // * DESTRUCTORS *** DESTRUCTORS ******************************************** //
 // ************************************************************************** //
 // ************************************************ OPERATORS *** OPERATORS * //
+
+
 std::ostream				&operator<<(std::ostream &o, Shape const &rhs)
 {
 	o << rhs.shapeToString();
@@ -59,6 +72,12 @@ int							Shape::getTopSize(void) const
 {return this->_topSize;}
 int							Shape::getBottomSize(void) const
 {return this->_bottomSize;}
+char const					**Shape::getFgChars(void) const
+{return (char const**)this->_fgChars;}
+char const					**Shape::getFgColors(void) const
+{return (char const**)this->_fgColors;}
+char const					**Shape::getBgColors(void) const
+{return (char const**)this->_bgColors;}
 
 // * GETTERS *** GETTERS **************************************************** //
 // ************************************************************************** //
@@ -72,7 +91,7 @@ int							Shape::getBottomSize(void) const
 // 	return ;
 // }
 
-void						Shape::setShape(Game const &g, int x, int y) const
+void						Shape::putShape(Game const &g, int x, int y) const
 {
 	(void)g;
 	(void)x;
