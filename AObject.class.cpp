@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:33:25 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 12:45:50 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 12:49:16 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -20,7 +20,8 @@
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
-AObject::AObject()
+AObject::AObject() :
+	_posX(0), _posY(0)
 {
 	std::cout << "[AObject](main) Ctor called" << std::endl;
 	return ;
@@ -39,22 +40,14 @@ AObject::~AObject()
 // ************************************************************************** //
 // ************************************************ OPERATORS *** OPERATORS * //
 std::ostream				&operator<<(std::ostream &o, AObject const &rhs)
-{
-	std::string			str("");
-	std::stringstream	out;
-	
-	(void)rhs;
-	str.append("[");
-	str.append(rhs.getName());
-	str.append("] {");
-	out << rhs.getPosX();
-	str.append(out.str());
-	str.append(", ");
-	out.clear();
-	out << rhs.getPosY();
-	str.append(out.str());
-	str.append("}");
-	o << str;
+{	
+	o << "[";
+	o << rhs.getName();
+	o << "] {";
+	o << rhs.getPosX();
+	o << ", ";
+	o << rhs.getPosY();
+	o << "}";
 	return (o);
 }
 

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 10:43:59 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 12:34:22 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 13:07:13 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -48,6 +48,15 @@ AMovPatternDefault::~AMovPatternDefault()
 // **************************************************** SETTERS *** SETTERS * //
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
+void					AMovPatternDefault::move(Game const &g, Shape const &s,
+												 int x, int y)
+{
+	this->setPosX(x);
+	this->setPosY(y);
+	s.putShape(g, x, y);
+	return ;
+}
+
 int						AMovPatternDefault::tryMove(Game const &g)
 {
 	int		r;
@@ -62,16 +71,16 @@ int						AMovPatternDefault::tryMove(Game const &g)
 		if (r % 2)
 		{
 			if (ref.shapeFits(g, x - 1, y))
-				ref.putShape(g, x - 1, y);
+				this->move(g, ref, x - 1, y);
 			else if (ref.shapeFits(g, x + 1, y))
-				ref.putShape(g, x + 1, y);
+				this->move(g, ref, x + 1, y);
 		}
 		else
 		{
 			if (ref.shapeFits(g, x + 1, y))
-				ref.putShape(g, x + 1, y);
+				this->move(g, ref, x + 1, y);
 			else if (ref.shapeFits(g, x - 1, y))
-				ref.putShape(g, x - 1, y);
+				this->move(g, ref, x - 1, y);
 		}
 		this->_lastMoveTime = std::clock();
 	}

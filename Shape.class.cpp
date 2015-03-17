@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:58:55 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 08:58:33 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 13:10:24 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -100,6 +100,8 @@ void						Shape::putShape(Game const &g, int x, int y) const
 }
 bool						Shape::shapeFits(Game const &g, int x, int y) const
 {
+	if (x < 0 || y < 0 || x >= g.getMaxX() || y >= g.getMaxY())
+		return (false);
 	(void)g;
 	(void)x;
 	(void)y;
