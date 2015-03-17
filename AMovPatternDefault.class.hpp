@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 10:44:28 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 12:57:12 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 13:13:24 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -32,7 +32,7 @@ private:
 	AMovPatternDefault			&operator=(AMovPatternDefault const &rhs);
 	AMovPatternDefault();
 	void						move(Game const &g, Shape const &s,
-									 int x, int y);
+									int x, int y);
 	
 	clock_t						_lastMoveTime;
 	clock_t const				_moveCD;

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 12:53:26 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 13:40:48 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -19,10 +19,15 @@
 #include <cstdlib>
 #include <ctime>
 
+#include <ncurses.h>
 #include <unistd.h>
 
 int							main(void)
 {
+	initscr();
+	noecho();
+
+
 	std::srand(std::time(0));
 	Game	*g;
 
@@ -39,7 +44,6 @@ int							main(void)
 	Pig *p_ptr = &p;
 	AObject *a_ptr = &p;
 
-	
 
 	std::cout << p.getShape() << std::endl;
 
@@ -49,6 +53,8 @@ int							main(void)
 	{
 		usleep(500000);
 		p.tryMove(*g);
+		clear();
+		refresh();
 		std::cout << p << std::endl;
 	}
 	
@@ -56,6 +62,7 @@ int							main(void)
 	(void)p_ptr;
 	(void)a_ptr;
 
+	endwin();
 	delete g;
 	return (0);
 }
