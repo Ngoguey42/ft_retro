@@ -1,39 +1,74 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   AMovPatternDefault.class.cpp                       :+:      :+:    :+:   //
+//   Background.class.cpp                               :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/17 10:43:59 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 18:17:53 by ngoguey          ###   ########.fr       //
+//   Created: 2015/03/17 14:14:43 by ngoguey           #+#    #+#             //
+//   Updated: 2015/03/17 15:54:19 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 #include <iostream>
 #include <cstdlib>
-#include "AMovPatternDefault.class.hpp"
+#include <cstring>
+// #include <ncurses.h>
+#include "Background.class.hpp"
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
-AMovPatternDefault::AMovPatternDefault(clock_t moveCD, int moveChancesFactor) :
-	_lastMoveTime(std::clock()),
-	_moveCD(moveCD),
-	_moveChancesFactor(moveChancesFactor)
+Background::Background(int x, int y, Game &g) :
+	_phase(0), _x(x), _y(y), _g(g)
 {
-	std::cout << "[AMovPatternDefault]() Ctor called" << std::endl;
+	std::string		*lines;
+	char			*linesFgColors;
+	char			*linesBgColors;
+	
+	std::cout << "[Background](main) Ctor called" << std::endl;
+	lines = new std::string[y]; //try catch ici
+	linesFgColors = new char[x * y]; //try catch ici
+	linesBgColors = new char[x * y]; //try catch ici
+	for (int i = 0; i < y; i++)
+	{
+		lines[i].resize(x);
+		for (int j = 0; j < x; j++)
+		{
+
+			linesFgColors[j + i * x] = 1;
+			if (std::rand() % 100 <= 15)
+			{
+				linesBgColors[j + i * x] = 2;
+				lines[i][j] = ' ';
+			}
+			else
+			{
+				linesBgColors[j + i * x] = 1;
+				lines[i][j] = ' ';
+			}
+		}
+	}
+	this->_lines = lines;
+	this->_linesFgColors = linesFgColors;
+	this->_linesBgColors = linesBgColors;
+	this->_dstFgChars = g.getDstFgChars();
+	this->_dstFgColors = g.getDstFgColors();
+	this->_dstBgColors = g.getDstBgColors();
 	return ;
 }
 
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
-AMovPatternDefault::~AMovPatternDefault()
+Background::~Background()
 {
-	std::cout << "[AMovPatternDefault]() Dtor called" << std::endl;
+	std::cout << "[Background]() Dtor called" << std::endl;
+	delete [] this->_lines;
+	delete [] this->_linesFgColors;
+	delete [] this->_linesBgColors;
 	return ;
 }
 
@@ -48,41 +83,26 @@ AMovPatternDefault::~AMovPatternDefault()
 // **************************************************** SETTERS *** SETTERS * //
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
-void					AMovPatternDefault::move(Game const &g, Shape const &s,
-												 int x, int y)
+void						Background::putBackground(void)
 {
-	this->setPosX(x);
-	this->setPosY(y);
-	s.putShape(g, x, y);
-	return ;
-}
-
-int						AMovPatternDefault::tryMove(Game const &g)
-{
-	int		r;
-	
-	if (std::clock() >= this->_lastMoveTime + this->_moveCD &&
-		(r = std::rand()) % this->_moveChancesFactor >= 100)
+	// for (int i = this->_y - 1 ; i >= 0 ; i--)
+	for (int i = 0; i < this->_y ; i++)
 	{
-		Shape const	&ref = this->getShape();
-		int			x = this->getPosX();
-		int			y = this->getPosY();
-
-		if (r % 2)
-		{
-			if (ref.shapeFits(g, x - 1, y))
-				this->move(g, ref, x - 1, y);
-			else if (ref.shapeFits(g, x + 1, y))
-				this->move(g, ref, x + 1, y);
-		}
-		else
-		{
-			if (ref.shapeFits(g, x + 1, y))
-				this->move(g, ref, x + 1, y);
-			else if (ref.shapeFits(g, x - 1, y))
-				this->move(g, ref, x - 1, y);
-		}
-		this->_lastMoveTime = std::clock();
+		_dstFgChars[i] = this->_lines[(i + this->_phase) % this->_y];
+		std::memcpy(this->_dstFgColors + i * this->_x,
+					this->_linesFgColors + ((i + this->_phase) % this->_y) * this->_x,
+					this->_x);
+		std::memcpy(this->_dstBgColors + i * this->_x,
+					this->_linesBgColors + ((i + this->_phase) % this->_y) * this->_x,
+					this->_x);
 	}
-	return (1);
+	// std::memcpy(this->_dstFgColors, this->_linesFgColors, this->_x * this->_y);
+	// std::memcpy(this->_dstBgColors, this->_linesBgColors, this->_x * this->_y);
+	// for (int i = this->_y - 1 ; i >= 0 ; i--)
+	// 	printw(this->_lines[(i + this->_phase) % this->_y].c_str());
+	this->_phase--;
+	if (this->_phase < 0)
+		this->_phase = this->_y - 1;
+	// this->_phase = (this->_phase + 1) % this->_y;
+	return ;
 }

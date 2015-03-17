@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:59:17 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 11:48:56 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 17:12:43 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -32,6 +32,15 @@ Pig::Pig() :
 	AShootPatternDefault()
 {
 	std::cout << "[Pig](main) Ctor called" << std::endl;
+	return ;
+}
+
+Pig::Pig(Pig const &src) :
+	AObject(), AMovPatternDefault(Pig::_moveCD, Pig::_moveChancesFactor),
+	AShootPatternDefault()
+{
+	std::cout << "[Pig](cpy) Ctor called" << std::endl;
+	(void)src;
 	return ;
 }
 
@@ -68,3 +77,8 @@ void						Pig::setPosXY(int x, int y)
 
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
+void						Pig::moveCall(Game const &g)
+{
+	this->tryMove(g);
+	return ;
+}

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:58:27 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 11:43:25 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 17:13:07 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -17,6 +17,7 @@
 # include <iostream>
 # include <ctime>
 # include <AObject.class.hpp>
+# include <Game.class.hpp>
 # include <AMovPatternDefault.class.hpp>
 # include <AShootPatternDefault.class.hpp>
 //# include <stdexcept>
@@ -25,6 +26,7 @@ class Pig : public AObject, public AMovPatternDefault, public AShootPatternDefau
 {
 public:
 	Pig();
+	Pig(Pig const &src);
 	virtual ~Pig();
 
 	std::string const			&getName() const;
@@ -32,6 +34,9 @@ public:
 	bool						getDoesMove() const;
 	bool						getDoesShoot() const;
 
+	void						moveCall(Game const &g);
+
+	
 	int							getPosX(void) const;
 	int							getPosY(void) const;
 	void						setPosX(int x);
@@ -40,7 +45,6 @@ public:
 
 protected:
 private:
-	Pig(Pig const &src);
 	Pig							&operator=(Pig const &rhs);
 
 	static std::string const	_mobName;

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:58:55 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 13:10:24 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 17:55:00 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -93,6 +93,16 @@ char const					**Shape::getBgColors(void) const
 
 void						Shape::putShape(Game const &g, int x, int y) const
 {
+	for (int i = 0; i < MAX_SHAPE_HEIGHT; i++)
+	{
+		for (int j = 0; j < MAX_SHAPE_WIDTH; j++)
+		{
+			if (this->_fgChars[i][j] != '\0')
+			{
+				g.setFgChar(j + x + 10, i + 3 + y, this->_fgChars[i][j]);
+			}
+		}
+	}
 	(void)g;
 	(void)x;
 	(void)y;

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:57:42 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 12:55:17 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 16:30:19 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -14,10 +14,16 @@
 # define SHAPE_CLASS_HPP
 
 # include <ft_retro.hpp>
+
+class Game;
+
+# include <Game.class.hpp>
 // # include <AObject.class.hpp>
 // # include <string>
 # include <iostream>
 //# include <stdexcept>
+
+
 
 class Shape
 {
