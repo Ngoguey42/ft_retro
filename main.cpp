@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 10:02:03 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 12:46:09 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -16,9 +16,12 @@
 #include <Pig.class.hpp>
 #include <iostream>
 #include <stdexcept>
+#include <cstdlib>
+#include <ctime>
 
 int							main(void)
 {
+	std::srand(std::time(0));
 	// Game	*g;
 
 	// try
@@ -35,7 +38,8 @@ int							main(void)
 	AObject *a_ptr = &p;
 
 	
-	// std::cout << p.getShape() << std::endl;
+	std::cout << p << std::endl;
+	std::cout << p.getShape() << std::endl;
 
 	
 

@@ -1,38 +1,38 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Game.class.hpp                                     :+:      :+:    :+:   //
+//   IShootIA.class.hpp                                 :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/17 07:09:45 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 12:28:56 by ngoguey          ###   ########.fr       //
+//   Created: 2015/03/17 11:09:52 by ngoguey           #+#    #+#             //
+//   Updated: 2015/03/17 11:13:02 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#ifndef GAME_CLASS_HPP
-# define GAME_CLASS_HPP
+#ifndef ISHOOTIA_CLASS_HPP
+# define ISHOOTIA_CLASS_HPP
 
+# include <Game.class.hpp>
 //# include <string>
 //# include <iostream>
 //# include <stdexcept>
 
-class Game
+class IShootIA
 {
 public:
-	Game(int maxX, int maxY);
-	virtual ~Game();
-	int							getMaxX(void) const;
-	int							getMaxY(void) const;
+	IShootIA();
+	virtual ~IShootIA();
+
+	virtual int					tryShoot(Game const &g) = 0;
+	// IShootIA();
 
 protected:
 private:
-	Game();
-	Game(Game const &src);
-	Game						&operator=(Game const &rhs);
-	int const					_maxX;
-	int const					_maxY;
-};
-//std::ostream					&operator<<(std::ostream &o, Game const &rhs);
+	IShootIA(IShootIA const &src);
+	IShootIA					&operator=(IShootIA const &rhs);
 
-#endif // **************************************************** GAME_CLASS_HPP //
+};
+//std::ostream					&operator<<(std::ostream &o, IShootIA const &rhs);
+
+#endif // ************************************************ ISHOOTIA_CLASS_HPP //

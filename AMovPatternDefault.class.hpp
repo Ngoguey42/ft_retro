@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 10:44:28 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 10:50:35 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 12:14:02 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -14,6 +14,7 @@
 # define AMOVPATTERNDEFAULT_CLASS_HPP
 
 # include <IMovIA.class.hpp>
+# include <ctime>
 //# include <string>
 //# include <iostream>
 //# include <stdexcept>
@@ -21,14 +22,19 @@
 class AMovPatternDefault : public IMovIA
 {
 public:
-	AMovPatternDefault();
 	virtual ~AMovPatternDefault();
-
+	AMovPatternDefault(clock_t moveCD, int moveChancesFactor);
+	
 	int							tryMove(Game const &g);
 protected:
 private:
 	AMovPatternDefault(AMovPatternDefault const &src);
 	AMovPatternDefault			&operator=(AMovPatternDefault const &rhs);
+	AMovPatternDefault();
+
+	clock_t						_lastMoveTime;
+	clock_t const				_moveCD;
+	int const					_moveChancesFactor;
 };
 //std::ostream					&operator<<(std::ostream &o, AMovPatternDefault const &rhs);
 

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:11:33 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 10:51:52 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 12:15:51 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -40,6 +40,6 @@ private:
 	AObject						&operator=(AObject const &rhs);
 	
 };
-//std::ostream					&operator<<(std::ostream &o, AObject const &rhs);
+std::ostream					&operator<<(std::ostream &o, AObject const &rhs);
 
 #endif // ************************************************* AOBJECT_CLASS_HPP //

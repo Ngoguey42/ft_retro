@@ -1,69 +1,44 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Game.class.cpp                                     :+:      :+:    :+:   //
+//   IShootIA.class.cpp                                 :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 12:13:45 by ngoguey          ###   ########.fr       //
+//   Created: 2015/03/17 11:12:17 by ngoguey           #+#    #+#             //
+//   Updated: 2015/03/17 11:12:32 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 #include <iostream>
-#include "Game.class.hpp"
+#include "IShootIA.class.hpp"
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
-Game::Game(int maxX, int maxY) :
-	_maxX(maxX), _maxY(maxY)
+IShootIA::IShootIA()
 {
-	std::cout << "[Game]() Ctor called" << std::endl;
+	std::cout << "[IShootIA]() Ctor called" << std::endl;
 	return ;
 }
-
-// Game::Game(Game const &src)
-// {
-// 	// std::cout << "[Game](cpy) Ctor called" << std::endl;
-// 	(void)src;
-// 	return ;
-// }
-
 
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
-Game::~Game()
+IShootIA::~IShootIA()
 {
-	std::cout << "[Game]() Dtor called" << std::endl;
+	std::cout << "[IShootIA]() Dtor called" << std::endl;
 	return ;
 }
 
 // * DESTRUCTORS *** DESTRUCTORS ******************************************** //
 // ************************************************************************** //
 // ************************************************ OPERATORS *** OPERATORS * //
-// Game						&Game::operator=(Game const &rhs)
-// {
-// 	// std::cout << "[Game]= Overload called" << std::endl;
-// 	(void)rhs;
-// 	return (*this);
-// }
-
-// std::ostream				&operator<<(std::ostream &o, Game const &rhs)
-// {
-//	o << rhs.get();
-//	return (o);
-// }
-
 // * OPERATORS *** OPERATORS ************************************************ //
 // ************************************************************************** //
 // **************************************************** GETTERS *** GETTERS * //
-int							Game::getMaxX(void) const{return this->_maxX;}
-int							Game::getMaxY(void) const{return this->_maxY;}
-
 // * GETTERS *** GETTERS **************************************************** //
 // ************************************************************************** //
 // **************************************************** SETTERS *** SETTERS * //

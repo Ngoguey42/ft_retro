@@ -6,11 +6,12 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:33:25 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 09:21:41 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 12:45:50 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 #include <iostream>
+#include <sstream>
 #include <Shape.class.hpp>
 #include <AObject.class.hpp>
 
@@ -37,6 +38,25 @@ AObject::~AObject()
 // * DESTRUCTORS *** DESTRUCTORS ******************************************** //
 // ************************************************************************** //
 // ************************************************ OPERATORS *** OPERATORS * //
+std::ostream				&operator<<(std::ostream &o, AObject const &rhs)
+{
+	std::string			str("");
+	std::stringstream	out;
+	
+	(void)rhs;
+	str.append("[");
+	str.append(rhs.getName());
+	str.append("] {");
+	out << rhs.getPosX();
+	str.append(out.str());
+	str.append(", ");
+	out.clear();
+	out << rhs.getPosY();
+	str.append(out.str());
+	str.append("}");
+	o << str;
+	return (o);
+}
 
 // * OPERATORS *** OPERATORS ************************************************ //
 // ************************************************************************** //

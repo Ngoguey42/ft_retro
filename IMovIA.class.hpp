@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 10:27:03 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 10:50:30 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/17 12:15:12 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -14,6 +14,7 @@
 # define IMOVIA_CLASS_HPP
 
 # include <Game.class.hpp>
+# include <Shape.class.hpp>
 //# include <string>
 //# include <iostream>
 //# include <stdexcept>
@@ -30,6 +31,7 @@ public:
 	virtual void				setPosY(int y) = 0;
 	virtual void				setPosXY(int x, int y) = 0;
 	virtual int					tryMove(Game const &g) = 0;
+	virtual Shape const			&getShape(void) const = 0;
 
 protected:
 private:
