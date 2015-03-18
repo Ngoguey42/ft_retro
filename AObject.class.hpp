@@ -13,13 +13,11 @@
 #ifndef AOBJECT_CLASS_HPP
 # define AOBJECT_CLASS_HPP
 
-# include <string>
-class Shape;
-class Game;
-
+# include <ft_retro.hpp>
 # include <Shape.class.hpp>
 # include <Game.class.hpp>
-//# include <iostream>
+
+# include <iostream>
 //# include <stdexcept>
 
 class AObject

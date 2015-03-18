@@ -13,10 +13,11 @@
 #ifndef GAME_CLASS_HPP
 # define GAME_CLASS_HPP
 
-# include <string>
-# include <vector>
-class AObject;
+# include <ft_retro.hpp>
 # include <AObject.class.hpp>
+
+# include <iostream>
+# include <vector>
 //# include <stdexcept>
 
 class Game

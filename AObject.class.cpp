@@ -10,10 +10,9 @@
 //                                                                            //
 // ************************************************************************** //
 
-#include <iostream>
-#include <sstream>
-#include <Shape.class.hpp>
+#include <ft_retro.hpp>
 #include <AObject.class.hpp>
+#include <iostream>
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //

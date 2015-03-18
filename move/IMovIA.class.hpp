@@ -13,6 +13,7 @@
 #ifndef IMOVIA_CLASS_HPP
 # define IMOVIA_CLASS_HPP
 
+# include <ft_retro.hpp>
 # include <Game.class.hpp>
 # include <Shape.class.hpp>
 //# include <string>

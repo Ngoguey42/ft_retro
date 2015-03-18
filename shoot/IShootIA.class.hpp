@@ -13,6 +13,7 @@
 #ifndef ISHOOTIA_CLASS_HPP
 # define ISHOOTIA_CLASS_HPP
 
+# include <ft_retro.hpp>
 # include <Game.class.hpp>
 //# include <string>
 //# include <iostream>

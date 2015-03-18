@@ -13,12 +13,27 @@
 #ifndef FT_RETRO_HPP
 # define FT_RETRO_HPP
 
+class Game;
+class Background;
+
+class AObject;
+class Shape;
+
+class IMovIA;
+class AMovPatternDefault;
+
+class IShootIA;
+class AShootPatternDefault;
+
+class Pig;
+
 //# include <string>
 //# include <iostream>
 //# include <stdexcept>
 
 # define MAX_SHAPE_HEIGHT 3
 # define MAX_SHAPE_WIDTH 3
+
 # define SHAPE_HEIGHT_DELTA (-((MAX_SHAPE_HEIGHT) / 2))
 # define SHAPE_WIDTH_DELTA (-((MAX_SHAPE_WIDTH) / 2))
 
@@ -37,6 +52,5 @@
 {'\0', '\0', '\0'}\
 }
 
-# include <Game.class.hpp>
 
 #endif // ****************************************************** FT_RETRO_HPP //

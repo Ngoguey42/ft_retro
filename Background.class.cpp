@@ -10,11 +10,11 @@
 //                                                                            //
 // ************************************************************************** //
 
+#include "Background.class.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
 // #include <ncurses.h>
-#include "Background.class.hpp"
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //

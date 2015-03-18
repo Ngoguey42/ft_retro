@@ -13,13 +13,14 @@
 #ifndef PIG_CLASS_HPP
 # define PIG_CLASS_HPP
 
-//# include <string>
-# include <iostream>
-# include <ctime>
+# include <ft_retro.hpp>
 # include <AObject.class.hpp>
 # include <Game.class.hpp>
 # include <AMovPatternDefault.class.hpp>
 # include <AShootPatternDefault.class.hpp>
+
+# include <iostream>
+# include <ctime>
 //# include <stdexcept>
 
 class Pig : public AObject, public AMovPatternDefault, public AShootPatternDefault

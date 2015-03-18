@@ -14,10 +14,8 @@
 # define SHAPE_CLASS_HPP
 
 # include <ft_retro.hpp>
-
-class Game;
-
 # include <Game.class.hpp>
+
 // # include <AObject.class.hpp>
 // # include <string>
 # include <iostream>

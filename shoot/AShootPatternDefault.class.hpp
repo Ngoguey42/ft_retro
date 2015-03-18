@@ -13,6 +13,7 @@
 #ifndef ASHOOTPATTERNDEFAULT_CLASS_HPP
 # define ASHOOTPATTERNDEFAULT_CLASS_HPP
 
+# include <ft_retro.hpp>
 # include <IShootIA.class.hpp>
 //# include <iostream>
 //# include <stdexcept>

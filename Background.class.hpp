@@ -13,9 +13,9 @@
 #ifndef BACKGROUND_CLASS_HPP
 # define BACKGROUND_CLASS_HPP
 
+# include <ft_retro.hpp>
 # include <Game.class.hpp>
-# include <string>
-//# include <iostream>
+# include <iostream>
 //# include <stdexcept>
 
 class Background

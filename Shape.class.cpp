@@ -10,9 +10,9 @@
 //                                                                            //
 // ************************************************************************** //
 
+#include <Shape.class.hpp>
 #include <cstring>
 #include <iostream>
-#include <Shape.class.hpp>
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
@@ -84,13 +84,6 @@ char const					**Shape::getBgColors(void) const
 // **************************************************** SETTERS *** SETTERS * //
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
-// void                        Shape::setShape(Game &g, AObject const &ob) const
-// {
-// 	(void)g;
-// 	(void)ob;
-// 	return ;
-// }
-
 void						Shape::putShape(Game const &g, int x, int y) const
 {
 	for (int i = 0; i < MAX_SHAPE_HEIGHT; i++)
@@ -103,9 +96,6 @@ void						Shape::putShape(Game const &g, int x, int y) const
 			}
 		}
 	}
-	(void)g;
-	(void)x;
-	(void)y;
 	return ;
 }
 bool						Shape::shapeFits(Game const &g, int x, int y) const
@@ -120,7 +110,7 @@ bool						Shape::shapeFits(Game const &g, int x, int y) const
 
 std::string					Shape::shapeToString(void) const
 {
-	std::string str;
+	std::string		str;
 
 	str.append(MAX_SHAPE_WIDTH + 2, '#');
 	str.append("\n");

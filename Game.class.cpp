@@ -10,8 +10,8 @@
 //                                                                            //
 // ************************************************************************** //
 
-#include <iostream>
 #include "Game.class.hpp"
+#include <iostream>
 #include <ncurses.h>
 
 

@@ -15,6 +15,7 @@
 #include <AObject.class.hpp>
 #include <Pig.class.hpp>
 #include <Background.class.hpp>
+
 #include <iostream>
 #include <stdexcept>
 #include <cstdlib>
@@ -24,8 +25,9 @@
 #include <ncurses.h>
 #include <unistd.h>
 
-int							main(void)
+static void					init_ncurses(void)
 {
+	init_ncurses();
 	initscr();
 	start_color();
 	noecho();
@@ -33,16 +35,23 @@ int							main(void)
 	init_color(101, 100, 100, 100);
 	init_pair(1, COLOR_RED, 100);
 	init_pair(2, COLOR_RED, 101);
-	struct winsize w;
+	return ;
+}
+
+int							main(void)
+{
+	Game			*g = NULL;
+	Background		*bg = NULL;
+	struct winsize	w;
+
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	std::srand(std::time(0));
-
-	Game	*g;
-	Background	*bg;
 	try
 	{
 		g = new Game(w.ws_col, w.ws_row);
 		bg = new Background(w.ws_col, w.ws_row, *g);
+		std::cout << w.ws_col << std::endl;
+		std::cout << w.ws_row << std::endl;
 	}
 	catch (std::exception)
 	{
@@ -86,6 +95,8 @@ int							main(void)
 	(void)p;
 	(void)p_ptr;
 	(void)a_ptr;
+	(void)lu2_events;
+	(void)lu1_refresh;
 
 	endwin();
 	delete g;
