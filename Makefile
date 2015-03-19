@@ -8,6 +8,7 @@ SRCSFILES = \
 			Game.class.cpp\
 			Scheduler.class.cpp\
 			Shape.class.cpp\
+			Missile.class.cpp\
   ./enemies/Pig.class.cpp\
   ./enemies/Sheep.class.cpp\
   ./enemies/Snake.class.cpp\

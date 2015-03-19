@@ -39,7 +39,6 @@ private:
 	clock_t const				_moveCD;
 	int const					_strafeChancesFactor;
 	char						_direction;
-	int							_margin;
 	void						move(Game const &g, Shape const &s,
 									 int x, int y);
 };

@@ -21,7 +21,7 @@ Shape const					Fizzy::_mobShape =
 	Shape(FIZZY_SHAPE, FIZZY_COLOR, DEFAULT_COLOR);
 bool const					Fizzy::_doesMove = true;
 bool const					Fizzy::_doesShoot = false;
-clock_t const				Fizzy::_moveCD = CLOCKS_PER_SEC / 200;
+clock_t const				Fizzy::_moveCD = CLOCKS_PER_SEC / 100;
 int const					Fizzy::_moveChancesFactor = 1000;
 
 // * STATICS *** STATICS **************************************************** //

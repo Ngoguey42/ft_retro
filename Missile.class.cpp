@@ -1,40 +1,54 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   AMovPatternLombric.class.cpp                       :+:      :+:    :+:   //
+//   Missile.class.cpp                                  :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/19 15:13:08 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 15:13:09 by wide-aze         ###   ########.fr       //
+//   Created: 2015/03/19 11:03:42 by wide-aze          #+#    #+#             //
+//   Updated: 2015/03/19 18:22:05 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#include <iostream>
+//#include <iostream>
 #include <cstdlib>
-#include "AMovPatternLombric.class.hpp"
+#include <Missile.class.hpp>
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
+std::string const			Missile::_mobName = "Missile";
+Shape const					Missile::_mobShape =
+	Shape(MISSILE_SHAPE, MISSILE_COLOR, DEFAULT_COLOR);
+bool const					Missile::_doesMove = false;
+bool const					Missile::_doesShoot = false;
+clock_t const				Missile::_moveCD = CLOCKS_PER_SEC / 10;
+int const					Missile::_moveChancesFactor = 1000;
+
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
-AMovPatternLombric::AMovPatternLombric(clock_t moveCD, int strafeChancesFactor) :
-	_lastMoveTime(std::clock()),
-	_moveCD(moveCD),
-	_strafeChancesFactor(strafeChancesFactor),
-	_direction('r')
+
+Missile::Missile() :
+	AObject(), AMovPatternSheep(Missile::_moveCD, Missile::_moveChancesFactor)
 {
-	std::cout << "[AMovPatternLombric]() Ctor called" << std::endl;
+	std::cout << "[Missile](main) Ctor called" << std::endl;
+	return ;
+}
+
+Missile::Missile(Missile const &src) :
+	AObject(), AMovPatternSheep(Missile::_moveCD, Missile::_moveChancesFactor)
+{
+	std::cout << "[Missile](cpy) Ctor called" << std::endl;
+	(void)src;
 	return ;
 }
 
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
-AMovPatternLombric::~AMovPatternLombric()
+Missile::~Missile()
 {
-	std::cout << "[AMovPatternLombric]() Dtor called" << std::endl;
+	std::cout << "[Missile]() Dtor called" << std::endl;
 	return ;
 }
 
@@ -45,53 +59,27 @@ AMovPatternLombric::~AMovPatternLombric()
 // * OPERATORS *** OPERATORS ************************************************ //
 // ************************************************************************** //
 // **************************************************** GETTERS *** GETTERS * //
+std::string const			&Missile::getName() const{return Missile::_mobName;}
+Shape const					&Missile::getShape() const{return Missile::_mobShape;}
+bool						Missile::getDoesMove() const{return Missile::_doesMove;}
+bool						Missile::getDoesShoot() const{return Missile::_doesShoot;}
+int							Missile::getPosX(void) const{return this->_posX;}
+int							Missile::getPosY(void) const{return this->_posY;}
+
 // * GETTERS *** GETTERS **************************************************** //
 // ************************************************************************** //
 // **************************************************** SETTERS *** SETTERS * //
+void						Missile::setPosX(int x){this->_posX = x;}
+void						Missile::setPosY(int y){this->_posY = y;}
+void						Missile::setPosXY(int x, int y)
+{this->_posX = x;this->_posY = y;}
+void						Missile::setDeleteObject(bool b)
+{this->_deleteObject = b;}
+
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
-void						AMovPatternLombric::move(Game const &g,
-												   Shape const &s, int x, int y)
+void						Missile::moveCall(Game const &g)
 {
-	this->setPosX(x);
-	this->setPosY(y);
-	if (y - s.getTopSize() >= g.getMaxY())
-		this->setDeleteObject(true);
-	else
-		s.putShape(g, x, y);
+	this->tryMove(g);
 	return ;
-}
-
-int							AMovPatternLombric::tryMove(Game const &g)
-{
-	while (std::clock() >= this->_lastMoveTime + this->_moveCD)
-	{
-		Shape const	&ref = this->getShape();
-		int			x = this->getPosX();
-		int			y = this->getPosY();
-		int			margin = (g.getMaxX() / 7);
-
-		this->_lastMoveTime += this->_moveCD;
-
-
-		if (x == g.getMaxX() - 2)
-			_direction = 'l';
-		else if (x == 0)
-			_direction = 'r';
-		if (_direction == 'r')
-		{
-			if (x  < margin || x  >= (g.getMaxX() - margin))
-				this->move(g, ref, x + 1, y + 1);
-			else
-				this->move(g, ref, x + 2, y);
-		}
-		else
-		{
-			if (x  < margin || x  >= (g.getMaxX() - margin))
-				this->move(g, ref, x - 1, y + 1);
-			else
-				this->move(g, ref, x - 2, y);
-		}
-	}
-	return (0);
 }
