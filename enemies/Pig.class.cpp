@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:59:17 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 07:31:28 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 09:30:34 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -17,11 +17,12 @@
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
 std::string const			Pig::_mobName = "Pig";
-Shape const					Pig::_mobShape = Shape(TEST_TAB, TEST_TAB, TEST_TAB);
+Shape const					Pig::_mobShape =
+	Shape(PIG_SHAPE, DEFAULT_COLOR, DEFAULT_COLOR);
 bool const					Pig::_doesMove = true;
 bool const					Pig::_doesShoot = true;
-clock_t const				Pig::_moveCD = CLOCKS_PER_SEC * 1;
-int const					Pig::_moveChancesFactor = 300;
+clock_t const				Pig::_moveCD = CLOCKS_PER_SEC / 10;
+int const					Pig::_moveChancesFactor = 1000;
 
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //

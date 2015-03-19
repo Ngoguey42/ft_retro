@@ -1,80 +1,46 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Background.class.cpp                               :+:      :+:    :+:   //
+//   AMovPatternSheep.class.cpp                         :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/17 14:14:43 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:06:50 by ngoguey          ###   ########.fr       //
+//   Created: 2015/03/19 07:39:15 by ngoguey           #+#    #+#             //
+//   Updated: 2015/03/19 08:50:36 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#include "Background.class.hpp"
 #include <iostream>
 #include <cstdlib>
-#include <cstring>
-// #include <ncurses.h>
+#include "AMovPatternSheep.class.hpp"
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
-Background::Background(int x, int y, Game &g) :
-	_phase(0), _x(x), _y(y), _g(g)
+AMovPatternSheep::AMovPatternSheep(clock_t moveCD, int strafeChancesFactor) :
+	_lastMoveTime(std::clock()),
+	_moveCD(moveCD),
+	_strafeChancesFactor(strafeChancesFactor)
 {
-	std::string		*lines;
-	char			*linesFgColors;
-	char			*linesBgColors;
-	
-	std::cout << "[Background](main) Ctor called" << std::endl;
-	lines = new std::string[y]; //try catch ici
-	linesFgColors = new char[x * y]; //try catch ici
-	linesBgColors = new char[x * y]; //try catch ici
-	for (int i = 0; i < y; i++)
-	{
-		lines[i].resize(x);
-		for (int j = 0; j < x; j++)
-		{
-
-			linesFgColors[j + i * x] = 1;
-			if (std::rand() % 100 <= 15)
-			{
-				linesBgColors[j + i * x] = 2;
-				lines[i][j] = ' ';
-			}
-			else
-			{
-				linesBgColors[j + i * x] = 1;
-				lines[i][j] = ' ';
-			}
-		}
-	}
-	this->_lines = lines;
-	this->_linesFgColors = linesFgColors;
-	this->_linesBgColors = linesBgColors;
-	this->_dstFgChars = g.getDstFgChars();
-	this->_dstFgColors = g.getDstFgColors();
-	this->_dstBgColors = g.getDstBgColors();
+	std::cout << "[AMovPatternSheep]() Ctor called" << std::endl;
 	return ;
 }
 
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
-Background::~Background()
+AMovPatternSheep::~AMovPatternSheep()
 {
-	std::cout << "[Background]() Dtor called" << std::endl;
-	delete [] this->_lines;
-	delete [] this->_linesFgColors;
-	delete [] this->_linesBgColors;
+	std::cout << "[AMovPatternSheep]() Dtor called" << std::endl;
 	return ;
 }
 
 // * DESTRUCTORS *** DESTRUCTORS ******************************************** //
 // ************************************************************************** //
 // ************************************************ OPERATORS *** OPERATORS * //
+
 // * OPERATORS *** OPERATORS ************************************************ //
 // ************************************************************************** //
 // **************************************************** GETTERS *** GETTERS * //
@@ -83,22 +49,48 @@ Background::~Background()
 // **************************************************** SETTERS *** SETTERS * //
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
-void						Background::putBackground(void)
+void						AMovPatternSheep::move(Game const &g,
+												   Shape const &s, int x, int y)
 {
-	for (int i = 0; i < this->_y ; i++)
-	{
-		_dstFgChars[i] = this->_lines[(i + this->_phase) % this->_y];
-		std::memcpy(this->_dstFgColors + i * this->_x,
-					this->_linesFgColors + ((i + this->_phase) % this->_y) *
-					this->_x,
-					this->_x);
-		std::memcpy(this->_dstBgColors + i * this->_x,
-					this->_linesBgColors + ((i + this->_phase) % this->_y) *
-					this->_x,
-					this->_x);
-	}
-	this->_phase--;
-	if (this->_phase < 0)
-		this->_phase = this->_y - 1;
+	this->setPosX(x);
+	this->setPosY(y);
+	s.putShape(g, x, y);
 	return ;
+}
+
+
+
+int							AMovPatternSheep::tryMove(Game const &g)
+{
+	int			r;
+
+	while (std::clock() >= this->_lastMoveTime + this->_moveCD)
+	{
+		Shape const	&ref = this->getShape();
+		int			x = this->getPosX();
+		int			y = this->getPosY();
+
+		this->_lastMoveTime += this->_moveCD;
+		// this->_lastMoveTime = std::clock();
+		if ((r = std::rand()) % this->_strafeChancesFactor < 100)
+		{
+			if (r % 2)
+			{
+				if (ref.shapeFits(g, x - 1, y + 1))
+					this->move(g, ref, x - 1, y + 1);
+				else
+					this->move(g, ref, x + 1, y + 1);
+			}
+			else
+			{
+				if (ref.shapeFits(g, x + 1, y + 1))
+					this->move(g, ref, x + 1, y + 1);
+				else
+					this->move(g, ref, x - 1, y + 1);
+			}
+		}
+		else
+			this->move(g, ref, x, y + 1);
+	}
+	return (0);
 }

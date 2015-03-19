@@ -8,14 +8,16 @@ SRCSFILES = \
 			Game.class.cpp\
 			Shape.class.cpp\
   ./enemies/Pig.class.cpp\
+  ./enemies/Sheep.class.cpp\
      ./move/IMovIA.class.cpp\
      ./move/AMovPatternDefault.class.cpp\
+     ./move/AMovPatternSheep.class.cpp\
     ./shoot/IShootIA.class.cpp\
     ./shoot/AShootPatternDefault.class.cpp
 
 SRCPATH = .
 OBJPATH = obj
-CC = g++
+CC = clang++
 INCLUDES = -I . -I ./enemies/ -I ./move/ -I ./shoot/
 LIBS = -lncurses
 CFLAGS = -Werror -Wall -Wextra -O2
@@ -28,7 +30,7 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	$(CC) -o $@ $(CFLAGS) $(OBJECTS) $(LIBS)
-	
+
 $(OBJECTS): $(OBJPATH)/%.o : $(SRCPATH)/%.cpp
 	@mkdir -p $(dir $@)
 	$(CC) -o $@ $(CFLAGS) $(INCLUDES) -c $<

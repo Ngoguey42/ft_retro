@@ -1,104 +1,85 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Background.class.cpp                               :+:      :+:    :+:   //
+//   Sheep.class.cpp                                    :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/17 14:14:43 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:06:50 by ngoguey          ###   ########.fr       //
+//   Created: 2015/03/19 09:12:38 by ngoguey           #+#    #+#             //
+//   Updated: 2015/03/19 09:30:09 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#include "Background.class.hpp"
-#include <iostream>
+//#include <iostream>
 #include <cstdlib>
-#include <cstring>
-// #include <ncurses.h>
+#include <Sheep.class.hpp>
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
+std::string const			Sheep::_mobName = "Sheep";
+Shape const					Sheep::_mobShape =
+	Shape(SHEEP_SHAPE, DEFAULT_COLOR, DEFAULT_COLOR);
+bool const					Sheep::_doesMove = true;
+bool const					Sheep::_doesShoot = false;
+clock_t const				Sheep::_moveCD = CLOCKS_PER_SEC / 10;
+int const					Sheep::_moveChancesFactor = 1000;
+
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
-Background::Background(int x, int y, Game &g) :
-	_phase(0), _x(x), _y(y), _g(g)
-{
-	std::string		*lines;
-	char			*linesFgColors;
-	char			*linesBgColors;
-	
-	std::cout << "[Background](main) Ctor called" << std::endl;
-	lines = new std::string[y]; //try catch ici
-	linesFgColors = new char[x * y]; //try catch ici
-	linesBgColors = new char[x * y]; //try catch ici
-	for (int i = 0; i < y; i++)
-	{
-		lines[i].resize(x);
-		for (int j = 0; j < x; j++)
-		{
 
-			linesFgColors[j + i * x] = 1;
-			if (std::rand() % 100 <= 15)
-			{
-				linesBgColors[j + i * x] = 2;
-				lines[i][j] = ' ';
-			}
-			else
-			{
-				linesBgColors[j + i * x] = 1;
-				lines[i][j] = ' ';
-			}
-		}
-	}
-	this->_lines = lines;
-	this->_linesFgColors = linesFgColors;
-	this->_linesBgColors = linesBgColors;
-	this->_dstFgChars = g.getDstFgChars();
-	this->_dstFgColors = g.getDstFgColors();
-	this->_dstBgColors = g.getDstBgColors();
+Sheep::Sheep() :
+	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor),
+	AShootPatternDefault()
+{
+	std::cout << "[Sheep](main) Ctor called" << std::endl;
+	return ;
+}
+
+Sheep::Sheep(Sheep const &src) :
+	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor),
+	AShootPatternDefault()
+{
+	std::cout << "[Sheep](cpy) Ctor called" << std::endl;
+	(void)src;
 	return ;
 }
 
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
-Background::~Background()
+Sheep::~Sheep()
 {
-	std::cout << "[Background]() Dtor called" << std::endl;
-	delete [] this->_lines;
-	delete [] this->_linesFgColors;
-	delete [] this->_linesBgColors;
+	std::cout << "[Sheep]() Dtor called" << std::endl;
 	return ;
 }
 
 // * DESTRUCTORS *** DESTRUCTORS ******************************************** //
 // ************************************************************************** //
 // ************************************************ OPERATORS *** OPERATORS * //
+
 // * OPERATORS *** OPERATORS ************************************************ //
 // ************************************************************************** //
 // **************************************************** GETTERS *** GETTERS * //
+std::string const			&Sheep::getName() const{return Sheep::_mobName;}
+Shape const					&Sheep::getShape() const{return Sheep::_mobShape;}
+bool						Sheep::getDoesMove() const{return Sheep::_doesMove;}
+bool						Sheep::getDoesShoot() const{return Sheep::_doesShoot;}
+int							Sheep::getPosX(void) const{return this->_posX;}
+int							Sheep::getPosY(void) const{return this->_posY;}
+
 // * GETTERS *** GETTERS **************************************************** //
 // ************************************************************************** //
 // **************************************************** SETTERS *** SETTERS * //
+void						Sheep::setPosX(int x){this->_posX = x;}
+void						Sheep::setPosY(int y){this->_posY = y;}
+void						Sheep::setPosXY(int x, int y)
+{this->_posX = x;this->_posY = y;}
+
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
-void						Background::putBackground(void)
+void						Sheep::moveCall(Game const &g)
 {
-	for (int i = 0; i < this->_y ; i++)
-	{
-		_dstFgChars[i] = this->_lines[(i + this->_phase) % this->_y];
-		std::memcpy(this->_dstFgColors + i * this->_x,
-					this->_linesFgColors + ((i + this->_phase) % this->_y) *
-					this->_x,
-					this->_x);
-		std::memcpy(this->_dstBgColors + i * this->_x,
-					this->_linesBgColors + ((i + this->_phase) % this->_y) *
-					this->_x,
-					this->_x);
-	}
-	this->_phase--;
-	if (this->_phase < 0)
-		this->_phase = this->_y - 1;
+	this->tryMove(g);
 	return ;
 }

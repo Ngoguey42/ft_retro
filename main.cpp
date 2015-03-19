@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 07:33:28 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 09:31:44 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -14,6 +14,7 @@
 #include <Shape.class.hpp>
 #include <AObject.class.hpp>
 #include <Pig.class.hpp>
+#include <Sheep.class.hpp>
 #include <Background.class.hpp>
 
 #include <iostream>
@@ -61,32 +62,60 @@ int							main(void)
 	Pig *p_ptr = &p;
 	AObject *a_ptr = &p;
 
-	std::vector<AObject*>::iterator it;
+
+
+
+
+
+
+
+
+
+
 	Pig p1;
 	g->_objsVector.push_back(&p1);
+
+
+
+
+
+	
+
+
+
+
+
+
 	Pig p2;
 	g->_objsVector.push_back(&p2);
 	Pig p3;
 	g->_objsVector.push_back(&p3);
 
-	clock_t	lu1_refresh = clock();
+	Sheep s1;
+	Sheep s2;
+	Sheep s3;
+	g->_objsVector.push_back(&s1);
+	g->_objsVector.push_back(&s2);
+	g->_objsVector.push_back(&s3);
+	
+	clock_t	lu1_screen = clock();
 	clock_t	lu2_events = clock();
 
 	// std::cout << "test" << std::endl;
 		// return (0);	
-
+	std::vector<AObject*>::iterator		it;
 	while (1)
 	{
 
 		while (clock() - lu2_events > DELTA_REFRESH_EVENTS)
 		{
 			lu2_events += DELTA_REFRESH_EVENTS;
-			for (it = g->_objsVector.begin(); it<g->_objsVector.end(); it++)
+			for (it = g->_objsVector.begin(); it < g->_objsVector.end(); it++)
 				(*it)->moveCall(*g);
 		}
-		if (clock() - lu1_refresh > DELTA_REFRESH_SCREEN)
+		if (clock() - lu1_screen > DELTA_REFRESH_SCREEN)
 		{
-			lu1_refresh = clock();
+			lu1_screen = clock();
 			clear();
 			bg->putBackground();
 			g->putObjects();
@@ -100,7 +129,7 @@ int							main(void)
 	(void)p_ptr;
 	(void)a_ptr;
 	(void)lu2_events;
-	(void)lu1_refresh;
+	(void)lu1_screen;
 
 	endwin();
 	delete g;

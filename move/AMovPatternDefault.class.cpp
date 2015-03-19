@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 10:43:59 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 18:17:53 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 07:42:53 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -62,7 +62,7 @@ int						AMovPatternDefault::tryMove(Game const &g)
 	int		r;
 	
 	if (std::clock() >= this->_lastMoveTime + this->_moveCD &&
-		(r = std::rand()) % this->_moveChancesFactor >= 100)
+		(r = std::rand()) % this->_moveChancesFactor < 100)
 	{
 		Shape const	&ref = this->getShape();
 		int			x = this->getPosX();

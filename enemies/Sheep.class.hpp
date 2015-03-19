@@ -1,17 +1,17 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Pig.class.hpp                                      :+:      :+:    :+:   //
+//   Sheep.class.hpp                                    :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/17 07:58:27 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:21:26 by ngoguey          ###   ########.fr       //
+//   Created: 2015/03/19 09:07:43 by ngoguey           #+#    #+#             //
+//   Updated: 2015/03/19 09:25:23 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#ifndef PIG_CLASS_HPP
-# define PIG_CLASS_HPP
+#ifndef SHEEP_CLASS_HPP
+# define SHEEP_CLASS_HPP
 
 # include <ft_retro.hpp>
 # include <AObject.class.hpp>
@@ -22,14 +22,13 @@
 
 # include <iostream>
 # include <ctime>
-//# include <stdexcept>
 
-class Pig : public AObject, public AMovPatternDefault, public AShootPatternDefault
+class Sheep : public AObject, public AMovPatternSheep, public AShootPatternDefault
 {
 public:
-	Pig();
-	Pig(Pig const &src);
-	virtual ~Pig();
+	Sheep();
+	Sheep(Sheep const &src);
+	virtual ~Sheep();
 
 	std::string const			&getName() const;
 	Shape const					&getShape() const;
@@ -38,25 +37,24 @@ public:
 
 	void						moveCall(Game const &g);
 
-	
 	int							getPosX(void) const;
 	int							getPosY(void) const;
 	void						setPosX(int x);
 	void						setPosY(int y);
 	void						setPosXY(int x, int y);
 
+
 protected:
 private:
-	Pig							&operator=(Pig const &rhs);
+	Sheep						&operator=(Sheep const &rhs);
 
 	static std::string const	_mobName;
-	static Shape const			_mobShape;
-	static bool const			_doesMove;
-	static bool const			_doesShoot;
+	static Shape const		  _mobShape;
+	static bool const		   _doesMove;
+	static bool const		   _doesShoot;
 	static clock_t const		_moveCD;
 	static int const			_moveChancesFactor;
-	
 };
-//std::ostream					&operator<<(std::ostream &o, Pig const &rhs);
+//std::ostream					&operator<<(std::ostream &o, Sheep const &rhs);
 
-#endif // ***************************************************** PIG_CLASS_HPP //
+#endif // *************************************************** SHEEP_CLASS_HPP //
