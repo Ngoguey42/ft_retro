@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:54:06 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 09:58:10 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -15,6 +15,7 @@
 #include <AObject.class.hpp>
 #include <Pig.class.hpp>
 #include <Sheep.class.hpp>
+#include <Snake.class.hpp>
 #include <Background.class.hpp>
 
 #include <iostream>
@@ -105,12 +106,18 @@ int							main(void)
 	g->_objsVector.push_back(&p2);
 	Pig p3;
 	g->_objsVector.push_back(&p3);
-	Sheep s1;
-	Sheep s2;
-	Sheep s3;
-	g->_objsVector.push_back(&s1);
-	g->_objsVector.push_back(&s2);
-	g->_objsVector.push_back(&s3);
+	Sheep sh1;
+	Sheep sh2;
+	Sheep sh3;
+	g->_objsVector.push_back(&sh1);
+	g->_objsVector.push_back(&sh2);
+	g->_objsVector.push_back(&sh3);
+	Snake sn1;
+	Snake sn2;
+	Snake sn3;
+	g->_objsVector.push_back(&sn1);
+	g->_objsVector.push_back(&sn2);
+	g->_objsVector.push_back(&sn3);
 
 	play(g, bg);
 	endwin();
