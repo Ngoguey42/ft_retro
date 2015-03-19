@@ -131,7 +131,7 @@ void						Game::popPig(int count)
 
 	for (; count > 0; count--)
 	{
-		o = new Centipede(); // try catch
+		o = new Lombric(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
 		o->setPosY(-o->getShape().getTopSize());
 		this->_objsVector.push_back(o);

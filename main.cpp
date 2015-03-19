@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 14:46:09 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 15:39:29 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -31,12 +31,12 @@
 #include <ncurses.h>
 #include <unistd.h>
 /*
-player			WHITE 1
-missile_player	RED   2
+player			WHITE   1
+missile_player	RED     2
 
-missile			YELLOW 3
-ennemies		GREEN  4
-ennemies		CYAN   5
+missile			YELLOW  3
+ennemies		GREEN   4
+ennemies		CYAN    5
 ennemies		MAGENTA 6
 
 

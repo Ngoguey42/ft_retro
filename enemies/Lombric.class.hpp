@@ -17,13 +17,13 @@
 # include <AObject.class.hpp>
 # include <Game.class.hpp>
 # include <AMovPatternDefault.class.hpp>
-# include <AMovPatternSheep.class.hpp>
+# include <AMovPatternLombric.class.hpp>
 # include <AShootPatternDefault.class.hpp>
 
 # include <iostream>
 # include <ctime>
 
-class Lombric : public AObject, public AMovPatternSheep, public AShootPatternDefault
+class Lombric : public AObject, public AMovPatternLombric, public AShootPatternDefault
 {
 public:
 	Lombric();

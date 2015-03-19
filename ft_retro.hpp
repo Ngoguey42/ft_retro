@@ -23,6 +23,7 @@ class Shape;
 class IMovIA;
 class AMovPatternDefault;
 class AMovPatternSheep;
+class AMovPatternLombric;
 
 class IShootIA;
 class AShootPatternDefault;

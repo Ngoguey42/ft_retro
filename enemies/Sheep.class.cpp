@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 09:12:38 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 11:10:42 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/19 15:35:49 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -18,7 +18,7 @@
 // **************************************************** STATICS *** STATICS * //
 std::string const			Sheep::_mobName = "Sheep";
 Shape const					Sheep::_mobShape =
-	Shape(SHEEP_SHAPE, DEFAULT_COLOR, DEFAULT_COLOR);
+	Shape(SHEEP_SHAPE, SHEEP_COLOR, DEFAULT_COLOR);
 bool const					Sheep::_doesMove = true;
 bool const					Sheep::_doesShoot = false;
 clock_t const				Sheep::_moveCD = CLOCKS_PER_SEC / 10;
