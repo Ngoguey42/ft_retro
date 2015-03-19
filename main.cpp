@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:31:44 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 09:54:06 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -38,6 +38,46 @@ static void					init_ncurses(void)
 	return ;
 }
 
+static void					redraw_events(Game *g, Background *bg)
+{
+	clear();
+	bg->putBackground();
+	g->putObjects();
+	g->putImage();
+	refresh();			
+	return ;
+}
+
+static void					game_events(Game *g)
+{
+	std::vector<AObject*>::iterator		it;
+
+	for (it = g->_objsVector.begin(); it < g->_objsVector.end(); it++)
+		(*it)->moveCall(*g);
+	return ;
+}
+
+static void					play(Game *g, Background *bg)
+{
+	clock_t	lu1_screen = clock();
+	clock_t	lu2_events = clock();
+
+	while (1)
+	{
+		while (clock() - lu2_events > DELTA_REFRESH_EVENTS)
+		{
+			lu2_events += DELTA_REFRESH_EVENTS;
+			game_events(g);
+		}
+		if (clock() - lu1_screen > DELTA_REFRESH_SCREEN)
+		{
+			lu1_screen = clock();
+			redraw_events(g, bg);
+		}
+	}
+	return ;
+}
+
 int							main(void)
 {
 	Game			*g = NULL;
@@ -56,81 +96,23 @@ int							main(void)
 	}
 	catch (std::exception)
 	{
-		
+		//todo
 	}
-	Pig	p;
-	Pig *p_ptr = &p;
-	AObject *a_ptr = &p;
-
-
-
-
-
-
-
-
-
-
 
 	Pig p1;
 	g->_objsVector.push_back(&p1);
-
-
-
-
-
-	
-
-
-
-
-
-
 	Pig p2;
 	g->_objsVector.push_back(&p2);
 	Pig p3;
 	g->_objsVector.push_back(&p3);
-
 	Sheep s1;
 	Sheep s2;
 	Sheep s3;
 	g->_objsVector.push_back(&s1);
 	g->_objsVector.push_back(&s2);
 	g->_objsVector.push_back(&s3);
-	
-	clock_t	lu1_screen = clock();
-	clock_t	lu2_events = clock();
 
-	// std::cout << "test" << std::endl;
-		// return (0);	
-	std::vector<AObject*>::iterator		it;
-	while (1)
-	{
-
-		while (clock() - lu2_events > DELTA_REFRESH_EVENTS)
-		{
-			lu2_events += DELTA_REFRESH_EVENTS;
-			for (it = g->_objsVector.begin(); it < g->_objsVector.end(); it++)
-				(*it)->moveCall(*g);
-		}
-		if (clock() - lu1_screen > DELTA_REFRESH_SCREEN)
-		{
-			lu1_screen = clock();
-			clear();
-			bg->putBackground();
-			g->putObjects();
-			g->putImage();
-			refresh();
-		}
-		// usleep(41667);
-	}
-	(void)bg;
-	(void)p;
-	(void)p_ptr;
-	(void)a_ptr;
-	(void)lu2_events;
-	(void)lu1_screen;
-
+	play(g, bg);
 	endwin();
 	delete g;
 	delete bg;
