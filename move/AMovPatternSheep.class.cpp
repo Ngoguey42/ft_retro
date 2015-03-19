@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 07:39:15 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 08:50:36 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 10:37:34 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -54,24 +54,23 @@ void						AMovPatternSheep::move(Game const &g,
 {
 	this->setPosX(x);
 	this->setPosY(y);
-	s.putShape(g, x, y);
+	if (y - s.getTopSize() >= g.getMaxY())
+		s.setDeleteObject(true);
+	else
+		s.putShape(g, x, y);
 	return ;
 }
 
-
-
 int							AMovPatternSheep::tryMove(Game const &g)
 {
-	int			r;
-
 	while (std::clock() >= this->_lastMoveTime + this->_moveCD)
 	{
 		Shape const	&ref = this->getShape();
 		int			x = this->getPosX();
 		int			y = this->getPosY();
+		int			r;
 
 		this->_lastMoveTime += this->_moveCD;
-		// this->_lastMoveTime = std::clock();
 		if ((r = std::rand()) % this->_strafeChancesFactor < 100)
 		{
 			if (r % 2)

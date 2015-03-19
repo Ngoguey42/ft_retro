@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:57:17 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 10:04:49 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 11:57:14 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -15,6 +15,7 @@
 
 class Game;
 class Background;
+class Scheduler;
 
 class AObject;
 class Shape;
@@ -26,7 +27,9 @@ class AMovPatternSheep;
 class IShootIA;
 class AShootPatternDefault;
 
+class Snake;
 class Pig;
+class Sheep;
 
 # include <objects_shapes.hpp>
 

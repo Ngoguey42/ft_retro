@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:58:10 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/19 11:41:23 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -17,6 +17,7 @@
 #include <Sheep.class.hpp>
 #include <Snake.class.hpp>
 #include <Background.class.hpp>
+#include <Scheduler.class.hpp>
 
 #include <iostream>
 #include <stdexcept>
@@ -49,16 +50,30 @@ static void					redraw_events(Game *g, Background *bg)
 	return ;
 }
 
-static void					game_events(Game *g)
+static void					game_events(Game &g, Scheduler &s)
 {
-	std::vector<AObject*>::iterator		it;
+	AObject								*ob;
 
-	for (it = g->_objsVector.begin(); it < g->_objsVector.end(); it++)
-		(*it)->moveCall(*g);
+	for (int i = 0; i < (int)g._objsVector.size();)
+	{
+		ob = g._objsVector.at(i);
+		if (ob->getDeleteObject())
+		{
+			g._objsVector.erase(g._objsVector.begin() + i);
+			delete ob;
+		}
+		else
+		{
+			ob->moveCall(g);
+			//shootCall (tryShoot)
+			i++;
+		}
+	}
+	s.tryNewWave(g);
 	return ;
 }
 
-static void					play(Game *g, Background *bg)
+static void					play(Game *g, Background *bg, Scheduler &s)
 {
 	clock_t	lu1_screen = clock();
 	clock_t	lu2_events = clock();
@@ -68,7 +83,7 @@ static void					play(Game *g, Background *bg)
 		while (clock() - lu2_events > DELTA_REFRESH_EVENTS)
 		{
 			lu2_events += DELTA_REFRESH_EVENTS;
-			game_events(g);
+			game_events(*g, s);
 		}
 		if (clock() - lu1_screen > DELTA_REFRESH_SCREEN)
 		{
@@ -83,6 +98,7 @@ int							main(void)
 {
 	Game			*g = NULL;
 	Background		*bg = NULL;
+	Scheduler		s(CLOCKS_PER_SEC, CLOCKS_PER_SEC * 5);
 	struct winsize	w;
 
 	init_ncurses();
@@ -100,26 +116,26 @@ int							main(void)
 		//todo
 	}
 
-	Pig p1;
-	g->_objsVector.push_back(&p1);
-	Pig p2;
-	g->_objsVector.push_back(&p2);
-	Pig p3;
-	g->_objsVector.push_back(&p3);
-	Sheep sh1;
-	Sheep sh2;
-	Sheep sh3;
-	g->_objsVector.push_back(&sh1);
-	g->_objsVector.push_back(&sh2);
-	g->_objsVector.push_back(&sh3);
-	Snake sn1;
-	Snake sn2;
-	Snake sn3;
-	g->_objsVector.push_back(&sn1);
-	g->_objsVector.push_back(&sn2);
-	g->_objsVector.push_back(&sn3);
+	// Pig p1;
+	// g->_objsVector.push_back(&p1);
+	// Pig p2;
+	// g->_objsVector.push_back(&p2);
+	// Pig p3;
+	// g->_objsVector.push_back(&p3);
+	// Sheep sh1;
+	// Sheep sh2;
+	// Sheep sh3;
+	// g->_objsVector.push_back(&sh1);
+	// g->_objsVector.push_back(&sh2);
+	// g->_objsVector.push_back(&sh3);
+	// Snake sn1;
+	// Snake sn2;
+	// Snake sn3;
+	// g->_objsVector.push_back(&sn1);
+	// g->_objsVector.push_back(&sn2);
+	// g->_objsVector.push_back(&sn3);
 
-	play(g, bg);
+	play(g, bg, s);
 	endwin();
 	delete g;
 	delete bg;

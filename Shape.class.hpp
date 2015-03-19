@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:57:42 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 07:25:56 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 12:03:34 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -16,12 +16,9 @@
 # include <ft_retro.hpp>
 # include <Game.class.hpp>
 
-// # include <AObject.class.hpp>
 // # include <string>
 # include <iostream>
 //# include <stdexcept>
-
-
 
 class Shape
 {
@@ -36,11 +33,12 @@ public:
 		  char const bgColors[MAX_SHAPE_HEIGHT][MAX_SHAPE_WIDTH]);
 	Shape(Shape const &src);
 	std::string					shapeToString(void) const;
-protected:	
 	int							getTopSize(void) const;
 	int							getBottomSize(void) const;
 	int							getLeftSize(void) const;
 	int							getRightSize(void) const;
+
+protected:	
 	char const					**getFgChars(void) const;
 	char const					**getFgColors(void) const;
 	char const					**getBgColors(void) const;

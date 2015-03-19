@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:11:33 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 10:20:50 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 12:05:33 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -35,7 +35,11 @@ public:
 
 	virtual int					getPosX(void) const;
 	virtual int					getPosY(void) const;
+	bool						getDeleteObject(void) const;
 
+	virtual void				setPosX(int x);
+	virtual void				setPosY(int y);
+	
 protected:
 	int							_posX;
 	int							_posY;

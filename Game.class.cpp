@@ -6,14 +6,15 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 07:27:05 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 12:02:01 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 #include "Game.class.hpp"
 #include <iostream>
 #include <ncurses.h>
-
+#include <Pig.class.hpp>
+#include <Sheep.class.hpp>
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
@@ -25,18 +26,10 @@ Game::Game(int maxX, int maxY) :
 {
 	std::cout << "[Game]() Ctor called" << std::endl;
 	this->_dstFgChars = new std::string[maxY];//try catch
-	this->_dstFgColors = new char[maxY * maxX];
-	this->_dstBgColors = new char[maxY * maxX];
+	this->_dstFgColors = new char[maxY * maxX];//try catch
+	this->_dstBgColors = new char[maxY * maxX];//try catch
 	return ;
 }
-
-// Game::Game(Game const &src)
-// {
-// 	// std::cout << "[Game](cpy) Ctor called" << std::endl;
-// 	(void)src;
-// 	return ;
-// }
-
 
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //
@@ -53,19 +46,6 @@ Game::~Game()
 // * DESTRUCTORS *** DESTRUCTORS ******************************************** //
 // ************************************************************************** //
 // ************************************************ OPERATORS *** OPERATORS * //
-// Game						&Game::operator=(Game const &rhs)
-// {
-// 	// std::cout << "[Game]= Overload called" << std::endl;
-// 	(void)rhs;
-// 	return (*this);
-// }
-
-// std::ostream				&operator<<(std::ostream &o, Game const &rhs)
-// {
-//	o << rhs.get();
-//	return (o);
-// }
-
 // * OPERATORS *** OPERATORS ************************************************ //
 // ************************************************************************** //
 // **************************************************** GETTERS *** GETTERS * //
@@ -104,9 +84,6 @@ void						Game::putImage(void) const
 			prevBgColor = this->_dstBgColors[cur_index];
 		}
 	}
-	(void)prevBgColor;
-	(void)cur_index;
-	(void)line;
 	return ;
 }
 
@@ -114,23 +91,39 @@ void						Game::putObjects(void) const
 {
 	std::vector<AObject*>::const_iterator		it;
 
-	// it = (this->_objsVector).begin();
-	
-	// for (;;)
 	for (it = this->_objsVector.begin() ; it < this->_objsVector.end() ; it++)
-	{
-		// std::cout << "salut" << std::endl;
-		// (*it)->moveCall(*g);
-
-
 		(void)(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
-		// (*it)->getShape();
+	return ;
+}
 
+static int					randomizeXStart(Shape const &s, int maxX)
+{
+	maxX -= s.getLeftSize() - s.getRightSize();
+	maxX = std::rand() % maxX;
+	return (maxX + s.getLeftSize());
+} 
 
-// this->_dstFgChars[(*it)->]
-		
-		// printw("%s %d", (*it)->getName().c_str(), (*it)->getPosX());
-		// std::cout << (*it) << std::endl;
+void						Game::popSheep(int count)
+{
+	AObject		*o;
+
+	for (; count > 0; count--)
+	{
+		o = new Sheep(); // try catch
+		o->setPosX = randomizeXStart(o->getShape(), g->_maxX);
+		this->_objsVector.push_back(o);
+	}
+	return ;
+}
+
+void						Game::popPig(int count)
+{
+	AObject		*o;
+
+	for (; count > 0; count--)
+	{
+		o = new Pig(); // try catch
+		this->_objsVector.push_back(o);
 	}
 	return ;
 }

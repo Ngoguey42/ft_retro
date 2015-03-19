@@ -6,6 +6,7 @@ SRCSFILES = \
 			AObject.class.cpp\
 			Background.class.cpp\
 			Game.class.cpp\
+			Scheduler.class.hpp\
 			Shape.class.cpp\
   ./enemies/Pig.class.cpp\
   ./enemies/Sheep.class.cpp\
@@ -18,6 +19,7 @@ SRCSFILES = \
 
 SRCPATH = .
 OBJPATH = obj
+# CC = g++
 CC = clang++
 INCLUDES = -I . -I ./enemies/ -I ./move/ -I ./shoot/
 LIBS = -lncurses
