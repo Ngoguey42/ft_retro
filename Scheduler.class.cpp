@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 10:41:42 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 12:19:18 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 12:23:24 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -50,6 +50,10 @@ void						Scheduler::tryNewWave(Game &g)
 {
 	while (std::clock() >= this->_lastWave + this->_waveCD)
 	{
+
+		// std::cout << "new wave" << std::endl;
+		
+		
 		int			pool;
 		int			pool2;
 
@@ -61,7 +65,7 @@ void						Scheduler::tryNewWave(Game &g)
 		}
 		else
 		{
-			pool = std::rand() % (this->_waveCount * 2);
+			pool = std::rand() % (this->_waveCount * 2 - 1) + 1;
 			pool2 = std::rand() % pool;
 			g.popSheep(pool2);
 			g.popPig(pool - pool2);

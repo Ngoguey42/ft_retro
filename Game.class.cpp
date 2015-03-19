@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 12:17:12 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 12:42:48 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -16,6 +16,10 @@
 #include <cstdlib>
 #include <Pig.class.hpp>
 #include <Sheep.class.hpp>
+#include <Fizzy.class.hpp>
+#include <Snake.class.hpp>
+#include <Centipede.class.hpp>
+#include <Lombric.class.hpp>
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
@@ -110,7 +114,7 @@ void						Game::popSheep(int count)
 
 	for (; count > 0; count--)
 	{
-		o = new Sheep(); // try catch
+		o = new Fizzy(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
 		this->_objsVector.push_back(o);
 	}
@@ -123,8 +127,9 @@ void						Game::popPig(int count)
 
 	for (; count > 0; count--)
 	{
-		o = new Pig(); // try catch
+		o = new Centipede(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
+		o->setPosY(rand() % 3 + 3);
 		this->_objsVector.push_back(o);
 	}
 	return ;

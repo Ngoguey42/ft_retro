@@ -26,7 +26,7 @@ CC = g++
 # CC = clang++
 INCLUDES = -I . -I ./enemies/ -I ./move/ -I ./shoot/
 LIBS = -lncurses
-CFLAGS = -Werror -Wall -Wextra -O2
+CFLAGS = -Werror -Wall -Wextra -O2 -g
 RM = rm -rf
 
 SRC = $(addprefix $(SRCPATH)/,$(SRCSFILES))

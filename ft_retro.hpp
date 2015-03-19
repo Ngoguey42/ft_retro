@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:57:17 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 11:57:14 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 12:36:24 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -34,6 +34,6 @@ class Sheep;
 # include <objects_shapes.hpp>
 
 # define DELTA_REFRESH_SCREEN 40000
-# define DELTA_REFRESH_EVENTS 100000
+# define DELTA_REFRESH_EVENTS DELTA_REFRESH_SCREEN
 
 #endif // ****************************************************** FT_RETRO_HPP //
