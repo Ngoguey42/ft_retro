@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:33:25 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 12:49:16 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 10:26:16 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -20,7 +20,7 @@
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 AObject::AObject() :
-	_posX(0), _posY(0)
+	_posX(0), _posY(0), _deleteObject(false)
 {
 	std::cout << "[AObject](main) Ctor called" << std::endl;
 	return ;

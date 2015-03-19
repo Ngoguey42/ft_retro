@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 10:27:03 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 12:15:12 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 10:26:24 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -33,7 +33,8 @@ public:
 	virtual void				setPosXY(int x, int y) = 0;
 	virtual int					tryMove(Game const &g) = 0;
 	virtual Shape const			&getShape(void) const = 0;
-
+	virtual void				setDeleteObject(bool b) = 0;
+	
 protected:
 private:
 	IMovIA(IMovIA const &src);

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:59:17 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:30:34 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 10:25:44 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -75,6 +75,8 @@ void						Pig::setPosX(int x){this->_posX = x;}
 void						Pig::setPosY(int y){this->_posY = y;}
 void						Pig::setPosXY(int x, int y)
 {this->_posX = x;this->_posY = y;}
+void                        Pig::setDeleteObject(bool b)
+{this->_deleteObject = b;}
 
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //

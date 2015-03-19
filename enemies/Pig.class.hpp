@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:58:27 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:21:26 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 10:21:58 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -44,7 +44,8 @@ public:
 	void						setPosX(int x);
 	void						setPosY(int y);
 	void						setPosXY(int x, int y);
-
+	void						setDeleteObject(bool b);
+	
 protected:
 private:
 	Pig							&operator=(Pig const &rhs);
