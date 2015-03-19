@@ -18,12 +18,11 @@
 # include <Game.class.hpp>
 # include <AMovPatternDefault.class.hpp>
 # include <AMovPatternSheep.class.hpp>
-# include <AShootPatternDefault.class.hpp>
 
 # include <iostream>
 # include <ctime>
 
-class Fizzy : public AObject, public AMovPatternSheep, public AShootPatternDefault
+class Fizzy : public AObject, public AMovPatternSheep
 {
 public:
 	Fizzy();

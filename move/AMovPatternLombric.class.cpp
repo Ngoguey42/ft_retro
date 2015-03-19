@@ -1,54 +1,40 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Fizzy.class.cpp                                    :+:      :+:    :+:   //
+//   AMovPatternLombric.class.cpp                       :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/19 11:03:42 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 11:03:44 by wide-aze         ###   ########.fr       //
+//   Created: 2015/03/19 15:13:08 by wide-aze          #+#    #+#             //
+//   Updated: 2015/03/19 15:13:09 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-//#include <iostream>
+#include <iostream>
 #include <cstdlib>
-#include <Fizzy.class.hpp>
+#include "AMovPatternLombric.class.hpp"
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
-std::string const			Fizzy::_mobName = "Fizzy";
-Shape const					Fizzy::_mobShape =
-	Shape(FIZZY_SHAPE, DEFAULT_COLOR, DEFAULT_COLOR);
-bool const					Fizzy::_doesMove = true;
-bool const					Fizzy::_doesShoot = false;
-clock_t const				Fizzy::_moveCD = CLOCKS_PER_SEC / 10;
-int const					Fizzy::_moveChancesFactor = 1000;
-
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
-
-Fizzy::Fizzy() :
-	AObject(), AMovPatternSheep(Fizzy::_moveCD, Fizzy::_moveChancesFactor)
+AMovPatternLombric::AMovPatternLombric(clock_t moveCD, int strafeChancesFactor) :
+	_lastMoveTime(std::clock()),
+	_moveCD(moveCD),
+	_strafeChancesFactor(strafeChancesFactor)
+	// _direction(r)
 {
-	std::cout << "[Fizzy](main) Ctor called" << std::endl;
-	return ;
-}
-
-Fizzy::Fizzy(Fizzy const &src) :
-	AObject(), AMovPatternSheep(Fizzy::_moveCD, Fizzy::_moveChancesFactor)
-{
-	std::cout << "[Fizzy](cpy) Ctor called" << std::endl;
-	(void)src;
+	std::cout << "[AMovPatternLombric]() Ctor called" << std::endl;
 	return ;
 }
 
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
-Fizzy::~Fizzy()
+AMovPatternLombric::~AMovPatternLombric()
 {
-	std::cout << "[Fizzy]() Dtor called" << std::endl;
+	std::cout << "[AMovPatternLombric]() Dtor called" << std::endl;
 	return ;
 }
 
@@ -59,27 +45,64 @@ Fizzy::~Fizzy()
 // * OPERATORS *** OPERATORS ************************************************ //
 // ************************************************************************** //
 // **************************************************** GETTERS *** GETTERS * //
-std::string const			&Fizzy::getName() const{return Fizzy::_mobName;}
-Shape const					&Fizzy::getShape() const{return Fizzy::_mobShape;}
-bool						Fizzy::getDoesMove() const{return Fizzy::_doesMove;}
-bool						Fizzy::getDoesShoot() const{return Fizzy::_doesShoot;}
-int							Fizzy::getPosX(void) const{return this->_posX;}
-int							Fizzy::getPosY(void) const{return this->_posY;}
-
 // * GETTERS *** GETTERS **************************************************** //
 // ************************************************************************** //
 // **************************************************** SETTERS *** SETTERS * //
-void						Fizzy::setPosX(int x){this->_posX = x;}
-void						Fizzy::setPosY(int y){this->_posY = y;}
-void						Fizzy::setPosXY(int x, int y)
-{this->_posX = x;this->_posY = y;}
-void						Fizzy::setDeleteObject(bool b)
-{this->_deleteObject = b;}
-
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
-void						Fizzy::moveCall(Game const &g)
+void						AMovPatternLombric::move(Game const &g,
+												   Shape const &s, int x, int y)
 {
-	this->tryMove(g);
+	this->setPosX(x);
+	this->setPosY(y);
+	if (y - s.getTopSize() >= g.getMaxY())
+		this->setDeleteObject(true);
+	else
+		s.putShape(g, x, y);
 	return ;
+}
+
+int							AMovPatternLombric::tryMove(Game const &g)
+{
+	while (std::clock() >= this->_lastMoveTime + this->_moveCD)
+	{
+		Shape const	&ref = this->getShape();
+		int			x = this->getPosX();
+		int			y = this->getPosY();
+		int			r;
+
+		this->_lastMoveTime += this->_moveCD;
+
+
+
+
+
+
+
+
+
+
+
+
+		if ((r = std::rand()) % this->_strafeChancesFactor < 100)
+		{
+			if (r % 2)
+			{
+				if (ref.shapeFits(g, x - 1, y + 1))
+					this->move(g, ref, x - 1, y + 1);
+				else
+					this->move(g, ref, x + 1, y + 1);
+			}
+			else
+			{
+				if (ref.shapeFits(g, x + 1, y + 1))
+					this->move(g, ref, x + 1, y + 1);
+				else
+					this->move(g, ref, x - 1, y + 1);
+			}
+		}
+		else
+			this->move(g, ref, x, y + 1);
+	}
+	return (0);
 }
