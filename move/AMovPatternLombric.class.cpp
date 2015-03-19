@@ -22,8 +22,9 @@
 AMovPatternLombric::AMovPatternLombric(clock_t moveCD, int strafeChancesFactor) :
 	_lastMoveTime(std::clock()),
 	_moveCD(moveCD),
-	_strafeChancesFactor(strafeChancesFactor)
-	// _direction(r)
+	_strafeChancesFactor(strafeChancesFactor),
+	_direction('r'),
+	_margin(-42)
 {
 	std::cout << "[AMovPatternLombric]() Ctor called" << std::endl;
 	return ;
@@ -69,40 +70,29 @@ int							AMovPatternLombric::tryMove(Game const &g)
 		Shape const	&ref = this->getShape();
 		int			x = this->getPosX();
 		int			y = this->getPosY();
-		int			r;
+		int			margin = (g.getMaxX() / 7);
 
 		this->_lastMoveTime += this->_moveCD;
 
 
-
-
-
-
-
-
-
-
-
-
-		if ((r = std::rand()) % this->_strafeChancesFactor < 100)
+		if (x == g.getMaxX() - 2)
+			_direction = 'l';
+		else if (x == 0)
+			_direction = 'r';
+		if (_direction == 'r')
 		{
-			if (r % 2)
-			{
-				if (ref.shapeFits(g, x - 1, y + 1))
-					this->move(g, ref, x - 1, y + 1);
-				else
-					this->move(g, ref, x + 1, y + 1);
-			}
+			if (x  < margin || x  >= (g.getMaxX() - margin))
+				this->move(g, ref, x + 1, y + 1);
 			else
-			{
-				if (ref.shapeFits(g, x + 1, y + 1))
-					this->move(g, ref, x + 1, y + 1);
-				else
-					this->move(g, ref, x - 1, y + 1);
-			}
+				this->move(g, ref, x + 2, y);
 		}
 		else
-			this->move(g, ref, x, y + 1);
+		{
+			if (x  < margin || x  >= (g.getMaxX() - margin))
+				this->move(g, ref, x - 1, y + 1);
+			else
+				this->move(g, ref, x - 2, y);
+		}
 	}
 	return (0);
 }
