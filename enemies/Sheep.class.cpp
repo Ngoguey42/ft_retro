@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 09:12:38 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:30:09 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 10:29:18 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -75,6 +75,8 @@ void						Sheep::setPosX(int x){this->_posX = x;}
 void						Sheep::setPosY(int y){this->_posY = y;}
 void						Sheep::setPosXY(int x, int y)
 {this->_posX = x;this->_posY = y;}
+void						Sheep::setDeleteObject(bool b)
+{this->_deleteObject = b;}
 
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //

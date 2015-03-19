@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 09:59:11 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 10:14:45 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/19 10:29:36 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -75,6 +75,8 @@ void						Snake::setPosX(int x){this->_posX = x;}
 void						Snake::setPosY(int y){this->_posY = y;}
 void						Snake::setPosXY(int x, int y)
 {this->_posX = x;this->_posY = y;}
+void						Snake::setDeleteObject(bool b)
+{this->_deleteObject = b;}
 
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //

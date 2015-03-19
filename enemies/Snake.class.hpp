@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 09:59:15 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 10:13:34 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/19 10:28:35 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -42,7 +42,7 @@ public:
 	void						setPosX(int x);
 	void						setPosY(int y);
 	void						setPosXY(int x, int y);
-
+	void                        setDeleteObject(bool b);
 
 protected:
 private:
