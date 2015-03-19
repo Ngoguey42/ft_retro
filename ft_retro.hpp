@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:57:17 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 18:16:29 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 07:32:52 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -32,13 +32,15 @@ class Pig;
 //# include <stdexcept>
 
 # define MAX_SHAPE_HEIGHT 3
-# define MAX_SHAPE_WIDTH 3
+# define MAX_SHAPE_WIDTH MAX_SHAPE_HEIGHT
+
+# define MID_SHAPE_INDEX 1
 
 # define SHAPE_HEIGHT_DELTA (-((MAX_SHAPE_HEIGHT) / 2))
 # define SHAPE_WIDTH_DELTA (-((MAX_SHAPE_WIDTH) / 2))
 
-# define DELTA_REFRESH 40000
-# define DELTA_EVENTS 100000
+# define DELTA_REFRESH_SCREEN 40000
+# define DELTA_REFRESH_EVENTS 100000
 
 # define TEST_TAB (const char[MAX_SHAPE_HEIGHT][MAX_SHAPE_WIDTH]){	\
 {'\0', '?', '\0'},\

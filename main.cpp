@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 18:13:38 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 07:33:28 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -27,7 +27,6 @@
 
 static void					init_ncurses(void)
 {
-	init_ncurses();
 	initscr();
 	start_color();
 	noecho();
@@ -44,6 +43,7 @@ int							main(void)
 	Background		*bg = NULL;
 	struct winsize	w;
 
+	init_ncurses();
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	std::srand(std::time(0));
 	try
@@ -72,15 +72,19 @@ int							main(void)
 	clock_t	lu1_refresh = clock();
 	clock_t	lu2_events = clock();
 
+	// std::cout << "test" << std::endl;
+		// return (0);	
+
 	while (1)
 	{
-		while (clock() - lu2_events > DELTA_EVENTS)
+
+		while (clock() - lu2_events > DELTA_REFRESH_EVENTS)
 		{
-			lu2_events += DELTA_EVENTS;
+			lu2_events += DELTA_REFRESH_EVENTS;
 			for (it = g->_objsVector.begin(); it<g->_objsVector.end(); it++)
 				(*it)->moveCall(*g);
 		}
-		if (clock() - lu1_refresh > DELTA_REFRESH)
+		if (clock() - lu1_refresh > DELTA_REFRESH_SCREEN)
 		{
 			lu1_refresh = clock();
 			clear();

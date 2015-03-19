@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 17:45:29 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 07:27:05 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -90,6 +90,7 @@ void						Game::putImage(void) const
 	char		prevBgColor = 0;
 	const char	*line;
 	int			cur_index;
+
 	
 	for (int i = 0; i < this->_maxY; i++)
 	{
@@ -105,6 +106,7 @@ void						Game::putImage(void) const
 	}
 	(void)prevBgColor;
 	(void)cur_index;
+	(void)line;
 	return ;
 }
 
@@ -121,7 +123,7 @@ void						Game::putObjects(void) const
 		// (*it)->moveCall(*g);
 
 
-		(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
+		(void)(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
 		// (*it)->getShape();
 
 
