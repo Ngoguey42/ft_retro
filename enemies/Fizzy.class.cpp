@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:03:42 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 11:03:44 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/19 12:49:24 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -21,7 +21,7 @@ Shape const					Fizzy::_mobShape =
 	Shape(FIZZY_SHAPE, DEFAULT_COLOR, DEFAULT_COLOR);
 bool const					Fizzy::_doesMove = true;
 bool const					Fizzy::_doesShoot = true;
-clock_t const				Fizzy::_moveCD = CLOCKS_PER_SEC / 10;
+clock_t const				Fizzy::_moveCD = CLOCKS_PER_SEC / 200;
 int const					Fizzy::_moveChancesFactor = 1000;
 
 // * STATICS *** STATICS **************************************************** //

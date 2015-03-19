@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:02:21 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 11:02:21 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/19 15:19:16 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -18,7 +18,7 @@
 // **************************************************** STATICS *** STATICS * //
 std::string const			Centipede::_mobName = "Centipede";
 Shape const					Centipede::_mobShape =
-	Shape(CENTIPEDE_SHAPE, DEFAULT_COLOR, DEFAULT_COLOR);
+	Shape(CENTIPEDE_SHAPE, CENTIPEDE_COLOR, DEFAULT_COLOR);
 bool const					Centipede::_doesMove = true;
 bool const					Centipede::_doesShoot = true;
 clock_t const				Centipede::_moveCD = CLOCKS_PER_SEC / 10;

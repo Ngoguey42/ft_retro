@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 14:14:43 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:06:50 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 14:47:14 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -38,15 +38,15 @@ Background::Background(int x, int y, Game &g) :
 		for (int j = 0; j < x; j++)
 		{
 
-			linesFgColors[j + i * x] = 1;
+			linesFgColors[j + i * x] = 6;
 			if (std::rand() % 100 <= 15)
 			{
-				linesBgColors[j + i * x] = 2;
+				linesBgColors[j + i * x] = 1;
 				lines[i][j] = ' ';
 			}
 			else
 			{
-				linesBgColors[j + i * x] = 1;
+				linesBgColors[j + i * x] = 0;
 				lines[i][j] = ' ';
 			}
 		}

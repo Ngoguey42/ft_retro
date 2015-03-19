@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 12:21:37 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 14:46:09 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -30,7 +30,17 @@
 #include <sys/ioctl.h>
 #include <ncurses.h>
 #include <unistd.h>
+/*
+player			WHITE 1
+missile_player	RED   2
 
+missile			YELLOW 3
+ennemies		GREEN  4
+ennemies		CYAN   5
+ennemies		MAGENTA 6
+
+
+ */
 static void					init_ncurses(void)
 {
 	initscr();
@@ -38,8 +48,19 @@ static void					init_ncurses(void)
 	noecho();
 	init_color(100, 0, 0, 0);
 	init_color(101, 100, 100, 100);
-	init_pair(1, COLOR_RED, 100);
-	init_pair(2, COLOR_RED, 101);
+	init_pair(0b10000 + 1, COLOR_WHITE, 100);
+	init_pair(0b00000 + 1, COLOR_WHITE, 101);
+	init_pair(0b10000 + 2, COLOR_RED, 100);
+	init_pair(0b00000 + 2, COLOR_RED, 101);
+	init_pair(0b10000 + 3, COLOR_YELLOW, 100);
+	init_pair(0b00000 + 3, COLOR_YELLOW, 101);
+	init_pair(0b10000 + 4, COLOR_GREEN, 100);
+	init_pair(0b00000 + 4, COLOR_GREEN, 101);
+	init_pair(0b10000 + 5, COLOR_CYAN, 100);
+	init_pair(0b00000 + 5, COLOR_CYAN, 101);
+	init_pair(0b10000 + 6, COLOR_MAGENTA, 100);
+	init_pair(0b00000 + 6, COLOR_MAGENTA, 101);
+	
 	return ;
 }
 

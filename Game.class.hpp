@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:09:45 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 11:58:23 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 15:13:42 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -35,6 +35,7 @@ public:
 	void						putObjects(void) const;
 
 	void						setFgChar(int x, int y, char c) const;
+	void						setFgColor(int x, int y, char c) const;
 	
 	void						popSheep(int count);
 	void						popPig(int count);

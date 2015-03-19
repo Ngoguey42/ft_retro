@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 12:42:48 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 15:16:47 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -68,14 +68,16 @@ char						*Game::getDstBgColors(void) const
 // **************************************************** SETTERS *** SETTERS * //
 void						Game::setFgChar(int x, int y, char c) const
 {this->_dstFgChars[y][x] = c;}
+void						Game::setFgColor(int x, int y, char c) const
+{this->_dstFgColors[y * this->_maxX + x] = c;}
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
 void						Game::putImage(void) const
 {
-	char		prevBgColor = 0;
+	char		prevColorPair = 0;
 	const char	*line;
 	int			cur_index;
-
+	int			curColorPair;
 	
 	for (int i = 0; i < this->_maxY; i++)
 	{
@@ -83,10 +85,12 @@ void						Game::putImage(void) const
 		for (int j = 0; j < this->_maxX; j++)
 		{
 			cur_index = i * this->_maxX + j;
-			if (this->_dstBgColors[cur_index] != prevBgColor)
-				attron(COLOR_PAIR(this->_dstBgColors[cur_index]));
+			curColorPair = (this->_dstBgColors[cur_index] << 4) +
+				this->_dstFgColors[cur_index];
+			if (curColorPair != prevColorPair)
+				attron(COLOR_PAIR(curColorPair));
 			printw("%c", line[j]);
-			prevBgColor = this->_dstBgColors[cur_index];
+			prevColorPair = curColorPair;
 		}
 	}
 	return ;
@@ -129,7 +133,7 @@ void						Game::popPig(int count)
 	{
 		o = new Centipede(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
-		o->setPosY(rand() % 3 + 3);
+		o->setPosY(-o->getShape().getTopSize());
 		this->_objsVector.push_back(o);
 	}
 	return ;

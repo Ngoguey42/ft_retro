@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:58:55 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 07:28:18 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 15:15:02 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -163,6 +163,8 @@ bool						Shape::putShape(Game const &g, int posX, int posY)
 			if (this->_fgChars[yStr][xStr] != '\0')
 			{
 				g.setFgChar(xScreen, yScreen, this->_fgChars[yStr][xStr]);
+				g.setFgColor(xScreen, yScreen,
+							 this->_fgColors[yStr][xStr]);
 				drawn = true;
 			}
 		}
@@ -176,59 +178,50 @@ bool						Shape::shapeFits(Game const &g, int x, int y) const
 	return (true);
 }
 
+static std::string			put_2digit_nbr(std::string name, int nbr)
+{
+	name += "(";
+	name += (char)('0' + (nbr / 10));
+	name += ",";
+	name += (char)('0' + (nbr % 10));
+	name += ") ";
+	
+	return (name);
+}
+
+
 std::string					Shape::shapeToString(void) const
 {
 	std::string		str;
 
-	str += "top(";
-	str += (char)('0' + (this->_topSize / 10));
-	str += (char)('0' + (this->_topSize % 10));
-	str += ") ";
-	str += "bot(";
-	str += (char)('0' + (this->_bottomSize / 10));
-	str += (char)('0' + (this->_bottomSize % 10));
-	str += ") ";
-	str += "left(";
-	str += (char)('0' + (this->_leftSize / 10));
-	str += (char)('0' + (this->_leftSize % 10));
-	str += ") ";
-	str += "right(";
-	str += (char)('0' + (this->_rightSize / 10));
-	str += (char)('0' + (this->_rightSize % 10));
-	str += ") \n";
-	
-	str += "x(";
-	str += (char)('0' + (this->_minXStr / 10));
-	str += (char)('0' + (this->_minXStr % 10));
-	str += '-';
-	str += (char)('0' + (this->_maxXStr / 10));
-	str += (char)('0' + (this->_maxXStr % 10));
-	str += ") y(";
-	str += (char)('0' + (this->_minYStr / 10));
-	str += (char)('0' + (this->_minYStr % 10));
-	str += '-';
-	str += (char)('0' + (this->_maxYStr / 10));
-	str += (char)('0' + (this->_maxYStr % 10));
-	str += ")\n";
-
-	str.append("/");
-	for (int i = 0; i < MAX_SHAPE_WIDTH; i++)
+	str += put_2digit_nbr("top", this->_topSize);
+	str += put_2digit_nbr("bot", this->_bottomSize);
+	str += put_2digit_nbr("left", this->_leftSize);
+	str += put_2digit_nbr("right", this->_rightSize);
+	str += "\n";
+	str += put_2digit_nbr("xm", this->_minXStr);
+	str += put_2digit_nbr("xM", this->_maxXStr);
+	str += put_2digit_nbr("ym", this->_minYStr);
+	str += put_2digit_nbr("yM", this->_maxYStr);
+	str += "\n/";
+	for (int i = this->_minXStr; i <= this->_maxXStr; i++)
 		str += (char)('0' + (i % 10));
 	str += "\\\n";
-	for (int i = 0; i < MAX_SHAPE_HEIGHT; i++)
+	for (int i = this->_minYStr; i <= this->_maxYStr; i++)
 	{
 		str += (char)('0' + (i % 10));
-		for (int j = 0; j < MAX_SHAPE_WIDTH; j++)
+		for (int j = this->_minXStr; j <= this->_maxXStr; j++)
 		{
 			if (this->_fgChars[i][j] == '\0')
 				str.append(" ");
 			else
 				str.append(1, this->_fgChars[i][j]);
 		}
-		str.append("I\n");
+		str += (char)('0' + (i % 10));
+		str.append("\n");
 	}
 	str += "\\";
-	str.append(MAX_SHAPE_WIDTH, '_');
+	str.append(this->_maxXStr - this->_minXStr + 1, '_');
 	str += "/";
 	return (str);
 }
