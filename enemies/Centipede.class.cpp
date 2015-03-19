@@ -1,44 +1,46 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Sheep.class.cpp                                    :+:      :+:    :+:   //
+//   Centipede.class.cpp                                :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
-//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/19 09:12:38 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 11:10:42 by wide-aze         ###   ########.fr       //
+//   Created: 2015/03/19 11:02:21 by wide-aze          #+#    #+#             //
+//   Updated: 2015/03/19 11:02:21 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 //#include <iostream>
 #include <cstdlib>
-#include <Sheep.class.hpp>
+#include <Centipede.class.hpp>
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
-std::string const			Sheep::_mobName = "Sheep";
-Shape const					Sheep::_mobShape =
-	Shape(SHEEP_SHAPE, DEFAULT_COLOR, DEFAULT_COLOR);
-bool const					Sheep::_doesMove = true;
-bool const					Sheep::_doesShoot = false;
-clock_t const				Sheep::_moveCD = CLOCKS_PER_SEC / 10;
-int const					Sheep::_moveChancesFactor = 1000;
+std::string const			Centipede::_mobName = "Centipede";
+Shape const					Centipede::_mobShape =
+	Shape(CENTIPEDE_SHAPE, DEFAULT_COLOR, DEFAULT_COLOR);
+bool const					Centipede::_doesMove = true;
+bool const					Centipede::_doesShoot = true;
+clock_t const				Centipede::_moveCD = CLOCKS_PER_SEC / 10;
+int const					Centipede::_moveChancesFactor = 1000;
 
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 
-Sheep::Sheep() :
-	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor)
+Centipede::Centipede() :
+	AObject(), AMovPatternSheep(Centipede::_moveCD, Centipede::_moveChancesFactor),
+	AShootPatternDefault()
 {
-	std::cout << "[Sheep](main) Ctor called" << std::endl;
+	std::cout << "[Centipede](main) Ctor called" << std::endl;
 	return ;
 }
 
-Sheep::Sheep(Sheep const &src) :
-	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor)
+Centipede::Centipede(Centipede const &src) :
+	AObject(), AMovPatternSheep(Centipede::_moveCD, Centipede::_moveChancesFactor),
+	AShootPatternDefault()
 {
-	std::cout << "[Sheep](cpy) Ctor called" << std::endl;
+	std::cout << "[Centipede](cpy) Ctor called" << std::endl;
 	(void)src;
 	return ;
 }
@@ -46,9 +48,9 @@ Sheep::Sheep(Sheep const &src) :
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
-Sheep::~Sheep()
+Centipede::~Centipede()
 {
-	std::cout << "[Sheep]() Dtor called" << std::endl;
+	std::cout << "[Centipede]() Dtor called" << std::endl;
 	return ;
 }
 
@@ -59,26 +61,26 @@ Sheep::~Sheep()
 // * OPERATORS *** OPERATORS ************************************************ //
 // ************************************************************************** //
 // **************************************************** GETTERS *** GETTERS * //
-std::string const			&Sheep::getName() const{return Sheep::_mobName;}
-Shape const					&Sheep::getShape() const{return Sheep::_mobShape;}
-bool						Sheep::getDoesMove() const{return Sheep::_doesMove;}
-bool						Sheep::getDoesShoot() const{return Sheep::_doesShoot;}
-int							Sheep::getPosX(void) const{return this->_posX;}
-int							Sheep::getPosY(void) const{return this->_posY;}
+std::string const			&Centipede::getName() const{return Centipede::_mobName;}
+Shape const					&Centipede::getShape() const{return Centipede::_mobShape;}
+bool						Centipede::getDoesMove() const{return Centipede::_doesMove;}
+bool						Centipede::getDoesShoot() const{return Centipede::_doesShoot;}
+int							Centipede::getPosX(void) const{return this->_posX;}
+int							Centipede::getPosY(void) const{return this->_posY;}
 
 // * GETTERS *** GETTERS **************************************************** //
 // ************************************************************************** //
 // **************************************************** SETTERS *** SETTERS * //
-void						Sheep::setPosX(int x){this->_posX = x;}
-void						Sheep::setPosY(int y){this->_posY = y;}
-void						Sheep::setPosXY(int x, int y)
+void						Centipede::setPosX(int x){this->_posX = x;}
+void						Centipede::setPosY(int y){this->_posY = y;}
+void						Centipede::setPosXY(int x, int y)
 {this->_posX = x;this->_posY = y;}
-void						Sheep::setDeleteObject(bool b)
+void						Centipede::setDeleteObject(bool b)
 {this->_deleteObject = b;}
 
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
-void						Sheep::moveCall(Game const &g)
+void						Centipede::moveCall(Game const &g)
 {
 	this->tryMove(g);
 	return ;

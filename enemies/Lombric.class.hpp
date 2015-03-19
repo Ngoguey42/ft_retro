@@ -1,17 +1,17 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Sheep.class.hpp                                    :+:      :+:    :+:   //
+//   Lombric.class.hpp                                  :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
-//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/19 09:07:43 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 10:59:22 by wide-aze         ###   ########.fr       //
+//   Created: 2015/03/19 11:03:24 by wide-aze          #+#    #+#             //
+//   Updated: 2015/03/19 11:03:25 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-#ifndef SHEEP_CLASS_HPP
-# define SHEEP_CLASS_HPP
+#ifndef LOMBRIC_CLASS_HPP
+# define LOMBRIC_CLASS_HPP
 
 # include <ft_retro.hpp>
 # include <AObject.class.hpp>
@@ -23,12 +23,12 @@
 # include <iostream>
 # include <ctime>
 
-class Sheep : public AObject, public AMovPatternSheep
+class Lombric : public AObject, public AMovPatternSheep, public AShootPatternDefault
 {
 public:
-	Sheep();
-	Sheep(Sheep const &src);
-	virtual ~Sheep();
+	Lombric();
+	Lombric(Lombric const &src);
+	virtual ~Lombric();
 
 	std::string const			&getName() const;
 	Shape const					&getShape() const;
@@ -46,7 +46,7 @@ public:
 
 protected:
 private:
-	Sheep						&operator=(Sheep const &rhs);
+	Lombric						&operator=(Lombric const &rhs);
 
 	static std::string const	_mobName;
 	static Shape const		  _mobShape;
@@ -55,6 +55,6 @@ private:
 	static clock_t const		_moveCD;
 	static int const			_moveChancesFactor;
 };
-//std::ostream					&operator<<(std::ostream &o, Sheep const &rhs);
+//std::ostream					&operator<<(std::ostream &o, Lombric const &rhs);
 
-#endif // *************************************************** SHEEP_CLASS_HPP //
+#endif // *************************************************** LOMBRIC_CLASS_HPP //

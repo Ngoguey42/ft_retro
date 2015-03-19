@@ -10,6 +10,9 @@ SRCSFILES = \
   ./enemies/Pig.class.cpp\
   ./enemies/Sheep.class.cpp\
   ./enemies/Snake.class.cpp\
+  ./enemies/Centipede.class.cpp\
+  ./enemies/Lombric.class.cpp\
+  ./enemies/Fizzy.class.cpp\
      ./move/IMovIA.class.cpp\
      ./move/AMovPatternDefault.class.cpp\
      ./move/AMovPatternSheep.class.cpp\

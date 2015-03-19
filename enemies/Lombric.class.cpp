@@ -1,44 +1,46 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Sheep.class.cpp                                    :+:      :+:    :+:   //
+//   Lombric.class.cpp                                  :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
-//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/19 09:12:38 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 11:10:42 by wide-aze         ###   ########.fr       //
+//   Created: 2015/03/19 11:03:29 by wide-aze          #+#    #+#             //
+//   Updated: 2015/03/19 11:03:29 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 //#include <iostream>
 #include <cstdlib>
-#include <Sheep.class.hpp>
+#include <Lombric.class.hpp>
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
-std::string const			Sheep::_mobName = "Sheep";
-Shape const					Sheep::_mobShape =
-	Shape(SHEEP_SHAPE, DEFAULT_COLOR, DEFAULT_COLOR);
-bool const					Sheep::_doesMove = true;
-bool const					Sheep::_doesShoot = false;
-clock_t const				Sheep::_moveCD = CLOCKS_PER_SEC / 10;
-int const					Sheep::_moveChancesFactor = 1000;
+std::string const			Lombric::_mobName = "Lombric";
+Shape const					Lombric::_mobShape =
+	Shape(LOMBRIC_SHAPE, DEFAULT_COLOR, DEFAULT_COLOR);
+bool const					Lombric::_doesMove = true;
+bool const					Lombric::_doesShoot = true;
+clock_t const				Lombric::_moveCD = CLOCKS_PER_SEC / 10;
+int const					Lombric::_moveChancesFactor = 1000;
 
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 
-Sheep::Sheep() :
-	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor)
+Lombric::Lombric() :
+	AObject(), AMovPatternSheep(Lombric::_moveCD, Lombric::_moveChancesFactor),
+	AShootPatternDefault()
 {
-	std::cout << "[Sheep](main) Ctor called" << std::endl;
+	std::cout << "[Lombric](main) Ctor called" << std::endl;
 	return ;
 }
 
-Sheep::Sheep(Sheep const &src) :
-	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor)
+Lombric::Lombric(Lombric const &src) :
+	AObject(), AMovPatternSheep(Lombric::_moveCD, Lombric::_moveChancesFactor),
+	AShootPatternDefault()
 {
-	std::cout << "[Sheep](cpy) Ctor called" << std::endl;
+	std::cout << "[Lombric](cpy) Ctor called" << std::endl;
 	(void)src;
 	return ;
 }
@@ -46,9 +48,9 @@ Sheep::Sheep(Sheep const &src) :
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
-Sheep::~Sheep()
+Lombric::~Lombric()
 {
-	std::cout << "[Sheep]() Dtor called" << std::endl;
+	std::cout << "[Lombric]() Dtor called" << std::endl;
 	return ;
 }
 
@@ -59,26 +61,26 @@ Sheep::~Sheep()
 // * OPERATORS *** OPERATORS ************************************************ //
 // ************************************************************************** //
 // **************************************************** GETTERS *** GETTERS * //
-std::string const			&Sheep::getName() const{return Sheep::_mobName;}
-Shape const					&Sheep::getShape() const{return Sheep::_mobShape;}
-bool						Sheep::getDoesMove() const{return Sheep::_doesMove;}
-bool						Sheep::getDoesShoot() const{return Sheep::_doesShoot;}
-int							Sheep::getPosX(void) const{return this->_posX;}
-int							Sheep::getPosY(void) const{return this->_posY;}
+std::string const			&Lombric::getName() const{return Lombric::_mobName;}
+Shape const					&Lombric::getShape() const{return Lombric::_mobShape;}
+bool						Lombric::getDoesMove() const{return Lombric::_doesMove;}
+bool						Lombric::getDoesShoot() const{return Lombric::_doesShoot;}
+int							Lombric::getPosX(void) const{return this->_posX;}
+int							Lombric::getPosY(void) const{return this->_posY;}
 
 // * GETTERS *** GETTERS **************************************************** //
 // ************************************************************************** //
 // **************************************************** SETTERS *** SETTERS * //
-void						Sheep::setPosX(int x){this->_posX = x;}
-void						Sheep::setPosY(int y){this->_posY = y;}
-void						Sheep::setPosXY(int x, int y)
+void						Lombric::setPosX(int x){this->_posX = x;}
+void						Lombric::setPosY(int y){this->_posY = y;}
+void						Lombric::setPosXY(int x, int y)
 {this->_posX = x;this->_posY = y;}
-void						Sheep::setDeleteObject(bool b)
+void						Lombric::setDeleteObject(bool b)
 {this->_deleteObject = b;}
 
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
-void						Sheep::moveCall(Game const &g)
+void						Lombric::moveCall(Game const &g)
 {
 	this->tryMove(g);
 	return ;

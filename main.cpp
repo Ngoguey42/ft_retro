@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:58:10 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/19 11:09:06 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -16,6 +16,9 @@
 #include <Pig.class.hpp>
 #include <Sheep.class.hpp>
 #include <Snake.class.hpp>
+#include <Centipede.class.hpp>
+#include <Lombric.class.hpp>
+#include <Fizzy.class.hpp>
 #include <Background.class.hpp>
 
 #include <iostream>
@@ -118,6 +121,24 @@ int							main(void)
 	g->_objsVector.push_back(&sn1);
 	g->_objsVector.push_back(&sn2);
 	g->_objsVector.push_back(&sn3);
+	Centipede c1;
+	Centipede c2;
+	Centipede c3;
+	g->_objsVector.push_back(&c1);
+	g->_objsVector.push_back(&c2);
+	g->_objsVector.push_back(&c3);
+	Fizzy f1;
+	Fizzy f2;
+	Fizzy f3;
+	g->_objsVector.push_back(&f1);
+	g->_objsVector.push_back(&f2);
+	g->_objsVector.push_back(&f3);
+	Lombric l1;
+	Lombric l2;
+	Lombric l3;
+	g->_objsVector.push_back(&l1);
+	g->_objsVector.push_back(&l2);
+	g->_objsVector.push_back(&l3);
 
 	play(g, bg);
 	endwin();
