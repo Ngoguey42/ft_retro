@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 09:59:11 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 10:02:32 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/19 10:14:45 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -29,7 +29,7 @@ int const					Snake::_moveChancesFactor = 1000;
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 
 Snake::Snake() :
-	AObject(), AMovPatternSnake(Snake::_moveCD, Snake::_moveChancesFactor),
+	AObject(), AMovPatternSheep(Snake::_moveCD, Snake::_moveChancesFactor),
 	AShootPatternDefault()
 {
 	std::cout << "[Snake](main) Ctor called" << std::endl;
@@ -37,7 +37,7 @@ Snake::Snake() :
 }
 
 Snake::Snake(Snake const &src) :
-	AObject(), AMovPatternSnake(Snake::_moveCD, Snake::_moveChancesFactor),
+	AObject(), AMovPatternSheep(Snake::_moveCD, Snake::_moveChancesFactor),
 	AShootPatternDefault()
 {
 	std::cout << "[Snake](cpy) Ctor called" << std::endl;

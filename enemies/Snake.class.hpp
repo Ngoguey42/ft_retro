@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 09:59:15 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 09:59:21 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/19 10:13:34 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -23,7 +23,7 @@
 # include <iostream>
 # include <ctime>
 
-class Snake : public AObject, public AMovPatternSnake, public AShootPatternDefault
+class Snake : public AObject, public AMovPatternSheep, public AShootPatternDefault
 {
 public:
 	Snake();
