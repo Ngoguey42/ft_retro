@@ -6,11 +6,14 @@ SRCSFILES = \
 			AObject.class.cpp\
 			Background.class.cpp\
 			Game.class.cpp\
-			Scheduler.class.hpp\
+			Scheduler.class.cpp\
 			Shape.class.cpp\
   ./enemies/Pig.class.cpp\
   ./enemies/Sheep.class.cpp\
   ./enemies/Snake.class.cpp\
+  ./enemies/Centipede.class.cpp\
+  ./enemies/Lombric.class.cpp\
+  ./enemies/Fizzy.class.cpp\
      ./move/IMovIA.class.cpp\
      ./move/AMovPatternDefault.class.cpp\
      ./move/AMovPatternSheep.class.cpp\
@@ -19,8 +22,8 @@ SRCSFILES = \
 
 SRCPATH = .
 OBJPATH = obj
-# CC = g++
-CC = clang++
+CC = g++
+# CC = clang++
 INCLUDES = -I . -I ./enemies/ -I ./move/ -I ./shoot/
 LIBS = -lncurses
 CFLAGS = -Werror -Wall -Wextra -O2
@@ -32,6 +35,7 @@ OBJECTS = $(SRC:$(SRCPATH)/%.cpp=$(OBJPATH)/%.o)
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
+	@echo "Compiling all"
 	$(CC) -o $@ $(CFLAGS) $(OBJECTS) $(LIBS)
 
 $(OBJECTS): $(OBJPATH)/%.o : $(SRCPATH)/%.cpp

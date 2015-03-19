@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 09:12:38 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:30:09 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 11:10:42 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -29,16 +29,14 @@ int const					Sheep::_moveChancesFactor = 1000;
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 
 Sheep::Sheep() :
-	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor),
-	AShootPatternDefault()
+	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor)
 {
 	std::cout << "[Sheep](main) Ctor called" << std::endl;
 	return ;
 }
 
 Sheep::Sheep(Sheep const &src) :
-	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor),
-	AShootPatternDefault()
+	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor)
 {
 	std::cout << "[Sheep](cpy) Ctor called" << std::endl;
 	(void)src;
@@ -75,6 +73,8 @@ void						Sheep::setPosX(int x){this->_posX = x;}
 void						Sheep::setPosY(int y){this->_posY = y;}
 void						Sheep::setPosXY(int x, int y)
 {this->_posX = x;this->_posY = y;}
+void						Sheep::setDeleteObject(bool b)
+{this->_deleteObject = b;}
 
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //

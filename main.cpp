@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 11:41:23 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 11:09:06 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -16,6 +16,9 @@
 #include <Pig.class.hpp>
 #include <Sheep.class.hpp>
 #include <Snake.class.hpp>
+#include <Centipede.class.hpp>
+#include <Lombric.class.hpp>
+#include <Fizzy.class.hpp>
 #include <Background.class.hpp>
 #include <Scheduler.class.hpp>
 

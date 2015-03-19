@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 09:07:43 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 09:25:23 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 10:59:22 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -23,7 +23,7 @@
 # include <iostream>
 # include <ctime>
 
-class Sheep : public AObject, public AMovPatternSheep, public AShootPatternDefault
+class Sheep : public AObject, public AMovPatternSheep
 {
 public:
 	Sheep();
@@ -42,7 +42,7 @@ public:
 	void						setPosX(int x);
 	void						setPosY(int y);
 	void						setPosXY(int x, int y);
-
+	void                        setDeleteObject(bool b);
 
 protected:
 private:

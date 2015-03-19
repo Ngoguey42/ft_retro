@@ -6,13 +6,14 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 12:02:01 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 12:17:12 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 #include "Game.class.hpp"
 #include <iostream>
 #include <ncurses.h>
+#include <cstdlib>
 #include <Pig.class.hpp>
 #include <Sheep.class.hpp>
 
@@ -110,7 +111,7 @@ void						Game::popSheep(int count)
 	for (; count > 0; count--)
 	{
 		o = new Sheep(); // try catch
-		o->setPosX = randomizeXStart(o->getShape(), g->_maxX);
+		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
 		this->_objsVector.push_back(o);
 	}
 	return ;
@@ -123,6 +124,7 @@ void						Game::popPig(int count)
 	for (; count > 0; count--)
 	{
 		o = new Pig(); // try catch
+		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
 		this->_objsVector.push_back(o);
 	}
 	return ;

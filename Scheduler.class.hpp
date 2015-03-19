@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 10:41:18 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 11:13:52 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/19 12:18:33 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -14,6 +14,7 @@
 # define SCHEDULER_CLASS_HPP
 
 # include <ctime>
+# include <Game.class.hpp>
 //# include <string>
 //# include <iostream>
 //# include <stdexcept>
