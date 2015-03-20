@@ -45,8 +45,8 @@ public:
 	void						popSnake(int count);
 	void						popCentipede(int count);
 	void						popFizzy(int count);
-	void						popMissile(AObject const &shooter, float angle,
-		int movCD);
+	void						popMissile(AObject const *shooter, float angle,
+										   clock_t movCD);
 	
 	std::vector<AObject*>		_objsVector;
 protected:

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:58:27 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 10:21:58 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:08:51 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -37,7 +37,8 @@ public:
 	bool						getDoesShoot() const;
 
 	void						moveCall(Game const &g);
-
+	void						shootCall(Game &g);
+	
 	
 	int							getPosX(void) const;
 	int							getPosY(void) const;

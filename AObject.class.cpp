@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:33:25 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 12:07:19 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:09:35 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -66,3 +66,8 @@ void						AObject::setPosX(int x){this->_posX = x;}
 void						AObject::setPosY(int y){this->_posY = y;}
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
+void						AObject::shootCall(Game &g)
+{
+	(void)g;
+	return ;
+}

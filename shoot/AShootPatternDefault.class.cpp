@@ -6,19 +6,25 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 11:14:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 11:15:15 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:14:53 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 #include <iostream>
 #include "AShootPatternDefault.class.hpp"
+#include <AObject.class.hpp>
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
-AShootPatternDefault::AShootPatternDefault()
+AShootPatternDefault::AShootPatternDefault(int num, clock_t shootCD,
+										   int shootChancesFactor,
+										   clock_t missileMovCD) :
+	_num(num > 0 ? num : 1), _shootCD(shootCD),
+	_shootChancesFactor(shootChancesFactor), _lastShootTime(std::clock()),
+	_missileMovCD(missileMovCD)
 {
 	std::cout << "[AShootPatternDefault]() Ctor called" << std::endl;
 	return ;
@@ -44,8 +50,23 @@ AShootPatternDefault::~AShootPatternDefault()
 // **************************************************** SETTERS *** SETTERS * //
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
-int							AShootPatternDefault::tryShoot(Game const &g)
+int							AShootPatternDefault::tryShoot(Game &g)
 {
 	(void)g;
+	if (std::clock() >= this->_lastShootTime + this->_shootCD)
+	{
+		float			angle = (-3.14159 / 10.) * (float)(this->_num - 1) / 2.;
+
+		this->_lastShootTime += this->_shootCD;
+		// std::cerr << "p2" << std::endl;
+		for (int i = 0; i < this->_num; i++)
+		{
+			// std::cerr << "p1" << std::endl;
+			
+			g.popMissile(dynamic_cast<AObject*>(this), angle,
+						 (clock_t)(CLOCKS_PER_SEC / 45));
+			angle += (3.14159 / 10.);
+		}
+	}
 	return (0);
 }

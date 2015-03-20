@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 11:13:22 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 07:26:13 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 10:48:58 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -16,20 +16,29 @@
 # include <ft_retro.hpp>
 # include <IShootIA.class.hpp>
 //# include <iostream>
+# include <ctime>
 //# include <stdexcept>
 
 class AShootPatternDefault : public IShootIA
 {
 public:
-	AShootPatternDefault();
+	AShootPatternDefault(int num, clock_t shootCD, int shootChancesFactor,
+		clock_t missileMovCD);
 	virtual ~AShootPatternDefault();
 
-	int							tryShoot(Game const &g);
+	int							tryShoot(Game &g);
 
 protected:
 private:
 	AShootPatternDefault(AShootPatternDefault const &src);
 	AShootPatternDefault		&operator=(AShootPatternDefault const &rhs);
+	AShootPatternDefault();
+
+	int const					_num;
+	clock_t const				_shootCD;
+	int const					_shootChancesFactor;
+	clock_t						_lastShootTime;
+	clock_t const				_missileMovCD;
 };
 //std::ostream					&operator<<(std::ostream &o, AShootPatternDefault const &rhs);
 

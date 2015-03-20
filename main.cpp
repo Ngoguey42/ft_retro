@@ -90,8 +90,8 @@ static void					game_events(Game &g, Scheduler &s)
 		}
 		else
 		{
+			ob->shootCall(g);
 			ob->moveCall(g);
-			//shootCall (tryShoot)
 			i++;
 		}
 	}

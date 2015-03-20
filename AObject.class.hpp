@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:11:33 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 12:05:33 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:06:42 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -32,6 +32,7 @@ public:
 	virtual bool				getDoesShoot() const = 0;
 
 	virtual void				moveCall(Game const &g) = 0;
+	virtual void				shootCall(Game &g);
 
 	virtual int					getPosX(void) const;
 	virtual int					getPosY(void) const;
