@@ -26,8 +26,8 @@ SRCSFILES = \
 
 SRCPATH = .
 OBJPATH = obj
-CC = g++
-# CC = clang++
+# CC = g++
+CC = clang++
 INCLUDES = -I . -I ./mobs/ -I ./move/ -I ./shoot/
 LIBS = -lncurses
 CFLAGS = -Werror -Wall -Wextra -O2 -g

@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:02:15 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 11:03:11 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 11:07:33 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -44,6 +44,7 @@ public:
 	void						setPosXY(int x, int y);
 	void                        setDeleteObject(bool b);
 
+	void						shootCall(Game &g);
 protected:
 private:
 	Centipede						&operator=(Centipede const &rhs);

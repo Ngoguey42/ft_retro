@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 09:59:11 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 07:49:26 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:08:10 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -30,7 +30,7 @@ int const					Snake::_moveChancesFactor = 150;
 
 Snake::Snake() :
 	AObject(), AMovPatternSheep(Snake::_moveCD, Snake::_moveChancesFactor),
-	AShootPatternDefault()
+	AShootPatternDefault(3, CLOCKS_PER_SEC, 100, CLOCKS_PER_SEC / 30)
 {
 	std::cout << "[Snake](main) Ctor called" << std::endl;
 	return ;
@@ -38,7 +38,7 @@ Snake::Snake() :
 
 Snake::Snake(Snake const &src) :
 	AObject(), AMovPatternSheep(Snake::_moveCD, Snake::_moveChancesFactor),
-	AShootPatternDefault()
+	AShootPatternDefault(3, CLOCKS_PER_SEC, 100, CLOCKS_PER_SEC / 30)
 {
 	std::cout << "[Snake](cpy) Ctor called" << std::endl;
 	(void)src;
@@ -83,5 +83,11 @@ void						Snake::setDeleteObject(bool b)
 void						Snake::moveCall(Game const &g)
 {
 	this->tryMove(g);
+	return ;
+}
+
+void						Snake::shootCall(Game &g)
+{
+	this->tryShoot(g);
 	return ;
 }

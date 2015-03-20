@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 07:39:35 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:05:18 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -88,8 +88,8 @@ static void					game_events(Game &g, Scheduler &s)
 		}
 		else
 		{
+			ob->shootCall(g);
 			ob->moveCall(g);
-			//shootCall (tryShoot)
 			i++;
 		}
 	}

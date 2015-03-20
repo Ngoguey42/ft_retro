@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 11:09:52 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 11:13:02 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 10:49:13 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -25,7 +25,7 @@ public:
 	IShootIA();
 	virtual ~IShootIA();
 
-	virtual int					tryShoot(Game const &g) = 0;
+	virtual int					tryShoot(Game &g) = 0;
 	// IShootIA();
 
 protected:

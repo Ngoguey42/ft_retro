@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:59:17 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 10:25:44 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:09:14 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -30,7 +30,7 @@ int const					Pig::_moveChancesFactor = 1000;
 
 Pig::Pig() :
 	AObject(), AMovPatternDefault(Pig::_moveCD, Pig::_moveChancesFactor),
-	AShootPatternDefault()
+	AShootPatternDefault(1, CLOCKS_PER_SEC, 100, CLOCKS_PER_SEC / 30)
 {
 	std::cout << "[Pig](main) Ctor called" << std::endl;
 	return ;
@@ -38,7 +38,7 @@ Pig::Pig() :
 
 Pig::Pig(Pig const &src) :
 	AObject(), AMovPatternDefault(Pig::_moveCD, Pig::_moveChancesFactor),
-	AShootPatternDefault()
+	AShootPatternDefault(1, CLOCKS_PER_SEC, 100, CLOCKS_PER_SEC / 30)
 {
 	std::cout << "[Pig](cpy) Ctor called" << std::endl;
 	(void)src;
@@ -83,5 +83,10 @@ void                        Pig::setDeleteObject(bool b)
 void						Pig::moveCall(Game const &g)
 {
 	this->tryMove(g);
+	return ;
+}
+void						Pig::shootCall(Game &g)
+{
+	this->tryShoot(g);
 	return ;
 }

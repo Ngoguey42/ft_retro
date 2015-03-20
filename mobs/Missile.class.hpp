@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:03:37 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 08:38:23 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 10:56:30 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -36,6 +36,7 @@ public:
 	int							getSrcX(void) const;
 	int							getSrcY(void) const;
 	int							getMovCD(void) const;
+	// AObject						*getThis(void);
 
 	void						moveCall(Game const &g);
 

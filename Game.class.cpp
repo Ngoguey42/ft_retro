@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 09:01:02 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:13:37 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -154,7 +154,7 @@ void						Game::popPig(int count)
 
 // this->popMissile(*o, -3.14159 / 8, CLOCKS_PER_SEC / 45);
 		// this->popMissile(*o, +3.14159 / 8, CLOCKS_PER_SEC / 45);
-		this->popMissile(*o, 0, CLOCKS_PER_SEC / 45);
+		// this->popMissile(o, 0, CLOCKS_PER_SEC / 45);
 	}
 	return ;
 }
@@ -174,14 +174,17 @@ void						Game::popLombric(int count)
 	return ;
 }
 
-void						Game::popMissile(AObject const &shooter, float angle,
-	int movCD)
+void						Game::popMissile(AObject const *shooter, float angle,
+	clock_t movCD)
 {
 	AObject		*o;
 
-	o = new Missile(angle, shooter.getPosX(), shooter.getPosY() + 1, movCD);
-	o->setPosX(shooter.getPosX());
-	o->setPosY(shooter.getPosY() + 1);
+	std::cerr << "PP1 " << std::endl;
+	
+	o = new Missile(angle, shooter->getPosX(), shooter->getPosY() + 1, movCD);
+	std::cerr << "PP2 " << std::endl;
+	o->setPosX(shooter->getPosX());
+	o->setPosY(shooter->getPosY() + 1);
 	this->_objsVector.push_back(o);
 	return ;
 }
