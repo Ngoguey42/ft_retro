@@ -32,7 +32,7 @@ Centipede::Centipede() :
 	AObject(), AMovPatternSheep(Centipede::_moveCD, Centipede::_moveChancesFactor),
 	AShootPatternDefault(1, CLOCKS_PER_SEC / 2, 100, CLOCKS_PER_SEC / 30)
 {
-	std::cout << "[Centipede](main) Ctor called" << std::endl;
+	// std::cout << "[Centipede](main) Ctor called" << std::endl;
 	return ;
 }
 
@@ -40,7 +40,7 @@ Centipede::Centipede(Centipede const &src) :
 	AObject(), AMovPatternSheep(Centipede::_moveCD, Centipede::_moveChancesFactor),
 	AShootPatternDefault(1, CLOCKS_PER_SEC / 2, 100, CLOCKS_PER_SEC / 30)
 {
-	std::cout << "[Centipede](cpy) Ctor called" << std::endl;
+	// std::cout << "[Centipede](cpy) Ctor called" << std::endl;
 	(void)src;
 	return ;
 }
@@ -50,7 +50,7 @@ Centipede::Centipede(Centipede const &src) :
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 Centipede::~Centipede()
 {
-	std::cout << "[Centipede]() Dtor called" << std::endl;
+	// std::cout << "[Centipede]() Dtor called" << std::endl;
 	return ;
 }
 

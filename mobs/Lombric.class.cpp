@@ -31,14 +31,14 @@ int const					Lombric::_moveChancesFactor = 1000;
 Lombric::Lombric() :
 	AObject(), AMovPatternLombric(Lombric::_moveCD, Lombric::_moveChancesFactor)
 {
-	std::cout << "[Lombric](main) Ctor called" << std::endl;
+	// std::cout << "[Lombric](main) Ctor called" << std::endl;
 	return ;
 }
 
 Lombric::Lombric(Lombric const &src) :
 	AObject(), AMovPatternLombric(Lombric::_moveCD, Lombric::_moveChancesFactor)
 {
-	std::cout << "[Lombric](cpy) Ctor called" << std::endl;
+	// std::cout << "[Lombric](cpy) Ctor called" << std::endl;
 	(void)src;
 	return ;
 }
@@ -48,7 +48,7 @@ Lombric::Lombric(Lombric const &src) :
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 Lombric::~Lombric()
 {
-	std::cout << "[Lombric]() Dtor called" << std::endl;
+	// std::cout << "[Lombric]() Dtor called" << std::endl;
 	return ;
 }
 

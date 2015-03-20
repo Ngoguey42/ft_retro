@@ -24,7 +24,7 @@ AMovPatternDefault::AMovPatternDefault(clock_t moveCD, int moveChancesFactor) :
 	_moveCD(moveCD),
 	_moveChancesFactor(moveChancesFactor)
 {
-	std::cout << "[AMovPatternDefault]() Ctor called" << std::endl;
+	// std::cout << "[AMovPatternDefault]() Ctor called" << std::endl;
 	return ;
 }
 
@@ -33,7 +33,7 @@ AMovPatternDefault::AMovPatternDefault(clock_t moveCD, int moveChancesFactor) :
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 AMovPatternDefault::~AMovPatternDefault()
 {
-	std::cout << "[AMovPatternDefault]() Dtor called" << std::endl;
+	// std::cout << "[AMovPatternDefault]() Dtor called" << std::endl;
 	return ;
 }
 

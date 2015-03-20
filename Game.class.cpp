@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 10:44:20 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 11:30:33 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -32,7 +32,7 @@
 Game::Game(int maxX, int maxY) :
 	_maxX(maxX), _maxY(maxY)
 {
-	std::cout << "[Game]() Ctor called" << std::endl;
+//	std::cout << "[Game]() Ctor called" << std::endl;
 	this->_dstFgChars = new std::string[maxY];//try catch
 	this->_dstFgColors = new char[maxY * maxX];//try catch
 	this->_dstBgColors = new char[maxY * maxX];//try catch
@@ -44,7 +44,7 @@ Game::Game(int maxX, int maxY) :
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 Game::~Game()
 {
-	std::cout << "[Game]() Dtor called" << std::endl;
+//	std::cout << "[Game]() Dtor called" << std::endl;
 	delete [] this->_dstFgChars;
 	delete [] this->_dstFgColors;
 	delete [] this->_dstBgColors;

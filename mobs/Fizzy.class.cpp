@@ -31,14 +31,14 @@ int const					Fizzy::_moveChancesFactor = 1000;
 Fizzy::Fizzy() :
 	AObject(), AMovPatternSheep(Fizzy::_moveCD, Fizzy::_moveChancesFactor)
 {
-	std::cout << "[Fizzy](main) Ctor called" << std::endl;
+	// std::cout << "[Fizzy](main) Ctor called" << std::endl;
 	return ;
 }
 
 Fizzy::Fizzy(Fizzy const &src) :
 	AObject(), AMovPatternSheep(Fizzy::_moveCD, Fizzy::_moveChancesFactor)
 {
-	std::cout << "[Fizzy](cpy) Ctor called" << std::endl;
+	// std::cout << "[Fizzy](cpy) Ctor called" << std::endl;
 	(void)src;
 	return ;
 }
@@ -48,7 +48,7 @@ Fizzy::Fizzy(Fizzy const &src) :
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 Fizzy::~Fizzy()
 {
-	std::cout << "[Fizzy]() Dtor called" << std::endl;
+	// std::cout << "[Fizzy]() Dtor called" << std::endl;
 	return ;
 }
 

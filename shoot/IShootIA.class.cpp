@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 11:12:17 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 11:12:32 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:46:19 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -20,7 +20,7 @@
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 IShootIA::IShootIA()
 {
-	std::cout << "[IShootIA]() Ctor called" << std::endl;
+//	std::cout << "[IShootIA]() Ctor called" << std::endl;
 	return ;
 }
 
@@ -29,7 +29,7 @@ IShootIA::IShootIA()
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 IShootIA::~IShootIA()
 {
-	std::cout << "[IShootIA]() Dtor called" << std::endl;
+//	std::cout << "[IShootIA]() Dtor called" << std::endl;
 	return ;
 }
 

@@ -32,7 +32,7 @@ Snake::Snake() :
 	AObject(), AMovPatternSheep(Snake::_moveCD, Snake::_moveChancesFactor),
 	AShootPatternDefault(3, CLOCKS_PER_SEC * 3 / 2, 1000, CLOCKS_PER_SEC / 30)
 {
-	std::cout << "[Snake](main) Ctor called" << std::endl;
+	// std::cout << "[Snake](main) Ctor called" << std::endl;
 	return ;
 }
 
@@ -40,7 +40,7 @@ Snake::Snake(Snake const &src) :
 	AObject(), AMovPatternSheep(Snake::_moveCD, Snake::_moveChancesFactor),
 	AShootPatternDefault(3, CLOCKS_PER_SEC * 3 / 2, 1000, CLOCKS_PER_SEC / 30)
 {
-	std::cout << "[Snake](cpy) Ctor called" << std::endl;
+	// std::cout << "[Snake](cpy) Ctor called" << std::endl;
 	(void)src;
 	return ;
 }
@@ -50,7 +50,7 @@ Snake::Snake(Snake const &src) :
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 Snake::~Snake()
 {
-	std::cout << "[Snake]() Dtor called" << std::endl;
+	// std::cout << "[Snake]() Dtor called" << std::endl;
 	return ;
 }
 

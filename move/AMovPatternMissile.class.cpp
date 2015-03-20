@@ -31,7 +31,7 @@ AMovPatternMissile::AMovPatternMissile(clock_t moveCD, float angle,
 	_srcX(srcX),
 	_srcY(srcY)
 {
-	std::cout << "[AMovPatternMissile]() Ctor called" << std::endl;
+	// std::cout << "[AMovPatternMissile]() Ctor called" << std::endl;
 	return ;
 }
 
@@ -40,7 +40,7 @@ AMovPatternMissile::AMovPatternMissile(clock_t moveCD, float angle,
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 AMovPatternMissile::~AMovPatternMissile()
 {
-	std::cout << "[AMovPatternMissile]() Dtor called" << std::endl;
+	// std::cout << "[AMovPatternMissile]() Dtor called" << std::endl;
 	return ;
 }
 
