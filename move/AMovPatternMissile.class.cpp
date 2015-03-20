@@ -1,37 +1,46 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Scheduler.class.cpp                                :+:      :+:    :+:   //
+//   AMovPatternMissile.class.cpp                       :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/19 10:41:42 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 08:56:14 by ngoguey          ###   ########.fr       //
+//   Created: 2015/03/20 08:03:28 by ngoguey           #+#    #+#             //
+//   Updated: 2015/03/20 08:27:59 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-//#include <iostream>
-#include "Scheduler.class.hpp"
+#include <iostream>
+#include <cmath>
 #include <cstdlib>
+#include "AMovPatternMissile.class.hpp"
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
-Scheduler::Scheduler(clock_t waitTime, clock_t waveCD) :
-	_lastWave(std::clock() + waitTime), _waveCD(waveCD), _waveCount(0)
+AMovPatternMissile::AMovPatternMissile(clock_t moveCD, float angle,
+									   int srcX, int srcY) :
+	_lastMoveTime(std::clock()),
+	_moveCD(moveCD),
+	_incX(sin(angle)),
+	_incY(cos(angle)),
+	_coveredX(0.),
+	_coveredY(0.),
+	_srcX(srcX),
+	_srcY(srcY)
 {
-	// std::cout << "[Scheduler]() Ctor called" << std::endl;
+	std::cout << "[AMovPatternMissile]() Ctor called" << std::endl;
 	return ;
 }
 
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
-Scheduler::~Scheduler()
+AMovPatternMissile::~AMovPatternMissile()
 {
-	// std::cout << "[Scheduler]() Dtor called" << std::endl;
+	std::cout << "[AMovPatternMissile]() Dtor called" << std::endl;
 	return ;
 }
 
@@ -46,60 +55,27 @@ Scheduler::~Scheduler()
 // **************************************************** SETTERS *** SETTERS * //
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
-void						Scheduler::tryNewWave(Game &g)
+void						AMovPatternMissile::move(Game const &g,
+												   Shape const &s, int x, int y)
 {
-	while (std::clock() >= this->_lastWave + this->_waveCD)
-	{
-		int			pool;
-		int			pool2;
-
-		this->_lastWave += this->_waveCD;
-		this->_waveCount++;
-		pool = (this->_waveCount * 5 / 4) + 1;
-		if (this->_waveCount <= 2) // 1 2
-			g.popSheep(pool);
-		else if (this->_waveCount <= 4) // 3 4
-		{
-			g.popSheep(pool / 2);
-			g.popPig(pool - pool / 2);
-		}
-		else if (this->_waveCount <= 7) // 5 7 
-		{
-			g.popSheep(pool / 3);
-			g.popLombric(pool / 3);
-			g.popPig(pool - (pool / 3) * 2);
-		}
-		else if (this->_waveCount <= 10) // 8 10
-		{
-			pool2 = std::rand() % 2 + 1;
-			g.popSnake(pool2);
-			pool -= 2 * pool2;
-			g.popSheep(pool / 3);
-			g.popLombric(pool / 3);
-			g.popPig(pool - (pool / 3) * 2);
-		}
-		else if (this->_waveCount <= 12) // 11 12
-		{
-			pool2 = std::rand() % 3 + 1;
-			g.popSnake(pool2);
-			pool -= 2 * pool2;
-			g.popSheep(pool / 3);
-			g.popLombric(pool / 3);
-			g.popPig(pool - (pool / 3) * 2);
-		}
-		else // 13+
-		{
-			g.popSnake(1);
-			pool -= 2;
-			pool2 = pool / 3 / 4;
-			g.popCentipede(pool2);
-			pool -= pool2 * 4;
-			g.popSheep(pool / 3);
-			g.popLombric(pool / 3);
-			g.popPig(pool - (pool / 3) * 2);
-			if (std::rand() % 3 == 0)
-				g.popFizzy(1);
-		}
-	}
+	this->setPosX(x);
+	this->setPosY(y);
+	if (y - s.getTopSize() >= g.getMaxY())
+		this->setDeleteObject(true);
+	else
+		s.putShape(g, x, y);
 	return ;
+}
+
+int							AMovPatternMissile::tryMove(Game const &g)
+{
+	while (std::clock() >= this->_lastMoveTime + this->_moveCD)
+	{
+		this->_lastMoveTime += this->_moveCD;
+		this->_coveredX += this->_incX;
+		this->_coveredY += this->_incY;
+		move(g, this->getShape(), this->_srcX + (int)this->_coveredX,
+			 this->_srcY + (int)this->_coveredY);
+	}
+	return (0);
 }

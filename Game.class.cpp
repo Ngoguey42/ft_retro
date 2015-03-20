@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 09:16:21 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 09:01:02 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <ncurses.h>
 #include <cstdlib>
+#include <ctime>
 #include <Pig.class.hpp>
 #include <Sheep.class.hpp>
 #include <Fizzy.class.hpp>
@@ -21,6 +22,7 @@
 #include <Centipede.class.hpp>
 #include <Lombric.class.hpp>
 #include <Player.class.hpp>
+#include <Missile.class.hpp>
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
@@ -134,8 +136,25 @@ void						Game::popPig(int count)
 	{
 		o = new Pig(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
-		o->setPosY(std::rand() % 5 + o->getShape().getTopSize());
+		o->setPosY(std::rand() % (this->_maxY / 3) +
+				   o->getShape().getTopSize());
+		// o->setPosY(std::rand() % 5 + o->getShape().getTopSize());
 		this->_objsVector.push_back(o);
+		// float t = -3.14159 / 8;
+		// float d = 3.14159 / 32;
+		
+		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
+		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
+		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
+		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
+		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
+		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
+		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
+
+
+// this->popMissile(*o, -3.14159 / 8, CLOCKS_PER_SEC / 45);
+		// this->popMissile(*o, +3.14159 / 8, CLOCKS_PER_SEC / 45);
+		this->popMissile(*o, 0, CLOCKS_PER_SEC / 45);
 	}
 	return ;
 }
@@ -155,6 +174,18 @@ void						Game::popLombric(int count)
 	return ;
 }
 
+void						Game::popMissile(AObject const &shooter, float angle,
+	int movCD)
+{
+	AObject		*o;
+
+	o = new Missile(angle, shooter.getPosX(), shooter.getPosY() + 1, movCD);
+	o->setPosX(shooter.getPosX());
+	o->setPosY(shooter.getPosY() + 1);
+	this->_objsVector.push_back(o);
+	return ;
+}
+
 void						Game::popSnake(int count)
 {
 	AObject		*o;
@@ -166,6 +197,32 @@ void						Game::popSnake(int count)
 		o->setPosX(randomizeXStart(s, this->_maxX * 4 / 5) +
 				   this->_maxX / 10);
 		o->setPosY(s.getTopSize());
+		this->_objsVector.push_back(o);
+	}
+	return ;
+}
+
+void						Game::popCentipede(int count)
+{
+	AObject		*o;
+
+	for (; count > 0; count--)
+	{
+		o = new Centipede(); // try catch
+		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
+		this->_objsVector.push_back(o);
+	}
+	return ;
+}
+
+void						Game::popFizzy(int count)
+{
+	AObject		*o;
+
+	for (; count > 0; count--)
+	{
+		o = new Fizzy(); // try catch
+		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
 		this->_objsVector.push_back(o);
 	}
 	return ;

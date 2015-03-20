@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:03:37 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 18:21:46 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 08:38:23 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -16,16 +16,15 @@
 # include <ft_retro.hpp>
 # include <AObject.class.hpp>
 # include <Game.class.hpp>
-# include <AMovPatternDefault.class.hpp>
-# include <AMovPatternSheep.class.hpp>
+# include <AMovPatternMissile.class.hpp>
 
 # include <iostream>
 # include <ctime>
 
-class Missile : public AObject, public AMovPatternSheep
+class Missile : public AObject, public AMovPatternMissile
 {
 public:
-	Missile();
+	Missile(float angle, int srcX, int srcY, int movCD);
 	Missile(Missile const &src);
 	virtual ~Missile();
 
@@ -33,6 +32,10 @@ public:
 	Shape const					&getShape() const;
 	bool						getDoesMove() const;
 	bool						getDoesShoot() const;
+	float						getAngle(void) const;
+	int							getSrcX(void) const;
+	int							getSrcY(void) const;
+	int							getMovCD(void) const;
 
 	void						moveCall(Game const &g);
 
@@ -46,13 +49,16 @@ public:
 protected:
 private:
 	Missile						&operator=(Missile const &rhs);
+	Missile();
 
+	float						_angle;
+	int							_srcX;
+	int							_srcY;
+	int							_movCD;
 	static std::string const	_mobName;
 	static Shape const		  _mobShape;
 	static bool const		   _doesMove;
 	static bool const		   _doesShoot;
-	static clock_t const		_moveCD;
-	static int const			_moveChancesFactor;
 };
 //std::ostream					&operator<<(std::ostream &o, Missile const &rhs);
 

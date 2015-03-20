@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:03:42 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 18:22:05 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 08:42:26 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -19,24 +19,26 @@
 std::string const			Missile::_mobName = "Missile";
 Shape const					Missile::_mobShape =
 	Shape(MISSILE_SHAPE, MISSILE_COLOR, DEFAULT_COLOR);
-bool const					Missile::_doesMove = false;
+bool const					Missile::_doesMove = true;
 bool const					Missile::_doesShoot = false;
-clock_t const				Missile::_moveCD = CLOCKS_PER_SEC / 10;
-int const					Missile::_moveChancesFactor = 1000;
 
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 
-Missile::Missile() :
-	AObject(), AMovPatternSheep(Missile::_moveCD, Missile::_moveChancesFactor)
+Missile::Missile(float angle, int srcX, int srcY, int movCD) :
+	AObject(), AMovPatternMissile(movCD, angle, srcX, srcY),
+	_angle(angle), _srcX(srcX), _srcY(srcY), _movCD(movCD)
 {
 	std::cout << "[Missile](main) Ctor called" << std::endl;
 	return ;
 }
 
 Missile::Missile(Missile const &src) :
-	AObject(), AMovPatternSheep(Missile::_moveCD, Missile::_moveChancesFactor)
+	AObject(), AMovPatternMissile(src.getMovCD(),
+								src.getAngle(), src.getSrcX(), src.getSrcY()),
+	_angle(src.getAngle()), _srcX(src.getSrcX()), _srcY(src.getSrcY()),
+	_movCD(src.getMovCD())
 {
 	std::cout << "[Missile](cpy) Ctor called" << std::endl;
 	(void)src;
@@ -55,7 +57,6 @@ Missile::~Missile()
 // * DESTRUCTORS *** DESTRUCTORS ******************************************** //
 // ************************************************************************** //
 // ************************************************ OPERATORS *** OPERATORS * //
-
 // * OPERATORS *** OPERATORS ************************************************ //
 // ************************************************************************** //
 // **************************************************** GETTERS *** GETTERS * //
@@ -65,6 +66,11 @@ bool						Missile::getDoesMove() const{return Missile::_doesMove;}
 bool						Missile::getDoesShoot() const{return Missile::_doesShoot;}
 int							Missile::getPosX(void) const{return this->_posX;}
 int							Missile::getPosY(void) const{return this->_posY;}
+
+float						Missile::getAngle(void) const{return this->_angle;}
+int							Missile::getSrcX(void) const{return this->_srcX;}
+int							Missile::getSrcY(void) const{return this->_srcY;}
+int							Missile::getMovCD(void) const{return this->_movCD;}
 
 // * GETTERS *** GETTERS **************************************************** //
 // ************************************************************************** //
