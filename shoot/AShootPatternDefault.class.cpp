@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 11:14:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 11:14:53 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:37:14 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -53,7 +53,10 @@ AShootPatternDefault::~AShootPatternDefault()
 int							AShootPatternDefault::tryShoot(Game &g)
 {
 	(void)g;
-	if (std::clock() >= this->_lastShootTime + this->_shootCD)
+	// std::cerr << this->_missileMovCD << std::endl;
+	
+	if (std::clock() >= this->_lastShootTime + this->_shootCD &&
+		std::rand() % this->_shootChancesFactor < 100)
 	{
 		float			angle = (-3.14159 / 10.) * (float)(this->_num - 1) / 2.;
 
