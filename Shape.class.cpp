@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:58:55 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 15:15:02 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:31:14 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -55,7 +55,7 @@ Shape::Shape(char const fgChars[MAX_SHAPE_HEIGHT][MAX_SHAPE_WIDTH],
 {
 	int		sizes[4];
 
-	std::cout << "[Shape](main) Ctor called" << std::endl;
+//	std::cout << "[Shape](main) Ctor called" << std::endl;
 	std::memcpy(this->_fgChars, fgChars, sizeof(this->_fgChars));
 	std::memcpy(this->_fgColors, fgColors, sizeof(this->_fgColors));
 	std::memcpy(this->_bgColors, bgColors, sizeof(this->_bgColors));
@@ -68,13 +68,13 @@ Shape::Shape(char const fgChars[MAX_SHAPE_HEIGHT][MAX_SHAPE_WIDTH],
 	this->_maxYStr = MID_SHAPE_INDEX + this->_bottomSize;
 	this->_minXStr = MID_SHAPE_INDEX - this->_leftSize;
 	this->_maxXStr = MID_SHAPE_INDEX + this->_rightSize;
-	std::cout << *this << std::endl;
+//	std::cout << *this << std::endl;
 	return ;
 }
 
 Shape::Shape(Shape const &src)
 {
-	std::cout << "[Shape](cpy) Ctor called" << std::endl;
+//	std::cout << "[Shape](cpy) Ctor called" << std::endl;
 	std::memcpy(this->_fgChars, src.getFgChars(), sizeof(this->_fgChars));
 	std::memcpy(this->_fgColors, src.getFgColors(), sizeof(this->_fgColors));
 	std::memcpy(this->_bgColors, src.getBgColors(), sizeof(this->_bgColors));	
@@ -86,7 +86,7 @@ Shape::Shape(Shape const &src)
 	this->_maxYStr = MID_SHAPE_INDEX + this->_bottomSize;
 	this->_minXStr = MID_SHAPE_INDEX - this->_leftSize;
 	this->_maxXStr = MID_SHAPE_INDEX + this->_rightSize;
-	std::cout << *this << std::endl;
+//	std::cout << *this << std::endl;
 	return ;
 }
 
@@ -95,7 +95,7 @@ Shape::Shape(Shape const &src)
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 Shape::~Shape()
 {
-	std::cout << "[Shape]() Dtor called" << std::endl;
+//	std::cout << "[Shape]() Dtor called" << std::endl;
 	return ;
 }
 

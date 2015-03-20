@@ -24,7 +24,7 @@ AMovPatternLombric::AMovPatternLombric(clock_t moveCD, int strafeChancesFactor) 
 	_moveCD(moveCD),
 	_strafeChancesFactor(strafeChancesFactor)
 {
-	std::cout << "[AMovPatternLombric]() Ctor called" << std::endl;
+	// std::cout << "[AMovPatternLombric]() Ctor called" << std::endl;
 	this->_direction = std::rand() % 2 ? 'r' : 'l';
 	return ;
 }
@@ -34,7 +34,7 @@ AMovPatternLombric::AMovPatternLombric(clock_t moveCD, int strafeChancesFactor) 
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 AMovPatternLombric::~AMovPatternLombric()
 {
-	std::cout << "[AMovPatternLombric]() Dtor called" << std::endl;
+	// std::cout << "[AMovPatternLombric]() Dtor called" << std::endl;
 	return ;
 }
 

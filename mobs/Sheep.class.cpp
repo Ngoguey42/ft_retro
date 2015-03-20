@@ -31,14 +31,14 @@ int const					Sheep::_moveChancesFactor = 1000;
 Sheep::Sheep() :
 	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor)
 {
-	std::cout << "[Sheep](main) Ctor called" << std::endl;
+	// std::cout << "[Sheep](main) Ctor called" << std::endl;
 	return ;
 }
 
 Sheep::Sheep(Sheep const &src) :
 	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor)
 {
-	std::cout << "[Sheep](cpy) Ctor called" << std::endl;
+	// std::cout << "[Sheep](cpy) Ctor called" << std::endl;
 	(void)src;
 	return ;
 }
@@ -48,7 +48,7 @@ Sheep::Sheep(Sheep const &src) :
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 Sheep::~Sheep()
 {
-	std::cout << "[Sheep]() Dtor called" << std::endl;
+	// std::cout << "[Sheep]() Dtor called" << std::endl;
 	return ;
 }
 

@@ -20,7 +20,7 @@
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 IMovIA::IMovIA()
 {
-	std::cout << "[IMovIA]() Ctor called" << std::endl;
+	// std::cout << "[IMovIA]() Ctor called" << std::endl;
 	return ;
 }
 
@@ -29,7 +29,7 @@ IMovIA::IMovIA()
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 IMovIA::~IMovIA()
 {
-	std::cout << "[IMovIA]() Dtor called" << std::endl;
+	// std::cout << "[IMovIA]() Dtor called" << std::endl;
 	return ;
 }
 

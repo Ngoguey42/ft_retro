@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:33:25 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 11:09:35 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:29:35 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -23,7 +23,7 @@
 AObject::AObject() :
 	_posX(0), _posY(0), _deleteObject(false)
 {
-	std::cout << "[AObject](main) Ctor called" << std::endl;
+//	std::cout << "[AObject](main) Ctor called" << std::endl;
 	return ;
 }
 
@@ -32,7 +32,7 @@ AObject::AObject() :
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 AObject::~AObject()
 {
-	std::cout << "[AObject]() Dtor called" << std::endl;
+//	std::cout << "[AObject]() Dtor called" << std::endl;
 	return ;
 }
 

@@ -24,7 +24,7 @@ AMovPatternSheep::AMovPatternSheep(clock_t moveCD, int strafeChancesFactor) :
 	_moveCD(moveCD),
 	_strafeChancesFactor(strafeChancesFactor)
 {
-	std::cout << "[AMovPatternSheep]() Ctor called" << std::endl;
+	// std::cout << "[AMovPatternSheep]() Ctor called" << std::endl;
 	return ;
 }
 
@@ -33,7 +33,7 @@ AMovPatternSheep::AMovPatternSheep(clock_t moveCD, int strafeChancesFactor) :
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 AMovPatternSheep::~AMovPatternSheep()
 {
-	std::cout << "[AMovPatternSheep]() Dtor called" << std::endl;
+	// std::cout << "[AMovPatternSheep]() Dtor called" << std::endl;
 	return ;
 }
 

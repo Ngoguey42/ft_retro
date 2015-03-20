@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 14:14:43 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 14:47:14 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:29:58 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -28,7 +28,7 @@ Background::Background(int x, int y, Game &g) :
 	char			*linesFgColors;
 	char			*linesBgColors;
 	
-	std::cout << "[Background](main) Ctor called" << std::endl;
+//	std::cout << "[Background](main) Ctor called" << std::endl;
 	lines = new std::string[y]; //try catch ici
 	linesFgColors = new char[x * y]; //try catch ici
 	linesBgColors = new char[x * y]; //try catch ici
@@ -65,7 +65,7 @@ Background::Background(int x, int y, Game &g) :
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 Background::~Background()
 {
-	std::cout << "[Background]() Dtor called" << std::endl;
+//	std::cout << "[Background]() Dtor called" << std::endl;
 	delete [] this->_lines;
 	delete [] this->_linesFgColors;
 	delete [] this->_linesBgColors;

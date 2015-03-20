@@ -32,7 +32,7 @@ Pig::Pig() :
 	AObject(), AMovPatternDefault(Pig::_moveCD, Pig::_moveChancesFactor),
 	AShootPatternDefault(1, CLOCKS_PER_SEC, 100, CLOCKS_PER_SEC / 30)
 {
-	std::cout << "[Pig](main) Ctor called" << std::endl;
+	// std::cout << "[Pig](main) Ctor called" << std::endl;
 	return ;
 }
 
@@ -40,7 +40,7 @@ Pig::Pig(Pig const &src) :
 	AObject(), AMovPatternDefault(Pig::_moveCD, Pig::_moveChancesFactor),
 	AShootPatternDefault(1, CLOCKS_PER_SEC, 100, CLOCKS_PER_SEC / 30)
 {
-	std::cout << "[Pig](cpy) Ctor called" << std::endl;
+	// std::cout << "[Pig](cpy) Ctor called" << std::endl;
 	(void)src;
 	return ;
 }
@@ -50,7 +50,7 @@ Pig::Pig(Pig const &src) :
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 Pig::~Pig()
 {
-	std::cout << "[Pig]() Dtor called" << std::endl;
+	// std::cout << "[Pig]() Dtor called" << std::endl;
 	return ;
 }
 

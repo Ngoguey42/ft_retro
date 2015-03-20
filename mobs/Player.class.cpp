@@ -29,14 +29,14 @@ bool const					Player::_doesShoot = true;
 Player::Player() :
 	AObject()
 {
-	std::cout << "[Player](main) Ctor called" << std::endl;
+	// std::cout << "[Player](main) Ctor called" << std::endl;
 	return ;
 }
 
 Player::Player(Player const &src) :
 	AObject()
 {
-	std::cout << "[Player](cpy) Ctor called" << std::endl;
+	// std::cout << "[Player](cpy) Ctor called" << std::endl;
 	(void)src;
 	return ;
 }
@@ -46,7 +46,7 @@ Player::Player(Player const &src) :
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 Player::~Player()
 {
-	std::cout << "[Player]() Dtor called" << std::endl;
+	// std::cout << "[Player]() Dtor called" << std::endl;
 	return ;
 }
 

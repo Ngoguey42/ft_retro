@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 10:34:20 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 11:45:12 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -135,8 +135,8 @@ int							main(void)
 	{
 		g = new Game(w.ws_col, w.ws_row);
 		bg = new Background(w.ws_col, w.ws_row, *g);
-		std::cout << w.ws_col << std::endl;
-		std::cout << w.ws_row << std::endl;
+//		std::cout << w.ws_col << std::endl;
+//		std::cout << w.ws_row << std::endl;
 	}
 	catch (std::exception)
 	{

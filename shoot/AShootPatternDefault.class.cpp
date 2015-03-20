@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 11:14:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 11:14:53 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 11:46:06 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -26,7 +26,7 @@ AShootPatternDefault::AShootPatternDefault(int num, clock_t shootCD,
 	_shootChancesFactor(shootChancesFactor), _lastShootTime(std::clock()),
 	_missileMovCD(missileMovCD)
 {
-	std::cout << "[AShootPatternDefault]() Ctor called" << std::endl;
+//	std::cout << "[AShootPatternDefault]() Ctor called" << std::endl;
 	return ;
 }
 
@@ -35,7 +35,7 @@ AShootPatternDefault::AShootPatternDefault(int num, clock_t shootCD,
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
 AShootPatternDefault::~AShootPatternDefault()
 {
-	std::cout << "[AShootPatternDefault]() Dtor called" << std::endl;
+//	std::cout << "[AShootPatternDefault]() Dtor called" << std::endl;
 	return ;
 }
 
