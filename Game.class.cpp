@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 14:16:18 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 14:59:31 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -15,6 +15,7 @@
 #include <ncurses.h>
 #include <cstdlib>
 #include <ctime>
+#include <stdlib.h>
 #include <Pig.class.hpp>
 #include <Sheep.class.hpp>
 #include <Fizzy.class.hpp>
@@ -23,6 +24,9 @@
 #include <Lombric.class.hpp>
 #include <Player.class.hpp>
 #include <Missile.class.hpp>
+
+#define SIZE_MIN_X 100
+#define SIZE_MIN_Y 25
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
@@ -33,6 +37,8 @@ Game::Game(int maxX, int maxY) :
 	_maxX(maxX), _maxY(maxY)
 {
 //	std::cout << "[Game]() Ctor called" << std::endl;
+	if (maxX < SIZE_MIN_X || maxY < SIZE_MIN_Y)
+		this->leave_game("Window too small");
 	this->_dstFgChars = new std::string[maxY];//try catch
 	this->_dstFgColors = new char[maxY * maxX];//try catch
 	this->_dstBgColors = new char[maxY * maxX];//try catch
@@ -75,47 +81,37 @@ void						Game::setFgColor(int x, int y, char c) const
 {this->_dstFgColors[y * this->_maxX + x] = c;}
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
+void						Game::leave_game(std::string msg)
+{
+	clear();
+	refresh();
+	endwin();
+	std::cout << msg << std::endl;
+	exit(0);
+}
+
 void						Game::keyboard_input(void)
 {
-	//to delete
-#include <stdlib.h>
-	int		key;
-	// Player	&p = this->objsVectorFriendly.at(0);
-	// (void)p;
+	int				key;
+	Player	&p = dynamic_cast<Player&>(*this->_objsVectorFriendly.at(0));
+
 	key = getch();
-	if (key == 27)
-	{
-		clear();
-		refresh();
-		endwin();
-		exit(0);
-	}
+	if (key == 'Q' || key == 'q')
+		this->leave_game("Exit...");
 	else if (key == KEY_UP)
-	{
-		;
-		// p.moveEvent(0, 1);
-	}
+		p.moveEvent(*this, 0, -1);
 	else if (key == KEY_DOWN)
-	{
-		// p.moveEvent(0, -1);
-		;
-	}
+		p.moveEvent(*this, 0, 1);
 	else if (key == KEY_LEFT)
-	{
-		// p.moveEvent(-1, 0);
-		;
-	}
+		p.moveEvent(*this, -1, 0);
 	else if (key == KEY_RIGHT)
-	{
-		// p.moveEvent(1, 0);
-		;
-	}
+		p.moveEvent(*this, 1, 0);
 	else if (key == ' ')
 	{
 		// p.shootEvent();
 		;
 	}
-	else if (key == 'u')
+	else if (key == 'u' || key == 'U')
 	{
 		for (int i = 0; i < (int)this->_objsVector.size();)
 		{

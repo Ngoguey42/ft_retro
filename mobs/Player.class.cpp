@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/20 08:09:13 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 14:16:44 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 15:03:34 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -81,5 +81,16 @@ void						Player::setDeleteObject(bool b)
 void						Player::moveCall(Game const &g)
 {
 	(void)g;
+	return ;
+}
+
+void						Player::moveEvent(Game const &g, int x, int y)
+{
+	if (this->_posX + x > 3 && this->_posX + x + 5 <= g.getMaxX()
+		&& this->_posY + y > 0 && this->_posY + y + 4 <= g.getMaxY())
+	{
+		this->_posX += x;
+		this->_posY += y;
+	}
 	return ;
 }

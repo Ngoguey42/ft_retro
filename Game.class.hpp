@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:09:45 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 13:53:19 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 14:29:39 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -38,6 +38,7 @@ public:
 	void						setFgColor(int x, int y, char c) const;
 
 	void						keyboard_input(void);
+	void						leave_game(std::string msg);
 	
 	void						popSheep(int count);
 	void						popPig(int count);
