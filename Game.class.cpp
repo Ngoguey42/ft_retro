@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 09:01:02 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 10:44:20 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -75,6 +75,44 @@ void						Game::setFgColor(int x, int y, char c) const
 {this->_dstFgColors[y * this->_maxX + x] = c;}
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
+void						Game::keyboard_input(void)
+{
+
+	//to delete
+#include <stdlib.h>
+	
+	int		key;
+
+	key = getch();
+	if (key == 27)
+	{
+		clear();
+		refresh();
+		endwin();
+		exit(0);
+	}
+	else if (key == KEY_UP)
+	{
+		;
+	}
+	else if (key == KEY_DOWN)
+	{
+		;
+	}
+	else if (key == KEY_LEFT)
+	{
+		;
+	}
+	else if (key == KEY_RIGHT)
+	{
+		;
+	}
+	else if (key == ' ')
+	{
+		;
+	}
+}
+
 void						Game::putImage(void) const
 {
 	char		prevColorPair = 0;

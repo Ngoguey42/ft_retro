@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:09:45 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 08:38:48 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 10:37:51 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -36,6 +36,8 @@ public:
 
 	void						setFgChar(int x, int y, char c) const;
 	void						setFgColor(int x, int y, char c) const;
+
+	void						keyboard_input(void);
 	
 	void						popSheep(int count);
 	void						popPig(int count);

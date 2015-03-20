@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 07:39:35 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 10:34:20 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -46,6 +46,8 @@ static void					init_ncurses(void)
 	initscr();
 	start_color();
 	noecho();
+	keypad(stdscr, TRUE);
+	nodelay(stdscr, TRUE);
 	init_color(100, 0, 0, 0);
 	init_color(101, 100, 100, 100);
 	init_pair(0b10000 + 1, COLOR_WHITE, 100);
@@ -104,6 +106,7 @@ static void					play(Game *g, Background *bg, Scheduler &s)
 
 	while (1)
 	{
+		g->keyboard_input();
 		while (clock() - lu2_events > DELTA_REFRESH_EVENTS)
 		{
 			lu2_events += DELTA_REFRESH_EVENTS;
