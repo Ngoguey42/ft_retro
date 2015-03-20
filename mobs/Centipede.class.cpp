@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:02:21 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 11:43:33 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 12:14:05 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -21,7 +21,7 @@ Shape const					Centipede::_mobShape =
 	Shape(CENTIPEDE_SHAPE, CENTIPEDE_COLOR, DEFAULT_COLOR);
 bool const					Centipede::_doesMove = true;
 bool const					Centipede::_doesShoot = true;
-clock_t const				Centipede::_moveCD = CLOCKS_PER_SEC / 10;
+clock_t const				Centipede::_moveCD = CLOCKS_PER_SEC / 5;
 int const					Centipede::_moveChancesFactor = 1000;
 
 // * STATICS *** STATICS **************************************************** //

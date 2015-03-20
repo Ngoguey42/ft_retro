@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:03:42 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 11:16:06 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 12:11:17 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -19,6 +19,8 @@
 std::string const			Missile::_mobName = "Missile";
 Shape const					Missile::_mobShape =
 	Shape(MISSILE_SHAPE, MISSILE_COLOR, DEFAULT_COLOR);
+Shape const					Missile::_mobShapePlayer =
+	Shape(MISSILE_SHAPE, MISSILE_COLOR_PLAYER, DEFAULT_COLOR);
 bool const					Missile::_doesMove = true;
 bool const					Missile::_doesShoot = false;
 
@@ -61,7 +63,12 @@ Missile::~Missile()
 // ************************************************************************** //
 // **************************************************** GETTERS *** GETTERS * //
 std::string const			&Missile::getName() const{return Missile::_mobName;}
-Shape const					&Missile::getShape() const{return Missile::_mobShape;}
+Shape const					&Missile::getShape() const
+{
+	if (this->_angle > 3.14159 / 2 || this->_angle < -3.14159 / 2)
+		return Missile::_mobShapePlayer;
+	return Missile::_mobShape;
+}
 bool						Missile::getDoesMove() const{return Missile::_doesMove;}
 bool						Missile::getDoesShoot() const{return Missile::_doesShoot;}
 int							Missile::getPosX(void) const{return this->_posX;}

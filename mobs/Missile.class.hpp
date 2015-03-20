@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:03:37 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 10:56:30 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 12:09:44 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -58,6 +58,7 @@ private:
 	int							_movCD;
 	static std::string const	_mobName;
 	static Shape const		  _mobShape;
+	static Shape const		  _mobShapePlayer;
 	static bool const		   _doesMove;
 	static bool const		   _doesShoot;
 };
