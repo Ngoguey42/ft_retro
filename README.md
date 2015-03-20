@@ -9,22 +9,22 @@
 Team: [wide-aze](https://github.com/wide-aze) / [ngoguey](https://github.com/Ngoguey42).
  
 ### Classes tree:
-
 ```cpp
-class Game
-class Background
-class Scheduler
+class Game //singleton
+class Background //singleton
+class Scheduler //singleton
 
 class IMovIA
-class AMovPatternLombric : public IMovIA
 class AMovPatternDefault : public IMovIA
+class AMovPatternLombric : public IMovIA
 class AMovPatternSheep : public IMovIA
 
 class IShootIA
-class AShootPatternDefault : IShootIA
+class AShootPatternDefault : public IShootIA
+class AShootPatternTriple : public IShootIA
 
 class AObject
-class Shape
+class Shape //one instance per objects below (static)
 class Player : public AObject
 class Sheep : public AObject, public AMovPatternSheep
 class Fizzy : public AObject, public AMovPatternFizzy
@@ -36,10 +36,3 @@ class Missile : public AObject, public AMovPatternMissile
 ```
 
 <br><br><br><br><br><br><br><br>
-
-```
-*
-- A grade of 85 was required to validate the project.
-- A maximum grade of 125 was reachable.
-- Second sessions are organised for failed projects.
-```
