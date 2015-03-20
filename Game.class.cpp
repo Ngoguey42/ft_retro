@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 14:59:31 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 15:30:12 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -97,7 +97,7 @@ void						Game::keyboard_input(void)
 
 	key = getch();
 	if (key == 'Q' || key == 'q')
-		this->leave_game("Exit...");
+		this->leave_game("Exit in the game...");
 	else if (key == KEY_UP)
 		p.moveEvent(*this, 0, -1);
 	else if (key == KEY_DOWN)
@@ -109,6 +109,7 @@ void						Game::keyboard_input(void)
 	else if (key == ' ')
 	{
 		// p.shootEvent();
+		delete &p;
 		;
 	}
 	else if (key == 'u' || key == 'U')
