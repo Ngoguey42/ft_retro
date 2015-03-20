@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:58:55 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 11:31:14 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 15:34:32 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -102,7 +102,52 @@ Shape::~Shape()
 // * DESTRUCTORS *** DESTRUCTORS ******************************************** //
 // ************************************************************************** //
 // ************************************************ OPERATORS *** OPERATORS * //
+static std::string			put_2digit_nbr(std::string name, int nbr)
+{
+	name += "(";
+	name += (char)('0' + (nbr / 10));
+	name += ",";
+	name += (char)('0' + (nbr % 10));
+	name += ") ";
+	
+	return (name);
+}
 
+std::string					Shape::shapeToString(void) const
+{
+	std::string		str;
+
+	str += put_2digit_nbr("top", this->_topSize);
+	str += put_2digit_nbr("bot", this->_bottomSize);
+	str += put_2digit_nbr("left", this->_leftSize);
+	str += put_2digit_nbr("right", this->_rightSize);
+	str += "\n";
+	str += put_2digit_nbr("xm", this->_minXStr);
+	str += put_2digit_nbr("xM", this->_maxXStr);
+	str += put_2digit_nbr("ym", this->_minYStr);
+	str += put_2digit_nbr("yM", this->_maxYStr);
+	str += "\n/";
+	for (int i = this->_minXStr; i <= this->_maxXStr; i++)
+		str += (char)('0' + (i % 10));
+	str += "\\\n";
+	for (int i = this->_minYStr; i <= this->_maxYStr; i++)
+	{
+		str += (char)('0' + (i % 10));
+		for (int j = this->_minXStr; j <= this->_maxXStr; j++)
+		{
+			if (this->_fgChars[i][j] == '\0')
+				str.append(" ");
+			else
+				str.append(1, this->_fgChars[i][j]);
+		}
+		str += (char)('0' + (i % 10));
+		str.append("\n");
+	}
+	str += "\\";
+	str.append(this->_maxXStr - this->_minXStr + 1, '_');
+	str += "/";
+	return (str);
+}
 
 std::ostream				&operator<<(std::ostream &o, Shape const &rhs)
 {
@@ -127,6 +172,16 @@ char const					**Shape::getFgColors(void) const
 {return (char const**)this->_fgColors;}
 char const					**Shape::getBgColors(void) const
 {return (char const**)this->_bgColors;}
+
+int							Shape::getMinYStr(void) const
+	{return this->_minYStr;}
+int							Shape::getMaxYStr(void) const
+	{return this->_maxYStr;}
+int							Shape::getMinXStr(void) const
+	{return this->_minXStr;}
+int							Shape::getMaxXStr(void) const
+	{return this->_maxXStr;}
+
 
 // * GETTERS *** GETTERS **************************************************** //
 // ************************************************************************** //
@@ -171,6 +226,7 @@ bool						Shape::putShape(Game const &g, int posX, int posY)
 	}
 	return (drawn);
 }
+
 bool						Shape::shapeFits(Game const &g, int x, int y) const
 {
 	if (x < 0 || y < 0 || x >= g.getMaxX() || y >= g.getMaxY())
@@ -178,50 +234,9 @@ bool						Shape::shapeFits(Game const &g, int x, int y) const
 	return (true);
 }
 
-static std::string			put_2digit_nbr(std::string name, int nbr)
+bool						Shape::doesCollide(Shape const &foe, int minMaxes[8]) const
 {
-	name += "(";
-	name += (char)('0' + (nbr / 10));
-	name += ",";
-	name += (char)('0' + (nbr % 10));
-	name += ") ";
-	
-	return (name);
-}
-
-
-std::string					Shape::shapeToString(void) const
-{
-	std::string		str;
-
-	str += put_2digit_nbr("top", this->_topSize);
-	str += put_2digit_nbr("bot", this->_bottomSize);
-	str += put_2digit_nbr("left", this->_leftSize);
-	str += put_2digit_nbr("right", this->_rightSize);
-	str += "\n";
-	str += put_2digit_nbr("xm", this->_minXStr);
-	str += put_2digit_nbr("xM", this->_maxXStr);
-	str += put_2digit_nbr("ym", this->_minYStr);
-	str += put_2digit_nbr("yM", this->_maxYStr);
-	str += "\n/";
-	for (int i = this->_minXStr; i <= this->_maxXStr; i++)
-		str += (char)('0' + (i % 10));
-	str += "\\\n";
-	for (int i = this->_minYStr; i <= this->_maxYStr; i++)
-	{
-		str += (char)('0' + (i % 10));
-		for (int j = this->_minXStr; j <= this->_maxXStr; j++)
-		{
-			if (this->_fgChars[i][j] == '\0')
-				str.append(" ");
-			else
-				str.append(1, this->_fgChars[i][j]);
-		}
-		str += (char)('0' + (i % 10));
-		str.append("\n");
-	}
-	str += "\\";
-	str.append(this->_maxXStr - this->_minXStr + 1, '_');
-	str += "/";
-	return (str);
+	(void)foe;
+	(void)minMaxes;
+	return (true);
 }

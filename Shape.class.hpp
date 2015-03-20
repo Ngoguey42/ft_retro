@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:57:42 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 12:03:34 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 15:34:39 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -37,7 +37,13 @@ public:
 	int							getBottomSize(void) const;
 	int							getLeftSize(void) const;
 	int							getRightSize(void) const;
+	int							getMinYStr(void) const; //delete those getters
+	int							getMaxYStr(void) const;
+	int							getMinXStr(void) const;
+	int							getMaxXStr(void) const;
 
+	bool						doesCollide(Shape const &foe, int minMaxes[8]) const;
+	
 protected:	
 	char const					**getFgChars(void) const;
 	char const					**getFgColors(void) const;

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:33:25 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 12:36:32 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 15:34:51 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -58,7 +58,7 @@ std::ostream				&operator<<(std::ostream &o, AObject const &rhs)
 int							AObject::getPosX(void) const{return this->_posX;}
 int							AObject::getPosY(void) const{return this->_posY;}
 bool						AObject::getDeleteObject(void) const
-	{return this->_deleteObject;}
+{return this->_deleteObject;}
 
 // ************************************************************************** //
 // **************************************************** SETTERS *** SETTERS * //
@@ -72,4 +72,62 @@ void						AObject::shootCall(Game &g)
 {
 	(void)g;
 	return ;
+}
+bool						AObject::doesCollide(AObject const &foe) const
+{
+	int				minMaxes[8];
+	Shape const		&thisShape = this->getShape();
+	Shape const		&foeShape = foe.getShape();
+
+	//phase1
+	minMaxes[2] =
+		MAX(this->getPosY() - thisShape.getTopSize(),
+			foe.getPosY() - foeShape.getTopSize());
+	minMaxes[3] =
+		MIN(this->getPosY() + thisShape.getBottomSize(),
+			foe.getPosY() + foeShape.getBottomSize());
+	if (minMaxes[2] <= minMaxes[3])
+	{
+		//phase2
+		minMaxes[0] =
+			MAX(this->getPosX() - thisShape.getLeftSize(),
+				foe.getPosX() - foeShape.getLeftSize());
+		minMaxes[1] =
+			MIN(this->getPosX() + thisShape.getRightSize(),
+				foe.getPosX() + foeShape.getRightSize());
+		if (minMaxes[0] <= minMaxes[1])
+		{
+			//phase3
+			minMaxes[4] = minMaxes[0] - foe.getPosX();
+			minMaxes[0] = minMaxes[0] - this->getPosX();
+
+			minMaxes[5] = minMaxes[1] - foe.getPosX();
+			minMaxes[1] = minMaxes[1] - this->getPosX();
+
+			minMaxes[6] = minMaxes[2] - foe.getPosY();
+			minMaxes[2] = minMaxes[2] - this->getPosY();
+
+			minMaxes[7] = minMaxes[3] - foe.getPosY();
+			minMaxes[3] = minMaxes[3] - this->getPosY();
+			if (thisShape.doesCollide(foeShape, minMaxes))
+				return (true);
+		}
+	}
+	return (false);
+}
+
+bool						AObject::doesCollideAny(Game &g) const
+{
+	AObject *ob;
+
+	for (int i = 0; i < (int)g._objsVectorFriendly.size(); i++)
+	{
+		ob = g._objsVectorFriendly.at(i);
+		if (this->doesCollide(*ob))
+		{
+			delete ob;
+			return (true);
+		}
+	}
+	return (false);
 }

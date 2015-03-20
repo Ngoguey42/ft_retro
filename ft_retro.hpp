@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:57:17 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 09:13:14 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 14:53:51 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -40,5 +40,8 @@ class Player;
 
 # define DELTA_REFRESH_SCREEN 40000
 # define DELTA_REFRESH_EVENTS DELTA_REFRESH_SCREEN
+
+# define MIN(A, B) ((A) <= (B) ? (A) : (B))
+# define MAX(A, B) ((A) >= (B) ? (A) : (B))
 
 #endif // ****************************************************** FT_RETRO_HPP //

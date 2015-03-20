@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 14:08:10 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 15:35:14 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -79,19 +79,12 @@ static void					redraw_events(Game *g, Background *bg)
 
 static void					game_events(Game &g, Scheduler &s)
 {
-	AObject								*ob;
+	AObject	*ob;
 
 	for (int i = 0; i < (int)g._objsVector.size();)
 	{
 		ob = g._objsVector.at(i);
-		// if (colliding a friendlyAobject)
-		// {
-		// 	delete ob;
-		// 	delete friendlyAobject;
-		// }
-		// if (std::rand() % 1000 < 10)
-			// ob->setDeleteObject(true);
-		if (ob->getDeleteObject())
+		if (ob->doesCollideAny(g) || ob->getDeleteObject())
 		{
 			g._objsVector.erase(g._objsVector.begin() + i);
 			delete ob;
