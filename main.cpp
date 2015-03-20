@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 15:35:14 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 16:23:22 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -92,6 +92,21 @@ static void					game_events(Game &g, Scheduler &s)
 		else
 		{
 			ob->shootCall(g);
+			ob->moveCall(g);
+			i++;
+		}
+	}
+	for (int i = 1; i < (int)g._objsVectorFriendly.size();i++)
+	{
+		AObject		*ob = g._objsVectorFriendly.at(i);
+
+		if (ob->getPosY() < 0)
+		{
+			g._objsVectorFriendly.erase(g._objsVectorFriendly.begin() + i);
+			delete ob;
+		}
+		else
+		{
 			ob->moveCall(g);
 			i++;
 		}

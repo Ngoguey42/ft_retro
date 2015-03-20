@@ -6,13 +6,15 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/20 08:09:13 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 15:33:23 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 15:50:17 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 //#include <iostream>
 #include <cstdlib>
 #include <Player.class.hpp>
+
+#define PLAYER_SPEED(B) ((B) * 7 / 4)
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
@@ -87,17 +89,15 @@ void						Player::moveCall(Game const &g)
 
 void						Player::moveEvent(Game const &g, int x, int y)
 {
-	if (this->_posX + x > 4 && this->_posX + x + 6 <= g.getMaxX()
-		&& this->_posY + y > 0 && this->_posY + y + 4 <= g.getMaxY())
-	{
-		this->_posX += 2 * x;
-		this->_posY += y;
-	}
-	else if (this->_posX + x > 3 && this->_posX + x + 5 <= g.getMaxX()
-		&& this->_posY + y > 0 && this->_posY + y + 4 <= g.getMaxY())
-	{
-		this->_posX += x;
-		this->_posY += y;
-	}
+	this->_posX += PLAYER_SPEED(2 * x);
+	this->_posY += PLAYER_SPEED(y);
+	if (this->_posX < 4)
+		this->_posX = 4;
+	else if (this->_posX > g.getMaxX() - 5)
+		this->_posX = g.getMaxX() - 5;
+	if (this->_posY < 1)
+		this->_posY = 1;
+	else if (this->_posY > g.getMaxY() - 4)
+		this->_posY = g.getMaxY() - 4;
 	return ;
 }

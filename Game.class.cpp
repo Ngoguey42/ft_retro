@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 15:30:12 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 16:25:08 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -25,8 +25,8 @@
 #include <Player.class.hpp>
 #include <Missile.class.hpp>
 
-#define SIZE_MIN_X 100
-#define SIZE_MIN_Y 25
+#define SIZE_MIN_X 10
+#define SIZE_MIN_Y 10
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
@@ -108,9 +108,15 @@ void						Game::keyboard_input(void)
 		p.moveEvent(*this, 1, 0);
 	else if (key == ' ')
 	{
-		// p.shootEvent();
-		delete &p;
-		;
+		popMissileFriendly(&p, 3.14159 - 3.14159 / 20, CLOCKS_PER_SEC / 75);
+		popMissileFriendly(&p, 3.14159 + 3.14159 / 20, CLOCKS_PER_SEC / 75);
+		popMissileFriendly(&p, 3.14159 - 3.14159 / 40, CLOCKS_PER_SEC / 75);
+		popMissileFriendly(&p, 3.14159 + 3.14159 / 40, CLOCKS_PER_SEC / 75);
+		// popMissileFriendly(&p, 3.14159 - 3.14159 / 30, CLOCKS_PER_SEC / 75);
+		// popMissileFriendly(&p, 3.14159 + 3.14159 / 30, CLOCKS_PER_SEC / 75);
+		// popMissileFriendly(&p, 3.14159 - 3.14159 / 10, CLOCKS_PER_SEC / 75);
+		// popMissileFriendly(&p, 3.14159 + 3.14159 / 10, CLOCKS_PER_SEC / 75);
+		popMissileFriendly(&p, 3.14159, CLOCKS_PER_SEC / 75);
 	}
 	else if (key == 'u' || key == 'U')
 	{
@@ -218,6 +224,18 @@ void						Game::popMissile(AObject const *shooter, float angle,
 	o->setPosX(shooter->getPosX());
 	o->setPosY(shooter->getPosY() + 1);
 	this->_objsVector.push_back(o);
+	return ;
+}
+
+void						Game::popMissileFriendly(AObject const *shooter, float angle,
+	clock_t movCD)
+{
+	AObject		*o;
+
+	o = new Missile(angle, shooter->getPosX(), shooter->getPosY() - 1, movCD);
+	o->setPosX(shooter->getPosX());
+	o->setPosY(shooter->getPosY() - 1);
+	this->_objsVectorFriendly.push_back(o);
 	return ;
 }
 

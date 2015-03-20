@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:33:25 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 15:34:51 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 16:18:11 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -91,24 +91,24 @@ bool						AObject::doesCollide(AObject const &foe) const
 		//phase2
 		minMaxes[0] =
 			MAX(this->getPosX() - thisShape.getLeftSize(),
-				foe.getPosX() - foeShape.getLeftSize());
+				foe.getPosX() - foeShape.getLeftSize()) - 1;
 		minMaxes[1] =
 			MIN(this->getPosX() + thisShape.getRightSize(),
-				foe.getPosX() + foeShape.getRightSize());
+				foe.getPosX() + foeShape.getRightSize()) + 1;
 		if (minMaxes[0] <= minMaxes[1])
 		{
 			//phase3
-			minMaxes[4] = minMaxes[0] - foe.getPosX();
-			minMaxes[0] = minMaxes[0] - this->getPosX();
+			// minMaxes[4] = minMaxes[0] - foe.getPosX();
+			// minMaxes[0] = minMaxes[0] - this->getPosX();
 
-			minMaxes[5] = minMaxes[1] - foe.getPosX();
-			minMaxes[1] = minMaxes[1] - this->getPosX();
+			// minMaxes[5] = minMaxes[1] - foe.getPosX();
+			// minMaxes[1] = minMaxes[1] - this->getPosX();
 
-			minMaxes[6] = minMaxes[2] - foe.getPosY();
-			minMaxes[2] = minMaxes[2] - this->getPosY();
+			// minMaxes[6] = minMaxes[2] - foe.getPosY();
+			// minMaxes[2] = minMaxes[2] - this->getPosY();
 
-			minMaxes[7] = minMaxes[3] - foe.getPosY();
-			minMaxes[3] = minMaxes[3] - this->getPosY();
+			// minMaxes[7] = minMaxes[3] - foe.getPosY();
+			// minMaxes[3] = minMaxes[3] - this->getPosY();
 			if (thisShape.doesCollide(foeShape, minMaxes))
 				return (true);
 		}
@@ -125,6 +125,7 @@ bool						AObject::doesCollideAny(Game &g) const
 		ob = g._objsVectorFriendly.at(i);
 		if (this->doesCollide(*ob))
 		{
+			g._objsVectorFriendly.erase(g._objsVectorFriendly.begin() + i);
 			delete ob;
 			return (true);
 		}
