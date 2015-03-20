@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/20 08:09:21 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 14:09:19 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 14:45:29 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -33,7 +33,8 @@ public:
 	bool						getDoesShoot() const;
 
 	void						moveCall(Game const &g);
-
+	void						moveEvent(Game const &g, int x, int y);
+	
 	int							getPosX(void) const;
 	int							getPosY(void) const;
 	void						setPosX(int x);
@@ -41,7 +42,6 @@ public:
 	void						setPosXY(int x, int y);
 	void                        setDeleteObject(bool b);
 	Game						&getGame(void);
-	
 	
 protected:
 private:
