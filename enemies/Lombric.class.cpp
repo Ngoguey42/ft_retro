@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:03:29 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 15:35:35 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 07:00:34 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -21,7 +21,7 @@ Shape const					Lombric::_mobShape =
 	Shape(LOMBRIC_SHAPE, LOMBRIC_COLOR, DEFAULT_COLOR);
 bool const					Lombric::_doesMove = true;
 bool const					Lombric::_doesShoot = true;
-clock_t const				Lombric::_moveCD = CLOCKS_PER_SEC / 10;
+clock_t const				Lombric::_moveCD = CLOCKS_PER_SEC / 20;
 int const					Lombric::_moveChancesFactor = 1000;
 
 // * STATICS *** STATICS **************************************************** //

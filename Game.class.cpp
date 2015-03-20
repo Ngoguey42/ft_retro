@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 15:16:47 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 07:03:54 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -133,7 +133,22 @@ void						Game::popPig(int count)
 	{
 		o = new Lombric(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
-		o->setPosY(-o->getShape().getTopSize());
+		o->setPosY(o->getShape().getTopSize());
+		this->_objsVector.push_back(o);
+	}
+	return ;
+}
+
+void						Game::popLombric(int count)
+{
+	AObject		*o;
+	
+	for (; count > 0; count--)
+	{
+		o = new Lombric(); // try catch
+		Shape const	&s = o->getShape();
+		o->setPosX(randomizeXStart(s, this->_maxX / 7 * 5) + this->_maxX / 7);
+		o->setPosY(s.getTopSize() - 1);
 		this->_objsVector.push_back(o);
 	}
 	return ;

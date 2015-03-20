@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 15:13:08 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 15:13:09 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 07:01:23 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -22,10 +22,10 @@
 AMovPatternLombric::AMovPatternLombric(clock_t moveCD, int strafeChancesFactor) :
 	_lastMoveTime(std::clock()),
 	_moveCD(moveCD),
-	_strafeChancesFactor(strafeChancesFactor),
-	_direction('r')
+	_strafeChancesFactor(strafeChancesFactor)
 {
 	std::cout << "[AMovPatternLombric]() Ctor called" << std::endl;
+	this->_direction = std::rand() % 2 ? 'r' : 'l';
 	return ;
 }
 
@@ -72,25 +72,23 @@ int							AMovPatternLombric::tryMove(Game const &g)
 		int			margin = (g.getMaxX() / 7);
 
 		this->_lastMoveTime += this->_moveCD;
-
-
-		if (x == g.getMaxX() - 2)
+		if (x >= g.getMaxX() - 2)
 			_direction = 'l';
-		else if (x == 0)
+		else if (x <= 2)
 			_direction = 'r';
 		if (_direction == 'r')
 		{
-			if (x  < margin || x  >= (g.getMaxX() - margin))
+			if (x <= margin || x >= (g.getMaxX() - margin))
 				this->move(g, ref, x + 1, y + 1);
 			else
-				this->move(g, ref, x + 2, y);
+				this->move(g, ref, x + 1, y);
 		}
 		else
 		{
-			if (x  < margin || x  >= (g.getMaxX() - margin))
+			if (x <= margin || x >= (g.getMaxX() - margin))
 				this->move(g, ref, x - 1, y + 1);
 			else
-				this->move(g, ref, x - 2, y);
+				this->move(g, ref, x - 1, y);
 		}
 	}
 	return (0);

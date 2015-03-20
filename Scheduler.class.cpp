@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 10:41:42 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 12:23:24 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 06:49:42 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -67,8 +67,9 @@ void						Scheduler::tryNewWave(Game &g)
 		{
 			pool = std::rand() % (this->_waveCount * 2 - 1) + 1;
 			pool2 = std::rand() % pool;
-			g.popSheep(pool2);
-			g.popPig(pool - pool2);
+			g.popLombric(pool2);
+			// g.popSheep(pool2);
+			// g.popPig(pool - pool2);
 		}
 	}
 	return ;
