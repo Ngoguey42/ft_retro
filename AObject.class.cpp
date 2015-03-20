@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:33:25 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 11:29:35 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 12:36:32 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -64,6 +64,8 @@ bool						AObject::getDeleteObject(void) const
 // **************************************************** SETTERS *** SETTERS * //
 void						AObject::setPosX(int x){this->_posX = x;}
 void						AObject::setPosY(int y){this->_posY = y;}
+void						AObject::setDeleteObject(bool state)
+{this->_deleteObject = state;}
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
 void						AObject::shootCall(Game &g)

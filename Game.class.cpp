@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 11:57:31 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 12:55:13 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -176,23 +176,7 @@ void						Game::popPig(int count)
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
 		o->setPosY(std::rand() % (this->_maxY / 3) +
 				   o->getShape().getTopSize());
-		// o->setPosY(std::rand() % 5 + o->getShape().getTopSize());
 		this->_objsVector.push_back(o);
-		// float t = -3.14159 / 8;
-		// float d = 3.14159 / 32;
-		
-		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
-		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
-		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
-		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
-		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
-		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
-		// this->popMissile(*o, (t += d), CLOCKS_PER_SEC / 45);
-
-
-// this->popMissile(*o, -3.14159 / 8, CLOCKS_PER_SEC / 45);
-		// this->popMissile(*o, +3.14159 / 8, CLOCKS_PER_SEC / 45);
-		// this->popMissile(o, 0, CLOCKS_PER_SEC / 45);
 	}
 	return ;
 }
@@ -217,10 +201,7 @@ void						Game::popMissile(AObject const *shooter, float angle,
 {
 	AObject		*o;
 
-//	std::cerr << "PP1 " << std::endl;
-	
 	o = new Missile(angle, shooter->getPosX(), shooter->getPosY() + 1, movCD);
-//	std::cerr << "PP2 " << std::endl;
 	o->setPosX(shooter->getPosX());
 	o->setPosY(shooter->getPosY() + 1);
 	this->_objsVector.push_back(o);

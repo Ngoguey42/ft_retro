@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 11:45:12 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 12:55:51 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -83,6 +83,9 @@ static void					game_events(Game &g, Scheduler &s)
 	for (int i = 0; i < (int)g._objsVector.size();)
 	{
 		ob = g._objsVector.at(i);
+		//if colliding a friendlyAobject
+		if (std::rand() % 1000 < 10)
+			ob->setDeleteObject(true);
 		if (ob->getDeleteObject())
 		{
 			g._objsVector.erase(g._objsVector.begin() + i);
@@ -131,39 +134,10 @@ int							main(void)
 	init_ncurses();
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	std::srand(std::time(0));
-	try
-	{
-		g = new Game(w.ws_col, w.ws_row);
-		bg = new Background(w.ws_col, w.ws_row, *g);
-//		std::cout << w.ws_col << std::endl;
-//		std::cout << w.ws_row << std::endl;
-	}
-	catch (std::exception)
-	{
-		//todo
-	}
-
-	// Pig p1;
-	// g->_objsVector.push_back(&p1);
-	// Pig p2;
-	// g->_objsVector.push_back(&p2);
-	// Pig p3;
-	// g->_objsVector.push_back(&p3);
-	// Sheep sh1;
-	// Sheep sh2;
-	// Sheep sh3;
-	// g->_objsVector.push_back(&sh1);
-	// g->_objsVector.push_back(&sh2);
-	// g->_objsVector.push_back(&sh3);
-	// Snake sn1;
-	// Snake sn2;
-	// Snake sn3;
-	// g->_objsVector.push_back(&sn1);
-	// g->_objsVector.push_back(&sn2);
-	// g->_objsVector.push_back(&sn3);
-
+	g = new Game(w.ws_col, w.ws_row);
+	bg = new Background(w.ws_col, w.ws_row, *g);
 	play(g, bg, s);
-	endwin();
+	endwin();//not reached
 	delete g;
 	delete bg;
 	return (0);

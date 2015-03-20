@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 11:14:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 11:46:06 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 12:39:09 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -52,20 +52,14 @@ AShootPatternDefault::~AShootPatternDefault()
 // ************************************************************************** //
 int							AShootPatternDefault::tryShoot(Game &g)
 {
-	(void)g;
-	// std::cerr << this->_missileMovCD << std::endl;
-	
 	if (std::clock() >= this->_lastShootTime + this->_shootCD &&
 		std::rand() % this->_shootChancesFactor < 100)
 	{
 		float			angle = (-3.14159 / 10.) * (float)(this->_num - 1) / 2.;
 
 		this->_lastShootTime += this->_shootCD;
-		// std::cerr << "p2" << std::endl;
 		for (int i = 0; i < this->_num; i++)
 		{
-			// std::cerr << "p1" << std::endl;
-			
 			g.popMissile(dynamic_cast<AObject*>(this), angle,
 						 (clock_t)(CLOCKS_PER_SEC / 45));
 			angle += (3.14159 / 10.);

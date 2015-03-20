@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:09:45 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 10:37:51 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 12:25:57 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -49,6 +49,7 @@ public:
 										   clock_t movCD);
 	
 	std::vector<AObject*>		_objsVector;
+	std::vector<AObject*>		_objsVectorFriendly;
 protected:
 private:
 	Game();
