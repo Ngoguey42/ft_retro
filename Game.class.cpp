@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 12:55:13 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 14:16:18 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -77,12 +77,11 @@ void						Game::setFgColor(int x, int y, char c) const
 // ************************************************************************** //
 void						Game::keyboard_input(void)
 {
-
 	//to delete
 #include <stdlib.h>
-	
 	int		key;
-
+	// Player	&p = this->objsVectorFriendly.at(0);
+	// (void)p;
 	key = getch();
 	if (key == 27)
 	{
@@ -94,22 +93,37 @@ void						Game::keyboard_input(void)
 	else if (key == KEY_UP)
 	{
 		;
+		// p.moveEvent(0, 1);
 	}
 	else if (key == KEY_DOWN)
 	{
+		// p.moveEvent(0, -1);
 		;
 	}
 	else if (key == KEY_LEFT)
 	{
+		// p.moveEvent(-1, 0);
 		;
 	}
 	else if (key == KEY_RIGHT)
 	{
+		// p.moveEvent(1, 0);
 		;
 	}
 	else if (key == ' ')
 	{
+		// p.shootEvent();
 		;
+	}
+	else if (key == 'u')
+	{
+		for (int i = 0; i < (int)this->_objsVector.size();)
+		{
+			AObject	*ob = this->_objsVector.at(i);
+
+			this->_objsVector.erase(this->_objsVector.begin() + i);
+			delete ob;
+		}
 	}
 }
 
@@ -142,6 +156,8 @@ void						Game::putObjects(void) const
 	std::vector<AObject*>::const_iterator		it;
 
 	for (it = this->_objsVector.begin() ; it < this->_objsVector.end() ; it++)
+		(void)(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
+	for (it = this->_objsVectorFriendly.begin() ; it < this->_objsVectorFriendly.end() ; it++)
 		(void)(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
 	return ;
 }

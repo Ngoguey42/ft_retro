@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/20 08:09:13 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 09:18:36 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 14:16:44 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -26,20 +26,21 @@ bool const					Player::_doesShoot = true;
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 
-Player::Player() :
-	AObject()
+Player::Player(Game &g) :
+	AObject(), _game(g)
 {
+	this->setPosX(g.getMaxX() / 2);
+	this->setPosY(g.getMaxY() - 5);
 	// std::cout << "[Player](main) Ctor called" << std::endl;
 	return ;
 }
 
-Player::Player(Player const &src) :
-	AObject()
-{
-	// std::cout << "[Player](cpy) Ctor called" << std::endl;
-	(void)src;
-	return ;
-}
+// Player::Player(Player const &src) :
+	// AObject(), _game(src.getGame())
+// {
+	// (void)src;
+	// return ;
+// }
 
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //
@@ -63,6 +64,7 @@ bool						Player::getDoesMove() const{return Player::_doesMove;}
 bool						Player::getDoesShoot() const{return Player::_doesShoot;}
 int							Player::getPosX(void) const{return this->_posX;}
 int							Player::getPosY(void) const{return this->_posY;}
+Game                        &Player::getGame(void){return this->_game;}
 
 // * GETTERS *** GETTERS **************************************************** //
 // ************************************************************************** //

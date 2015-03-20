@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:09:45 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 12:25:57 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 13:53:19 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -47,7 +47,7 @@ public:
 	void						popFizzy(int count);
 	void						popMissile(AObject const *shooter, float angle,
 										   clock_t movCD);
-	
+
 	std::vector<AObject*>		_objsVector;
 	std::vector<AObject*>		_objsVectorFriendly;
 protected:

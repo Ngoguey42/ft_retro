@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 12:55:51 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 14:08:10 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -21,6 +21,7 @@
 #include <Fizzy.class.hpp>
 #include <Background.class.hpp>
 #include <Scheduler.class.hpp>
+#include <Player.class.hpp>
 
 #include <iostream>
 #include <stdexcept>
@@ -83,9 +84,13 @@ static void					game_events(Game &g, Scheduler &s)
 	for (int i = 0; i < (int)g._objsVector.size();)
 	{
 		ob = g._objsVector.at(i);
-		//if colliding a friendlyAobject
-		if (std::rand() % 1000 < 10)
-			ob->setDeleteObject(true);
+		// if (colliding a friendlyAobject)
+		// {
+		// 	delete ob;
+		// 	delete friendlyAobject;
+		// }
+		// if (std::rand() % 1000 < 10)
+			// ob->setDeleteObject(true);
 		if (ob->getDeleteObject())
 		{
 			g._objsVector.erase(g._objsVector.begin() + i);
@@ -135,6 +140,7 @@ int							main(void)
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	std::srand(std::time(0));
 	g = new Game(w.ws_col, w.ws_row);
+	g->_objsVectorFriendly.push_back(new Player(*g));
 	bg = new Background(w.ws_col, w.ws_row, *g);
 	play(g, bg, s);
 	endwin();//not reached
