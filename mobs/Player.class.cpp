@@ -1,44 +1,42 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Sheep.class.cpp                                    :+:      :+:    :+:   //
+//   Player.class.cpp                                   :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
-//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2015/03/19 09:12:38 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 09:42:52 by wide-aze         ###   ########.fr       //
+//   Created: 2015/03/20 08:09:13 by wide-aze          #+#    #+#             //
+//   Updated: 2015/03/20 09:18:36 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 //#include <iostream>
 #include <cstdlib>
-#include <Sheep.class.hpp>
+#include <Player.class.hpp>
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //
-std::string const			Sheep::_mobName = "Sheep";
-Shape const					Sheep::_mobShape =
-	Shape(SHEEP_SHAPE, SHEEP_COLOR, DEFAULT_COLOR);
-bool const					Sheep::_doesMove = true;
-bool const					Sheep::_doesShoot = false;
-clock_t const				Sheep::_moveCD = CLOCKS_PER_SEC / 10;
-int const					Sheep::_moveChancesFactor = 1000;
+std::string const			Player::_mobName = "Player";
+Shape const					Player::_mobShape =
+	Shape(PLAYER_SHAPE, PLAYER_COLOR, DEFAULT_COLOR);
+bool const					Player::_doesMove = true;
+bool const					Player::_doesShoot = true;
 
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 
-Sheep::Sheep() :
-	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor)
+Player::Player() :
+	AObject()
 {
-	std::cout << "[Sheep](main) Ctor called" << std::endl;
+	std::cout << "[Player](main) Ctor called" << std::endl;
 	return ;
 }
 
-Sheep::Sheep(Sheep const &src) :
-	AObject(), AMovPatternSheep(Sheep::_moveCD, Sheep::_moveChancesFactor)
+Player::Player(Player const &src) :
+	AObject()
 {
-	std::cout << "[Sheep](cpy) Ctor called" << std::endl;
+	std::cout << "[Player](cpy) Ctor called" << std::endl;
 	(void)src;
 	return ;
 }
@@ -46,9 +44,9 @@ Sheep::Sheep(Sheep const &src) :
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //
 // ******************************************** DESTRUCTORS *** DESTRUCTORS * //
-Sheep::~Sheep()
+Player::~Player()
 {
-	std::cout << "[Sheep]() Dtor called" << std::endl;
+	std::cout << "[Player]() Dtor called" << std::endl;
 	return ;
 }
 
@@ -59,27 +57,27 @@ Sheep::~Sheep()
 // * OPERATORS *** OPERATORS ************************************************ //
 // ************************************************************************** //
 // **************************************************** GETTERS *** GETTERS * //
-std::string const			&Sheep::getName() const{return Sheep::_mobName;}
-Shape const					&Sheep::getShape() const{return Sheep::_mobShape;}
-bool						Sheep::getDoesMove() const{return Sheep::_doesMove;}
-bool						Sheep::getDoesShoot() const{return Sheep::_doesShoot;}
-int							Sheep::getPosX(void) const{return this->_posX;}
-int							Sheep::getPosY(void) const{return this->_posY;}
+std::string const			&Player::getName() const{return Player::_mobName;}
+Shape const					&Player::getShape() const{return Player::_mobShape;}
+bool						Player::getDoesMove() const{return Player::_doesMove;}
+bool						Player::getDoesShoot() const{return Player::_doesShoot;}
+int							Player::getPosX(void) const{return this->_posX;}
+int							Player::getPosY(void) const{return this->_posY;}
 
 // * GETTERS *** GETTERS **************************************************** //
 // ************************************************************************** //
 // **************************************************** SETTERS *** SETTERS * //
-void						Sheep::setPosX(int x){this->_posX = x;}
-void						Sheep::setPosY(int y){this->_posY = y;}
-void						Sheep::setPosXY(int x, int y)
+void						Player::setPosX(int x){this->_posX = x;}
+void						Player::setPosY(int y){this->_posY = y;}
+void						Player::setPosXY(int x, int y)
 {this->_posX = x;this->_posY = y;}
-void						Sheep::setDeleteObject(bool b)
+void						Player::setDeleteObject(bool b)
 {this->_deleteObject = b;}
 
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
-void						Sheep::moveCall(Game const &g)
+void						Player::moveCall(Game const &g)
 {
-	this->tryMove(g);
+	(void)g;
 	return ;
 }

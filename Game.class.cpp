@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 07:47:40 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 09:16:21 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -20,6 +20,7 @@
 #include <Snake.class.hpp>
 #include <Centipede.class.hpp>
 #include <Lombric.class.hpp>
+#include <Player.class.hpp>
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //

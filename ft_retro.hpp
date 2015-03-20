@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 06:57:17 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 12:36:24 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 09:13:14 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -31,6 +31,10 @@ class AShootPatternDefault;
 class Snake;
 class Pig;
 class Sheep;
+class Centipede;
+class Lombric;
+class Missile;
+class Player;
 
 # include <objects_shapes.hpp>
 
