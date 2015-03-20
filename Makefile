@@ -19,6 +19,7 @@ SRCSFILES = \
      ./move/AMovPatternDefault.class.cpp\
      ./move/AMovPatternSheep.class.cpp\
      ./move/AMovPatternLombric.class.cpp\
+     ./move/AMovPatternMissile.class.cpp\
     ./shoot/IShootIA.class.cpp\
     ./shoot/AShootPatternDefault.class.cpp
 
