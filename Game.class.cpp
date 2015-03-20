@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 11:30:33 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 11:57:31 by wide-aze         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -217,10 +217,10 @@ void						Game::popMissile(AObject const *shooter, float angle,
 {
 	AObject		*o;
 
-	std::cerr << "PP1 " << std::endl;
+//	std::cerr << "PP1 " << std::endl;
 	
 	o = new Missile(angle, shooter->getPosX(), shooter->getPosY() + 1, movCD);
-	std::cerr << "PP2 " << std::endl;
+//	std::cerr << "PP2 " << std::endl;
 	o->setPosX(shooter->getPosX());
 	o->setPosY(shooter->getPosY() + 1);
 	this->_objsVector.push_back(o);
