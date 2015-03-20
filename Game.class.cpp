@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 07:03:54 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 07:47:40 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -118,7 +118,7 @@ void						Game::popSheep(int count)
 
 	for (; count > 0; count--)
 	{
-		o = new Fizzy(); // try catch
+		o = new Sheep(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
 		this->_objsVector.push_back(o);
 	}
@@ -131,9 +131,9 @@ void						Game::popPig(int count)
 
 	for (; count > 0; count--)
 	{
-		o = new Lombric(); // try catch
+		o = new Pig(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
-		o->setPosY(o->getShape().getTopSize());
+		o->setPosY(std::rand() % 5 + o->getShape().getTopSize());
 		this->_objsVector.push_back(o);
 	}
 	return ;
@@ -149,6 +149,22 @@ void						Game::popLombric(int count)
 		Shape const	&s = o->getShape();
 		o->setPosX(randomizeXStart(s, this->_maxX / 7 * 5) + this->_maxX / 7);
 		o->setPosY(s.getTopSize() - 1);
+		this->_objsVector.push_back(o);
+	}
+	return ;
+}
+
+void						Game::popSnake(int count)
+{
+	AObject		*o;
+
+	for (; count > 0; count--)
+	{
+		o = new Snake(); // try catch
+		Shape const	&s = o->getShape();
+		o->setPosX(randomizeXStart(s, this->_maxX * 4 / 5) +
+				   this->_maxX / 10);
+		o->setPosY(s.getTopSize());
 		this->_objsVector.push_back(o);
 	}
 	return ;

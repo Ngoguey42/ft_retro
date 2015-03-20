@@ -1,5 +1,5 @@
-# Piscine C++ rush#00 FT_RETRO, Feb 2015
->>>>> #####Shoot them up with n-curses. (group project)
+# Piscine C++ rush#00 FT_RETRO, Apr 2015
+>>>>> #####Shoot-them-up with n-curses. (group project)
 
 #####Grade ``(TBD/125)`` ``(TBD/125)*``
 --------  -----------------------

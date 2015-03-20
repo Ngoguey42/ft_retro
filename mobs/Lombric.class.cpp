@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:03:29 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 07:00:34 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 07:25:31 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -29,16 +29,14 @@ int const					Lombric::_moveChancesFactor = 1000;
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 
 Lombric::Lombric() :
-	AObject(), AMovPatternLombric(Lombric::_moveCD, Lombric::_moveChancesFactor),
-	AShootPatternDefault()
+	AObject(), AMovPatternLombric(Lombric::_moveCD, Lombric::_moveChancesFactor)
 {
 	std::cout << "[Lombric](main) Ctor called" << std::endl;
 	return ;
 }
 
 Lombric::Lombric(Lombric const &src) :
-	AObject(), AMovPatternLombric(Lombric::_moveCD, Lombric::_moveChancesFactor),
-	AShootPatternDefault()
+	AObject(), AMovPatternLombric(Lombric::_moveCD, Lombric::_moveChancesFactor)
 {
 	std::cout << "[Lombric](cpy) Ctor called" << std::endl;
 	(void)src;

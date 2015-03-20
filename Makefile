@@ -8,12 +8,13 @@ SRCSFILES = \
 			Game.class.cpp\
 			Scheduler.class.cpp\
 			Shape.class.cpp\
-  ./enemies/Pig.class.cpp\
-  ./enemies/Sheep.class.cpp\
-  ./enemies/Snake.class.cpp\
-  ./enemies/Centipede.class.cpp\
-  ./enemies/Lombric.class.cpp\
-  ./enemies/Fizzy.class.cpp\
+     ./mobs/Missile.class.cpp\
+     ./mobs/Pig.class.cpp\
+     ./mobs/Sheep.class.cpp\
+     ./mobs/Snake.class.cpp\
+     ./mobs/Centipede.class.cpp\
+     ./mobs/Lombric.class.cpp\
+     ./mobs/Fizzy.class.cpp\
      ./move/IMovIA.class.cpp\
      ./move/AMovPatternDefault.class.cpp\
      ./move/AMovPatternSheep.class.cpp\
@@ -25,7 +26,7 @@ SRCPATH = .
 OBJPATH = obj
 CC = g++
 # CC = clang++
-INCLUDES = -I . -I ./enemies/ -I ./move/ -I ./shoot/
+INCLUDES = -I . -I ./mobs/ -I ./move/ -I ./shoot/
 LIBS = -lncurses
 CFLAGS = -Werror -Wall -Wextra -O2 -g
 RM = rm -rf

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 15:39:29 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 07:39:35 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -122,7 +122,7 @@ int							main(void)
 {
 	Game			*g = NULL;
 	Background		*bg = NULL;
-	Scheduler		s(0, CLOCKS_PER_SEC);
+	Scheduler		s(0, CLOCKS_PER_SEC * 2);
 	struct winsize	w;
 
 	init_ncurses();

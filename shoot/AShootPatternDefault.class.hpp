@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 11:13:22 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/17 11:14:08 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 07:26:13 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -18,7 +18,7 @@
 //# include <iostream>
 //# include <stdexcept>
 
-class AShootPatternDefault
+class AShootPatternDefault : public IShootIA
 {
 public:
 	AShootPatternDefault();

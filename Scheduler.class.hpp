@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 10:41:18 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 12:18:33 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 07:33:34 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -34,7 +34,6 @@ private:
 	clock_t						_lastWave;
 	clock_t						_waveCD;
 	int							_waveCount;
-	
 };
 //std::ostream					&operator<<(std::ostream &o, Scheduler const &rhs);
 

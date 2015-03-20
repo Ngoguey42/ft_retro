@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 09:59:11 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 15:36:03 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 07:49:26 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -21,8 +21,8 @@ Shape const					Snake::_mobShape =
 	Shape(SNAKE_SHAPE, SNAKE_COLOR, DEFAULT_COLOR);
 bool const					Snake::_doesMove = true;
 bool const					Snake::_doesShoot = true;
-clock_t const				Snake::_moveCD = CLOCKS_PER_SEC / 10;
-int const					Snake::_moveChancesFactor = 1000;
+clock_t const				Snake::_moveCD = CLOCKS_PER_SEC / 8;
+int const					Snake::_moveChancesFactor = 150;
 
 // * STATICS *** STATICS **************************************************** //
 // ************************************************************************** //

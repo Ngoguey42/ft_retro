@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:03:24 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 11:03:25 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/03/20 07:25:44 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -16,14 +16,12 @@
 # include <ft_retro.hpp>
 # include <AObject.class.hpp>
 # include <Game.class.hpp>
-# include <AMovPatternDefault.class.hpp>
 # include <AMovPatternLombric.class.hpp>
-# include <AShootPatternDefault.class.hpp>
 
 # include <iostream>
 # include <ctime>
 
-class Lombric : public AObject, public AMovPatternLombric, public AShootPatternDefault
+class Lombric : public AObject, public AMovPatternLombric
 {
 public:
 	Lombric();

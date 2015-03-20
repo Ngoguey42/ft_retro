@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:09:45 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 06:49:54 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/20 07:46:52 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -37,9 +37,12 @@ public:
 	void						setFgChar(int x, int y, char c) const;
 	void						setFgColor(int x, int y, char c) const;
 	
-	void						popLombric(int count);
 	void						popSheep(int count);
 	void						popPig(int count);
+	void						popLombric(int count);
+	void						popSnake(int count);
+	void						popCentipede(int count);
+	void						popFizzy(int count);
 	
 	std::vector<AObject*>		_objsVector;
 protected:
