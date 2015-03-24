@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:33:25 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 16:18:11 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/24 06:47:29 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -73,7 +73,7 @@ void						AObject::shootCall(Game &g)
 	(void)g;
 	return ;
 }
-bool						AObject::doesCollide(AObject const &foe) const
+bool						AObject::doesCollide(AObject const &foe, int delta) const
 {
 	int				minMaxes[8];
 	Shape const		&thisShape = this->getShape();
@@ -91,10 +91,10 @@ bool						AObject::doesCollide(AObject const &foe) const
 		//phase2
 		minMaxes[0] =
 			MAX(this->getPosX() - thisShape.getLeftSize(),
-				foe.getPosX() - foeShape.getLeftSize()) - 1;
+				foe.getPosX() - foeShape.getLeftSize()) - delta;
 		minMaxes[1] =
 			MIN(this->getPosX() + thisShape.getRightSize(),
-				foe.getPosX() + foeShape.getRightSize()) + 1;
+				foe.getPosX() + foeShape.getRightSize()) + delta;
 		if (minMaxes[0] <= minMaxes[1])
 		{
 			//phase3
@@ -123,7 +123,7 @@ bool						AObject::doesCollideAny(Game &g) const
 	for (int i = 0; i < (int)g._objsVectorFriendly.size(); i++)
 	{
 		ob = g._objsVectorFriendly.at(i);
-		if (this->doesCollide(*ob))
+		if (this->doesCollide(*ob, i == 0 ? 0 : 1))
 		{
 			g._objsVectorFriendly.erase(g._objsVectorFriendly.begin() + i);
 			delete ob;

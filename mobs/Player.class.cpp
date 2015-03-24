@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/20 08:09:13 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 15:50:17 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/24 06:53:47 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -31,18 +31,11 @@ bool const					Player::_doesShoot = true;
 Player::Player(Game &g) :
 	AObject(), _game(g)
 {
+	// std::cout << "[Player](main) Ctor called" << std::endl;
 	this->setPosX(g.getMaxX() / 2);
 	this->setPosY(g.getMaxY() - 5);
-	// std::cout << "[Player](main) Ctor called" << std::endl;
 	return ;
 }
-
-// Player::Player(Player const &src) :
-	// AObject(), _game(src.getGame())
-// {
-	// (void)src;
-	// return ;
-// }
 
 // * CONSTRUCTORS *** CONSTRUCTORS ****************************************** //
 // ************************************************************************** //

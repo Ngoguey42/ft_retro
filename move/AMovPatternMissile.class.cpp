@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/20 08:03:28 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 08:27:59 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/24 06:42:46 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -74,8 +74,8 @@ int							AMovPatternMissile::tryMove(Game const &g)
 		this->_lastMoveTime += this->_moveCD;
 		this->_coveredX += this->_incX;
 		this->_coveredY += this->_incY;
-		move(g, this->getShape(), this->_srcX + (int)this->_coveredX,
-			 this->_srcY + (int)this->_coveredY);
+		move(g, this->getShape(), this->_srcX + (int)round(this->_coveredX),
+			 this->_srcY + (int)round(this->_coveredY));
 	}
 	return (0);
 }

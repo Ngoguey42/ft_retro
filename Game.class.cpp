@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 16:25:08 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/03/24 06:54:17 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -93,7 +93,7 @@ void						Game::leave_game(std::string msg)
 void						Game::keyboard_input(void)
 {
 	int				key;
-	Player	&p = dynamic_cast<Player&>(*this->_objsVectorFriendly.at(0));
+	Player	&p = static_cast<Player&>(*this->_objsVectorFriendly.at(0));
 
 	key = getch();
 	if (key == 'Q' || key == 'q')
@@ -108,15 +108,15 @@ void						Game::keyboard_input(void)
 		p.moveEvent(*this, 1, 0);
 	else if (key == ' ')
 	{
-		popMissileFriendly(&p, 3.14159 - 3.14159 / 20, CLOCKS_PER_SEC / 75);
-		popMissileFriendly(&p, 3.14159 + 3.14159 / 20, CLOCKS_PER_SEC / 75);
-		popMissileFriendly(&p, 3.14159 - 3.14159 / 40, CLOCKS_PER_SEC / 75);
-		popMissileFriendly(&p, 3.14159 + 3.14159 / 40, CLOCKS_PER_SEC / 75);
-		// popMissileFriendly(&p, 3.14159 - 3.14159 / 30, CLOCKS_PER_SEC / 75);
-		// popMissileFriendly(&p, 3.14159 + 3.14159 / 30, CLOCKS_PER_SEC / 75);
-		// popMissileFriendly(&p, 3.14159 - 3.14159 / 10, CLOCKS_PER_SEC / 75);
-		// popMissileFriendly(&p, 3.14159 + 3.14159 / 10, CLOCKS_PER_SEC / 75);
-		popMissileFriendly(&p, 3.14159, CLOCKS_PER_SEC / 75);
+		popMissileFriendly(&p, 3.14159 - 3.14159 / 20, CLOCKS_PER_SEC / 100);
+		popMissileFriendly(&p, 3.14159 + 3.14159 / 20, CLOCKS_PER_SEC / 100);
+		popMissileFriendly(&p, 3.14159 - 3.14159 / 40, CLOCKS_PER_SEC / 100);
+		popMissileFriendly(&p, 3.14159 + 3.14159 / 40, CLOCKS_PER_SEC / 100);
+		// popMissileFriendly(&p, 3.14159 - 3.14159 / 30, CLOCKS_PER_SEC / 100);
+		// popMissileFriendly(&p, 3.14159 + 3.14159 / 30, CLOCKS_PER_SEC / 100);
+		// popMissileFriendly(&p, 3.14159 - 3.14159 / 10, CLOCKS_PER_SEC / 100);
+		// popMissileFriendly(&p, 3.14159 + 3.14159 / 10, CLOCKS_PER_SEC / 100);
+		popMissileFriendly(&p, 3.14159, CLOCKS_PER_SEC / 100);
 	}
 	else if (key == 'u' || key == 'U')
 	{
