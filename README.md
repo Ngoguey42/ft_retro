@@ -21,7 +21,6 @@ class AMovPatternSheep : public IMovIA
 
 class IShootIA
 class AShootPatternDefault : public IShootIA
-class AShootPatternTriple : public IShootIA
 
 class AObject
 class Shape //one instance per objects below (static)
@@ -31,8 +30,9 @@ class Fizzy : public AObject, public AMovPatternFizzy
 class Lombric : public AObject, public AMovPatternLombric
 class Centipede : public AObject, public AMovPatternSheep, public AShootPatternDefault
 class Pig : public AObject, public AMovPatternSheep, public AShootPatternDefault
-class Snake : public AObject, public AMovPatternSheep, public AShootPatternTriple
+class Snake : public AObject, public AMovPatternSheep, public AShootPatternDefault
 class Missile : public AObject, public AMovPatternMissile
 ```
 
+![ft_retro](./ft_retro.png)
 <br><br><br><br><br><br><br><br>
