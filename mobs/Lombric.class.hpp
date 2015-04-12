@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:03:24 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 07:25:44 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 18:11:35 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -25,7 +25,6 @@ class Lombric : public AObject, public AMovPatternLombric
 {
 public:
 	Lombric();
-	Lombric(Lombric const &src);
 	virtual ~Lombric();
 
 	std::string const			&getName() const;
@@ -45,7 +44,8 @@ public:
 protected:
 private:
 	Lombric						&operator=(Lombric const &rhs);
-
+	Lombric(Lombric const &src);
+	
 	static std::string const	_mobName;
 	static Shape const		  _mobShape;
 	static bool const		   _doesMove;

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:58:27 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 11:08:51 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 18:11:52 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -28,7 +28,6 @@ class Pig : public AObject, public AMovPatternDefault, public AShootPatternDefau
 {
 public:
 	Pig();
-	Pig(Pig const &src);
 	virtual ~Pig();
 
 	std::string const			&getName() const;
@@ -50,7 +49,8 @@ public:
 protected:
 private:
 	Pig							&operator=(Pig const &rhs);
-
+	Pig(Pig const &src);
+	
 	static std::string const	_mobName;
 	static Shape const			_mobShape;
 	static bool const			_doesMove;

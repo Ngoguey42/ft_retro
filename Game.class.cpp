@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 16:56:55 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 18:16:40 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -25,8 +25,8 @@
 #include <Player.class.hpp>
 #include <Missile.class.hpp>
 
-#define SIZE_MIN_X 10
-#define SIZE_MIN_Y 10
+#define SIZE_MIN_X 20
+#define SIZE_MIN_Y 20
 
 // ************************************************************************** //
 // **************************************************** STATICS *** STATICS * //

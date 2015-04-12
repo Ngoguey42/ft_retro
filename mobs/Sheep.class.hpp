@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 09:07:43 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/19 10:59:22 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/04/12 18:12:44 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -27,7 +27,6 @@ class Sheep : public AObject, public AMovPatternSheep
 {
 public:
 	Sheep();
-	Sheep(Sheep const &src);
 	virtual ~Sheep();
 
 	std::string const			&getName() const;
@@ -47,7 +46,8 @@ public:
 protected:
 private:
 	Sheep						&operator=(Sheep const &rhs);
-
+	Sheep(Sheep const &src);
+	
 	static std::string const	_mobName;
 	static Shape const		  _mobShape;
 	static bool const		   _doesMove;

@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:03:37 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/19 11:03:38 by wide-aze         ###   ########.fr       //
+//   Updated: 2015/04/12 18:11:27 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -26,7 +26,6 @@ class Fizzy : public AObject, public AMovPatternSheep
 {
 public:
 	Fizzy();
-	Fizzy(Fizzy const &src);
 	virtual ~Fizzy();
 
 	std::string const			&getName() const;
@@ -46,7 +45,8 @@ public:
 protected:
 private:
 	Fizzy						&operator=(Fizzy const &rhs);
-
+	Fizzy(Fizzy const &src);
+	
 	static std::string const	_mobName;
 	static Shape const		  _mobShape;
 	static bool const		   _doesMove;

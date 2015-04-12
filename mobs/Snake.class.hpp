@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 09:59:15 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 11:08:35 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 18:12:54 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -27,7 +27,6 @@ class Snake : public AObject, public AMovPatternSheep, public AShootPatternDefau
 {
 public:
 	Snake();
-	Snake(Snake const &src);
 	virtual ~Snake();
 
 	std::string const			&getName() const;
@@ -49,7 +48,8 @@ public:
 protected:
 private:
 	Snake						&operator=(Snake const &rhs);
-
+	Snake(Snake const &src);
+	
 	static std::string const	_mobName;
 	static Shape const		  _mobShape;
 	static bool const		   _doesMove;

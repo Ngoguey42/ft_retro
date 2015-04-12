@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:03:37 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 12:09:44 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 18:11:43 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -25,7 +25,6 @@ class Missile : public AObject, public AMovPatternMissile
 {
 public:
 	Missile(float angle, int srcX, int srcY, int movCD);
-	Missile(Missile const &src);
 	virtual ~Missile();
 
 	std::string const			&getName() const;
@@ -51,7 +50,8 @@ protected:
 private:
 	Missile						&operator=(Missile const &rhs);
 	Missile();
-
+	Missile(Missile const &src);
+	
 	float						_angle;
 	int							_srcX;
 	int							_srcY;

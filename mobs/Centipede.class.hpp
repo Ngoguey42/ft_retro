@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/19 11:02:15 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/20 11:07:33 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 18:10:40 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -27,7 +27,6 @@ class Centipede : public AObject, public AMovPatternSheep, public AShootPatternD
 {
 public:
 	Centipede();
-	Centipede(Centipede const &src);
 	virtual ~Centipede();
 
 	std::string const			&getName() const;
@@ -47,6 +46,7 @@ public:
 	void						shootCall(Game &g);
 protected:
 private:
+	Centipede(Centipede const &src);
 	Centipede						&operator=(Centipede const &rhs);
 
 	static std::string const	_mobName;
