@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:09:45 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/20 15:53:37 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 11:58:05 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -51,8 +51,12 @@ public:
 	void						popMissileFriendly(AObject const *shooter, float angle,
 										   clock_t movCD);
 
+	//vector
 	std::vector<AObject*>		_objsVector;
+	AObject						*_objsList[1];
+	//vector
 	std::vector<AObject*>		_objsVectorFriendly;
+	AObject						*_objsListFriendly[1];
 protected:
 private:
 	Game();

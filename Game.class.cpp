@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/24 06:54:17 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 12:03:50 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -93,6 +93,7 @@ void						Game::leave_game(std::string msg)
 void						Game::keyboard_input(void)
 {
 	int				key;
+	//vector parcours
 	Player	&p = static_cast<Player&>(*this->_objsVectorFriendly.at(0));
 
 	key = getch();
@@ -112,18 +113,18 @@ void						Game::keyboard_input(void)
 		popMissileFriendly(&p, 3.14159 + 3.14159 / 20, CLOCKS_PER_SEC / 100);
 		popMissileFriendly(&p, 3.14159 - 3.14159 / 40, CLOCKS_PER_SEC / 100);
 		popMissileFriendly(&p, 3.14159 + 3.14159 / 40, CLOCKS_PER_SEC / 100);
-		// popMissileFriendly(&p, 3.14159 - 3.14159 / 30, CLOCKS_PER_SEC / 100);
-		// popMissileFriendly(&p, 3.14159 + 3.14159 / 30, CLOCKS_PER_SEC / 100);
-		// popMissileFriendly(&p, 3.14159 - 3.14159 / 10, CLOCKS_PER_SEC / 100);
-		// popMissileFriendly(&p, 3.14159 + 3.14159 / 10, CLOCKS_PER_SEC / 100);
 		popMissileFriendly(&p, 3.14159, CLOCKS_PER_SEC / 100);
 	}
 	else if (key == 'u' || key == 'U')
 	{
+	//vector parcours
+		
 		for (int i = 0; i < (int)this->_objsVector.size();)
 		{
+	//vector parcours
 			AObject	*ob = this->_objsVector.at(i);
 
+	//vector delete
 			this->_objsVector.erase(this->_objsVector.begin() + i);
 			delete ob;
 		}
@@ -156,10 +157,13 @@ void						Game::putImage(void) const
 
 void						Game::putObjects(void) const
 {
+	//vector parcours
 	std::vector<AObject*>::const_iterator		it;
 
+	//vector parcours
 	for (it = this->_objsVector.begin() ; it < this->_objsVector.end() ; it++)
 		(void)(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
+	//vector parcours
 	for (it = this->_objsVectorFriendly.begin() ; it < this->_objsVectorFriendly.end() ; it++)
 		(void)(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
 	return ;
@@ -180,6 +184,7 @@ void						Game::popSheep(int count)
 	{
 		o = new Sheep(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
+	//vector insertback
 		this->_objsVector.push_back(o);
 	}
 	return ;
@@ -195,6 +200,7 @@ void						Game::popPig(int count)
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
 		o->setPosY(std::rand() % (this->_maxY / 3) +
 				   o->getShape().getTopSize());
+	//vector insertback
 		this->_objsVector.push_back(o);
 	}
 	return ;
@@ -210,6 +216,7 @@ void						Game::popLombric(int count)
 		Shape const	&s = o->getShape();
 		o->setPosX(randomizeXStart(s, this->_maxX / 7 * 5) + this->_maxX / 7);
 		o->setPosY(s.getTopSize() - 1);
+	//vector insertback
 		this->_objsVector.push_back(o);
 	}
 	return ;
@@ -223,6 +230,7 @@ void						Game::popMissile(AObject const *shooter, float angle,
 	o = new Missile(angle, shooter->getPosX(), shooter->getPosY() + 1, movCD);
 	o->setPosX(shooter->getPosX());
 	o->setPosY(shooter->getPosY() + 1);
+	//vector insertback
 	this->_objsVector.push_back(o);
 	return ;
 }
@@ -235,6 +243,7 @@ void						Game::popMissileFriendly(AObject const *shooter, float angle,
 	o = new Missile(angle, shooter->getPosX(), shooter->getPosY() - 1, movCD);
 	o->setPosX(shooter->getPosX());
 	o->setPosY(shooter->getPosY() - 1);
+	//vector insertback
 	this->_objsVectorFriendly.push_back(o);
 	return ;
 }
@@ -250,6 +259,7 @@ void						Game::popSnake(int count)
 		o->setPosX(randomizeXStart(s, this->_maxX * 4 / 5) +
 				   this->_maxX / 10);
 		o->setPosY(s.getTopSize());
+	//vector insertback
 		this->_objsVector.push_back(o);
 	}
 	return ;
@@ -263,6 +273,7 @@ void						Game::popCentipede(int count)
 	{
 		o = new Centipede(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
+	//vector insertback
 		this->_objsVector.push_back(o);
 	}
 	return ;
@@ -276,6 +287,7 @@ void						Game::popFizzy(int count)
 	{
 		o = new Fizzy(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
+	//vector insertback
 		this->_objsVector.push_back(o);
 	}
 	return ;

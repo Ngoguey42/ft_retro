@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:33:25 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/24 06:47:29 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 12:01:48 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -21,7 +21,7 @@
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 AObject::AObject() :
-	_posX(0), _posY(0), _deleteObject(false)
+	next(NULL), _posX(0), _posY(0), _deleteObject(false)
 {
 //	std::cout << "[AObject](main) Ctor called" << std::endl;
 	return ;
@@ -120,11 +120,14 @@ bool						AObject::doesCollideAny(Game &g) const
 {
 	AObject *ob;
 
+	//vector parcours
 	for (int i = 0; i < (int)g._objsVectorFriendly.size(); i++)
 	{
+	//vector parcours
 		ob = g._objsVectorFriendly.at(i);
 		if (this->doesCollide(*ob, i == 0 ? 0 : 1))
 		{
+	//vector delete
 			g._objsVectorFriendly.erase(g._objsVectorFriendly.begin() + i);
 			delete ob;
 			return (true);

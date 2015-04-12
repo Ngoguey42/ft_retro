@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:11:33 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/24 06:47:50 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 11:56:27 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -46,6 +46,8 @@ public:
 											int delta) const;
 	bool						doesCollideAny(Game &g) const;
 
+	AObject						*next;
+	
 protected:
 	int							_posX;
 	int							_posY;
