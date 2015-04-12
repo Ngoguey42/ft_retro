@@ -6,7 +6,7 @@
 //   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/20 08:09:13 by wide-aze          #+#    #+#             //
-//   Updated: 2015/03/24 06:53:47 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 18:06:03 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -20,7 +20,7 @@
 // **************************************************** STATICS *** STATICS * //
 std::string const			Player::_mobName = "Player";
 Shape const					Player::_mobShape =
-	Shape(PLAYER_SHAPE, PLAYER_COLOR, DEFAULT_COLOR);
+	Shape(PLAYER_SHAPE1, PLAYER_COLOR, DEFAULT_COLOR);
 bool const					Player::_doesMove = true;
 bool const					Player::_doesShoot = true;
 

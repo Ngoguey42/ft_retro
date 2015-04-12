@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:09:45 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 15:24:38 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 16:56:28 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -17,8 +17,6 @@
 # include <AObject.class.hpp>
 
 # include <iostream>
-# include <vector>
-//# include <stdexcept>
 
 # define OBJS_TAB_DELTA 256 //256
 
@@ -53,8 +51,6 @@ public:
 	void						popMissileFriendly(AObject const *shooter, float angle,
 										   clock_t movCD);
 
-	//vector
-	// std::vector<AObject*>		_objsVector;
 	AObject						**objsTab;
 	void						objAdd(AObject *ob);
 	void						objRemove(size_t index);
@@ -62,8 +58,6 @@ public:
 
 
 	
-	//vector
-	// std::vector<AObject*>		_objsVectorFriendly;
 	AObject						**objsFriendlyTab;
 	void						objFriendlyAdd(AObject *ob);
 	void						objFriendlyRemove(size_t index);

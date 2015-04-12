@@ -30,7 +30,7 @@ OBJPATH = obj
 CC = clang++
 INCLUDES = -I . -I ./mobs/ -I ./move/ -I ./shoot/
 LIBS = -lncurses
-CFLAGS = -Werror -Wall -Wextra -O2 -g
+CFLAGS = -Werror -Wall -Wextra -O2
 RM = rm -rf
 
 SRC = $(addprefix $(SRCPATH)/,$(SRCSFILES))

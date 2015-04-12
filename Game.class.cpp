@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 16:31:51 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 16:56:55 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -158,8 +158,6 @@ void						Game::putImage(void) const
 
 void						Game::putObjects(void) const
 {
-	std::vector<AObject*>::const_iterator		it;
-
 	for (int i = 0; i < (int)this->_objsTabNextIndex;i++)
 		(void)this->objsTab[i]->getShape().
 			putShape(*this, this->objsTab[i]->getPosX(), this->objsTab[i]->getPosY());
