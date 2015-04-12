@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 16:18:24 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 16:31:51 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -42,9 +42,9 @@ Game::Game(int maxX, int maxY) :
 //	std::cout << "[Game]() Ctor called" << std::endl;
 	if (maxX < SIZE_MIN_X || maxY < SIZE_MIN_Y)
 		this->leave_game("Window too small");
-	this->_dstFgChars = new std::string[maxY];//try catch
-	this->_dstFgColors = new char[maxY * maxX];//try catch
-	this->_dstBgColors = new char[maxY * maxX];//try catch
+	this->_dstFgChars = new std::string[maxY];
+	this->_dstFgColors = new char[maxY * maxX];
+	this->_dstBgColors = new char[maxY * maxX];
 	return ;
 }
 
@@ -97,10 +97,8 @@ void						Game::leave_game(std::string msg)
 
 void						Game::keyboard_input(void)
 {
-	int				key;
-	//vector parcours
-	Player	&p = static_cast<Player&>(*this->objsFriendlyTab[0]);
-	// Player	&p = static_cast<Player&>(*this->_objsVectorFriendly.at(0));
+	int			key;
+	Player		&p = static_cast<Player&>(*this->objsFriendlyTab[0]);
 
 	key = getch();
 	if (key == 'Q' || key == 'q')
@@ -124,18 +122,11 @@ void						Game::keyboard_input(void)
 	}
 	else if (key == 'u' || key == 'U')
 	{
-		//vector parcours
-		
 		for (int i = 0; i < (int)this->_objsTabNextIndex;)
-		// for (int i = 0; i < (int)this->_objsVector.size();)
 		{
-			//vector parcours
 			AObject	*ob = this->objsTab[i];
-			// AObject	*ob = this->_objsVector.at(i);
 
-			//vector delete
 			this->objRemove(i);
-			// this->_objsVector.erase(this->_objsVector.begin() + i);
 			delete ob;
 		}
 	}
@@ -167,21 +158,14 @@ void						Game::putImage(void) const
 
 void						Game::putObjects(void) const
 {
-	//vector parcours
 	std::vector<AObject*>::const_iterator		it;
 
-	//vector parcours
 	for (int i = 0; i < (int)this->_objsTabNextIndex;i++)
 		(void)this->objsTab[i]->getShape().
 			putShape(*this, this->objsTab[i]->getPosX(), this->objsTab[i]->getPosY());
-	// for (it = this->_objsVector.begin() ; it < this->_objsVector.end() ; it++)
-		// (void)(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
-	//vector parcours
 	for (int i = 0; i < (int)this->_objsFriendlyTabNextIndex;i++)
 		(void)this->objsFriendlyTab[i]->getShape().
 			putShape(*this, this->objsFriendlyTab[i]->getPosX(), this->objsFriendlyTab[i]->getPosY());
-	// for (it = this->_objsVectorFriendly.begin() ; it < this->_objsVectorFriendly.end() ; it++)
-		// (void)(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
 	return ;
 }
 
@@ -198,11 +182,9 @@ void						Game::popSheep(int count)
 
 	for (; count > 0; count--)
 	{
-		o = new Sheep(); // try catch
+		o = new Sheep();
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
-		//vector insertback
 		this->objAdd(o);
-		// this->_objsVector.push_back(o);
 	}
 	return ;
 }
@@ -213,13 +195,11 @@ void						Game::popPig(int count)
 
 	for (; count > 0; count--)
 	{
-		o = new Pig(); // try catch
+		o = new Pig();
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
 		o->setPosY(std::rand() % (this->_maxY / 3) +
 				   o->getShape().getTopSize());
-		//vector insertback
 		this->objAdd(o);
-		// this->_objsVector.push_back(o);
 	}
 	return ;
 }
@@ -230,13 +210,11 @@ void						Game::popLombric(int count)
 	
 	for (; count > 0; count--)
 	{
-		o = new Lombric(); // try catch
+		o = new Lombric();
 		Shape const	&s = o->getShape();
 		o->setPosX(randomizeXStart(s, this->_maxX / 7 * 5) + this->_maxX / 7);
 		o->setPosY(s.getTopSize() - 1);
-		//vector insertback
 		this->objAdd(o);
-		// this->_objsVector.push_back(o);
 	}
 	return ;
 }
@@ -249,9 +227,7 @@ void						Game::popMissile(AObject const *shooter, float angle,
 	o = new Missile(angle, shooter->getPosX(), shooter->getPosY() + 1, movCD);
 	o->setPosX(shooter->getPosX());
 	o->setPosY(shooter->getPosY() + 1);
-	//vector insertback
 	this->objAdd(o);
-	// this->_objsVector.push_back(o);
 	return ;
 }
 
@@ -264,9 +240,7 @@ void						Game::popMissileFriendly(AObject const *shooter, float angle,
 	o = new Missile(angle, shooter->getPosX(), shooter->getPosY() - 1, movCD);
 	o->setPosX(shooter->getPosX());
 	o->setPosY(shooter->getPosY() - 1);
-	//vector insertback
 	this->objFriendlyAdd(o);
-	// this->_objsVectorFriendly.push_back(o);
 	return ;
 }
 
@@ -276,14 +250,12 @@ void						Game::popSnake(int count)
 
 	for (; count > 0; count--)
 	{
-		o = new Snake(); // try catch
+		o = new Snake();
 		Shape const	&s = o->getShape();
 		o->setPosX(randomizeXStart(s, this->_maxX * 4 / 5) +
 				   this->_maxX / 10);
 		o->setPosY(s.getTopSize());
-		//vector insertback
 		this->objAdd(o);
-		// this->_objsVector.push_back(o);
 	}
 	return ;
 }
@@ -294,11 +266,9 @@ void						Game::popCentipede(int count)
 
 	for (; count > 0; count--)
 	{
-		o = new Centipede(); // try catch
+		o = new Centipede();
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
-		//vector insertback
 	this->objAdd(o);
-		// this->_objsVector.push_back(o);
 	}
 	return ;
 }
@@ -309,11 +279,9 @@ void						Game::popFizzy(int count)
 
 	for (; count > 0; count--)
 	{
-		o = new Fizzy(); // try catch
+		o = new Fizzy();
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
-		//vector insertback
 	this->objAdd(o);
-		// this->_objsVector.push_back(o);
 	}
 	return ;
 }
@@ -367,5 +335,6 @@ void                        Game::objFriendlyRemove(size_t index)
 	if (index == this->_objsFriendlyTabNextIndex)
 		this->objsFriendlyTab[index] = NULL;
 	else
-		this->objsFriendlyTab[index] = this->objsFriendlyTab[this->_objsFriendlyTabNextIndex];
+		this->objsFriendlyTab[index] =
+			this->objsFriendlyTab[this->_objsFriendlyTabNextIndex];
 }
