@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/20 08:03:28 by ngoguey           #+#    #+#             //
-//   Updated: 2015/03/24 06:42:46 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 16:19:04 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -56,7 +56,7 @@ AMovPatternMissile::~AMovPatternMissile()
 // * SETTERS *** SETTERS **************************************************** //
 // ************************************************************************** //
 void						AMovPatternMissile::move(Game const &g,
-												   Shape const &s, int x, int y)
+													 Shape const &s, int x, int y)
 {
 	this->setPosX(x);
 	this->setPosY(y);
@@ -71,9 +71,12 @@ int							AMovPatternMissile::tryMove(Game const &g)
 {
 	while (std::clock() >= this->_lastMoveTime + this->_moveCD)
 	{
+		float	dx = this->_incX * (1. + ((float)(std::rand() % 25)) / 100.);
+		float	dy = this->_incY * (1. + ((float)(std::rand() % 25)) / 100.);
+
 		this->_lastMoveTime += this->_moveCD;
-		this->_coveredX += this->_incX;
-		this->_coveredY += this->_incY;
+		this->_coveredX += dx;
+		this->_coveredY += dy;
 		move(g, this->getShape(), this->_srcX + (int)round(this->_coveredX),
 			 this->_srcY + (int)round(this->_coveredY));
 	}

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 15:37:26 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 15:58:51 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -40,14 +40,14 @@ missile			YELLOW  3
 ennemies		GREEN   4
 ennemies		CYAN    5
 ennemies		MAGENTA 6
+*/
 
-
- */
 static void					init_ncurses(void)
 {
 	initscr();
 	start_color();
 	noecho();
+	curs_set(0);
 	keypad(stdscr, TRUE);
 	nodelay(stdscr, TRUE);
 	init_color(100, 0, 0, 0);
@@ -63,8 +63,7 @@ static void					init_ncurses(void)
 	init_pair(0b10000 + 5, COLOR_CYAN, 100);
 	init_pair(0b00000 + 5, COLOR_CYAN, 101);
 	init_pair(0b10000 + 6, COLOR_MAGENTA, 100);
-	init_pair(0b00000 + 6, COLOR_MAGENTA, 101);
-	
+	init_pair(0b00000 + 6, COLOR_MAGENTA, 101);	
 	return ;
 }
 

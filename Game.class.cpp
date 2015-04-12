@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 15:23:42 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 16:18:24 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -115,6 +115,7 @@ void						Game::keyboard_input(void)
 		p.moveEvent(*this, 1, 0);
 	else if (key == ' ')
 	{
+		
 		popMissileFriendly(&p, 3.14159 - 3.14159 / 20, CLOCKS_PER_SEC / 100);
 		popMissileFriendly(&p, 3.14159 + 3.14159 / 20, CLOCKS_PER_SEC / 100);
 		popMissileFriendly(&p, 3.14159 - 3.14159 / 40, CLOCKS_PER_SEC / 100);
@@ -259,6 +260,7 @@ void						Game::popMissileFriendly(AObject const *shooter, float angle,
 {
 	AObject		*o;
 
+	angle += 0.025 - ((float)(std::rand() % 5) / 100.);
 	o = new Missile(angle, shooter->getPosX(), shooter->getPosY() - 1, movCD);
 	o->setPosX(shooter->getPosX());
 	o->setPosY(shooter->getPosY() - 1);

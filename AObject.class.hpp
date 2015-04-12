@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:11:33 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 11:56:27 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 15:59:23 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -43,7 +43,7 @@ public:
 	virtual void				setPosY(int y);
 
 	bool						doesCollide(AObject const &foe,
-											int delta) const;
+											int deltaX, int deltaY) const;
 	bool						doesCollideAny(Game &g) const;
 
 	AObject						*next;
