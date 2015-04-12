@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:09:45 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 11:58:05 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 15:24:38 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -19,6 +19,8 @@
 # include <iostream>
 # include <vector>
 //# include <stdexcept>
+
+# define OBJS_TAB_DELTA 256 //256
 
 class Game
 {
@@ -52,16 +54,32 @@ public:
 										   clock_t movCD);
 
 	//vector
-	std::vector<AObject*>		_objsVector;
-	AObject						*_objsList[1];
+	// std::vector<AObject*>		_objsVector;
+	AObject						**objsTab;
+	void						objAdd(AObject *ob);
+	void						objRemove(size_t index);
+	size_t						getObjsTabNextIndex(void) const;
+
+
+	
 	//vector
-	std::vector<AObject*>		_objsVectorFriendly;
-	AObject						*_objsListFriendly[1];
+	// std::vector<AObject*>		_objsVectorFriendly;
+	AObject						**objsFriendlyTab;
+	void						objFriendlyAdd(AObject *ob);
+	void						objFriendlyRemove(size_t index);
+	size_t						getObjsFriendlyTabNextIndex(void) const;
+
+
+
 protected:
 private:
 	Game();
 	Game(Game const &src);
 	Game						&operator=(Game const &rhs);
+	size_t						_objsTabCurChunk;
+	size_t						_objsTabNextIndex;
+	size_t						_objsFriendlyTabCurChunk;
+	size_t						_objsFriendlyTabNextIndex;
 	int const					_maxX;
 	int const					_maxY;
 	std::string					*_dstFgChars;

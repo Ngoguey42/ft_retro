@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:10:10 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 12:03:50 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 15:23:42 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -34,6 +34,9 @@
 // ************************************************************************** //
 // ****************************************** CONSTRUCTORS *** CONSTRUCTORS * //
 Game::Game(int maxX, int maxY) :
+	objsTab(NULL), objsFriendlyTab(NULL),
+	_objsTabCurChunk(0), _objsTabNextIndex(0),
+	_objsFriendlyTabCurChunk(0), _objsFriendlyTabNextIndex(0),
 	_maxX(maxX), _maxY(maxY)
 {
 //	std::cout << "[Game]() Ctor called" << std::endl;
@@ -71,9 +74,11 @@ char						*Game::getDstFgColors(void) const
 {return this->_dstFgColors;}
 char						*Game::getDstBgColors(void) const
 {return this->_dstBgColors;}
+size_t						Game::getObjsTabNextIndex(void) const
+{return this->_objsTabNextIndex;}
+size_t						Game::getObjsFriendlyTabNextIndex(void) const
+{return this->_objsFriendlyTabNextIndex;}
 
-// * GETTERS *** GETTERS **************************************************** //
-// ************************************************************************** //
 // **************************************************** SETTERS *** SETTERS * //
 void						Game::setFgChar(int x, int y, char c) const
 {this->_dstFgChars[y][x] = c;}
@@ -94,7 +99,8 @@ void						Game::keyboard_input(void)
 {
 	int				key;
 	//vector parcours
-	Player	&p = static_cast<Player&>(*this->_objsVectorFriendly.at(0));
+	Player	&p = static_cast<Player&>(*this->objsFriendlyTab[0]);
+	// Player	&p = static_cast<Player&>(*this->_objsVectorFriendly.at(0));
 
 	key = getch();
 	if (key == 'Q' || key == 'q')
@@ -117,15 +123,18 @@ void						Game::keyboard_input(void)
 	}
 	else if (key == 'u' || key == 'U')
 	{
-	//vector parcours
+		//vector parcours
 		
-		for (int i = 0; i < (int)this->_objsVector.size();)
+		for (int i = 0; i < (int)this->_objsTabNextIndex;)
+		// for (int i = 0; i < (int)this->_objsVector.size();)
 		{
-	//vector parcours
-			AObject	*ob = this->_objsVector.at(i);
+			//vector parcours
+			AObject	*ob = this->objsTab[i];
+			// AObject	*ob = this->_objsVector.at(i);
 
-	//vector delete
-			this->_objsVector.erase(this->_objsVector.begin() + i);
+			//vector delete
+			this->objRemove(i);
+			// this->_objsVector.erase(this->_objsVector.begin() + i);
 			delete ob;
 		}
 	}
@@ -161,11 +170,17 @@ void						Game::putObjects(void) const
 	std::vector<AObject*>::const_iterator		it;
 
 	//vector parcours
-	for (it = this->_objsVector.begin() ; it < this->_objsVector.end() ; it++)
-		(void)(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
+	for (int i = 0; i < (int)this->_objsTabNextIndex;i++)
+		(void)this->objsTab[i]->getShape().
+			putShape(*this, this->objsTab[i]->getPosX(), this->objsTab[i]->getPosY());
+	// for (it = this->_objsVector.begin() ; it < this->_objsVector.end() ; it++)
+		// (void)(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
 	//vector parcours
-	for (it = this->_objsVectorFriendly.begin() ; it < this->_objsVectorFriendly.end() ; it++)
-		(void)(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
+	for (int i = 0; i < (int)this->_objsFriendlyTabNextIndex;i++)
+		(void)this->objsFriendlyTab[i]->getShape().
+			putShape(*this, this->objsFriendlyTab[i]->getPosX(), this->objsFriendlyTab[i]->getPosY());
+	// for (it = this->_objsVectorFriendly.begin() ; it < this->_objsVectorFriendly.end() ; it++)
+		// (void)(*it)->getShape().putShape(*this, (*it)->getPosX(), (*it)->getPosY());
 	return ;
 }
 
@@ -184,8 +199,9 @@ void						Game::popSheep(int count)
 	{
 		o = new Sheep(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
-	//vector insertback
-		this->_objsVector.push_back(o);
+		//vector insertback
+		this->objAdd(o);
+		// this->_objsVector.push_back(o);
 	}
 	return ;
 }
@@ -200,8 +216,9 @@ void						Game::popPig(int count)
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
 		o->setPosY(std::rand() % (this->_maxY / 3) +
 				   o->getShape().getTopSize());
-	//vector insertback
-		this->_objsVector.push_back(o);
+		//vector insertback
+		this->objAdd(o);
+		// this->_objsVector.push_back(o);
 	}
 	return ;
 }
@@ -216,14 +233,15 @@ void						Game::popLombric(int count)
 		Shape const	&s = o->getShape();
 		o->setPosX(randomizeXStart(s, this->_maxX / 7 * 5) + this->_maxX / 7);
 		o->setPosY(s.getTopSize() - 1);
-	//vector insertback
-		this->_objsVector.push_back(o);
+		//vector insertback
+		this->objAdd(o);
+		// this->_objsVector.push_back(o);
 	}
 	return ;
 }
 
 void						Game::popMissile(AObject const *shooter, float angle,
-	clock_t movCD)
+											 clock_t movCD)
 {
 	AObject		*o;
 
@@ -231,12 +249,13 @@ void						Game::popMissile(AObject const *shooter, float angle,
 	o->setPosX(shooter->getPosX());
 	o->setPosY(shooter->getPosY() + 1);
 	//vector insertback
-	this->_objsVector.push_back(o);
+	this->objAdd(o);
+	// this->_objsVector.push_back(o);
 	return ;
 }
 
 void						Game::popMissileFriendly(AObject const *shooter, float angle,
-	clock_t movCD)
+													 clock_t movCD)
 {
 	AObject		*o;
 
@@ -244,7 +263,8 @@ void						Game::popMissileFriendly(AObject const *shooter, float angle,
 	o->setPosX(shooter->getPosX());
 	o->setPosY(shooter->getPosY() - 1);
 	//vector insertback
-	this->_objsVectorFriendly.push_back(o);
+	this->objFriendlyAdd(o);
+	// this->_objsVectorFriendly.push_back(o);
 	return ;
 }
 
@@ -259,8 +279,9 @@ void						Game::popSnake(int count)
 		o->setPosX(randomizeXStart(s, this->_maxX * 4 / 5) +
 				   this->_maxX / 10);
 		o->setPosY(s.getTopSize());
-	//vector insertback
-		this->_objsVector.push_back(o);
+		//vector insertback
+		this->objAdd(o);
+		// this->_objsVector.push_back(o);
 	}
 	return ;
 }
@@ -273,8 +294,9 @@ void						Game::popCentipede(int count)
 	{
 		o = new Centipede(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
-	//vector insertback
-		this->_objsVector.push_back(o);
+		//vector insertback
+	this->objAdd(o);
+		// this->_objsVector.push_back(o);
 	}
 	return ;
 }
@@ -287,8 +309,61 @@ void						Game::popFizzy(int count)
 	{
 		o = new Fizzy(); // try catch
 		o->setPosX(randomizeXStart(o->getShape(), this->_maxX));
-	//vector insertback
-		this->_objsVector.push_back(o);
+		//vector insertback
+	this->objAdd(o);
+		// this->_objsVector.push_back(o);
 	}
 	return ;
+}
+
+void                        Game::objAdd(AObject *ob)
+{
+	if (this->_objsTabNextIndex >= this->_objsTabCurChunk)
+	{
+		AObject	**tmp = new AObject*[this->_objsTabCurChunk + OBJS_TAB_DELTA];
+
+		for (size_t i = 0; i < this->_objsTabNextIndex;i++)
+			tmp[i] = this->objsTab[i];
+		if (this->_objsTabCurChunk > 0)
+			delete [] this->objsTab;
+		this->objsTab = tmp;
+		this->_objsTabCurChunk += OBJS_TAB_DELTA;
+	}
+	this->objsTab[this->_objsTabNextIndex++] = ob;
+	return ;
+}
+
+void                        Game::objRemove(size_t index)
+{
+	this->_objsTabNextIndex--;
+	if (index == this->_objsTabNextIndex)
+		this->objsTab[index] = NULL;
+	else
+		this->objsTab[index] = this->objsTab[this->_objsTabNextIndex];
+}
+
+void                        Game::objFriendlyAdd(AObject *ob)
+{
+	if (this->_objsFriendlyTabNextIndex >= this->_objsFriendlyTabCurChunk)
+	{
+		AObject	**tmp = new AObject*[this->_objsFriendlyTabCurChunk + OBJS_TAB_DELTA];
+
+		for (size_t i = 0; i < this->_objsFriendlyTabNextIndex;i++)
+			tmp[i] = this->objsFriendlyTab[i];
+		if (this->_objsFriendlyTabCurChunk > 0)
+			delete [] this->objsFriendlyTab;
+		this->objsFriendlyTab = tmp;
+		this->_objsFriendlyTabCurChunk += OBJS_TAB_DELTA;
+	}
+	this->objsFriendlyTab[this->_objsFriendlyTabNextIndex++] = ob;
+	return ;
+}
+
+void                        Game::objFriendlyRemove(size_t index)
+{
+	this->_objsFriendlyTabNextIndex--;
+	if (index == this->_objsFriendlyTabNextIndex)
+		this->objsFriendlyTab[index] = NULL;
+	else
+		this->objsFriendlyTab[index] = this->objsFriendlyTab[this->_objsFriendlyTabNextIndex];
 }

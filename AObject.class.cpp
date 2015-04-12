@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:33:25 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 12:01:48 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 15:21:19 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -121,14 +121,17 @@ bool						AObject::doesCollideAny(Game &g) const
 	AObject *ob;
 
 	//vector parcours
-	for (int i = 0; i < (int)g._objsVectorFriendly.size(); i++)
+	for (size_t i = 0; i < g.getObjsFriendlyTabNextIndex(); i++)
+	// for (int i = 0; i < (int)g._objsVectorFriendly.size(); i++)
 	{
 	//vector parcours
-		ob = g._objsVectorFriendly.at(i);
+		ob = g.objsFriendlyTab[i];
+		// ob = g._objsVectorFriendly.at(i);
 		if (this->doesCollide(*ob, i == 0 ? 0 : 1))
 		{
 	//vector delete
-			g._objsVectorFriendly.erase(g._objsVectorFriendly.begin() + i);
+			g.objFriendlyRemove(i);
+			// g._objsVectorFriendly.erase(g._objsVectorFriendly.begin() + i);
 			delete ob;
 			return (true);
 		}

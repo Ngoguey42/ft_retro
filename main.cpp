@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 12:03:21 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 15:20:36 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -82,14 +82,17 @@ static void					game_events(Game &g, Scheduler &s)
 	AObject	*ob;
 
 	//vector parcours
-	for (int i = 0; i < (int)g._objsVector.size();)
+	for (size_t i = 0; i < g.getObjsTabNextIndex();)
+	// for (int i = 0; i < (int)g._objsVector.size();)
 	{
 	//vector parcours
-		ob = g._objsVector.at(i);
+		ob = g.objsTab[i];
+		// ob = g._objsVector.at(i);
 		if (ob->doesCollideAny(g) || ob->getDeleteObject())
 		{
-	//vector delete		
-			g._objsVector.erase(g._objsVector.begin() + i);
+	//vector delete
+			g.objRemove(i);
+			// g._objsVector.erase(g._objsVector.begin() + i);
 			delete ob;
 		}
 		else
@@ -100,15 +103,18 @@ static void					game_events(Game &g, Scheduler &s)
 		}
 	}
 	//vector parcours
-	for (int i = 1; i < (int)g._objsVectorFriendly.size();i++)
+	for (size_t i = 1; i < g.getObjsFriendlyTabNextIndex();)
+	// for (int i = 1; i < (int)g._objsVectorFriendly.size();i++)
 	{
 	//vector parcours
-		AObject		*ob = g._objsVectorFriendly.at(i);
+		ob = g.objsFriendlyTab[i];
+		// AObject		*ob = g._objsVectorFriendly.at(i);
 
 		if (ob->getPosY() < 0)
 		{
 	//vector delete
-			g._objsVectorFriendly.erase(g._objsVectorFriendly.begin() + i);
+			g.objFriendlyRemove(i);
+			// g._objsVectorFriendly.erase(g._objsVectorFriendly.begin() + i);
 			delete ob;
 		}
 		else
@@ -155,7 +161,8 @@ int							main(void)
 	std::srand(std::time(0));
 	g = new Game(w.ws_col, w.ws_row);
 	//vector insertback
-	g->_objsVectorFriendly.push_back(new Player(*g));
+	g->objFriendlyAdd(new Player(*g));
+	// g->_objsVectorFriendly.push_back(new Player(*g));
 	bg = new Background(w.ws_col, w.ws_row, *g);
 	play(g, bg, s);
 	endwin();//not reached
