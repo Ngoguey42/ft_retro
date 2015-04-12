@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:12:20 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 15:20:36 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 15:37:26 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -26,6 +26,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <cstdlib>
+#include <csignal>
 #include <ctime>
 
 #include <sys/ioctl.h>
@@ -149,6 +150,15 @@ static void					play(Game *g, Background *bg, Scheduler &s)
 	return ;
 }
 
+static void					sig_handler(int toto)
+{
+	(void)toto;
+	clear();
+	refresh();
+	endwin();
+	exit(0);
+}
+
 int							main(void)
 {
 	Game			*g = NULL;
@@ -157,6 +167,7 @@ int							main(void)
 	struct winsize	w;
 
 	init_ncurses();
+	signal(SIGINT, &sig_handler);
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	std::srand(std::time(0));
 	g = new Game(w.ws_col, w.ws_row);

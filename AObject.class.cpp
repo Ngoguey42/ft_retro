@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/03/17 07:33:25 by ngoguey           #+#    #+#             //
-//   Updated: 2015/04/12 15:21:19 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/04/12 15:34:50 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -128,6 +128,7 @@ bool						AObject::doesCollideAny(Game &g) const
 		ob = g.objsFriendlyTab[i];
 		// ob = g._objsVectorFriendly.at(i);
 		if (this->doesCollide(*ob, i == 0 ? 0 : 1))
+		// if (this->doesCollide(*ob, 1))
 		{
 	//vector delete
 			g.objFriendlyRemove(i);
