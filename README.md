@@ -1,7 +1,7 @@
 # Piscine C++ rush#00 FT_RETRO, Apr 2015
 >>>>> #####Shoot-them-up with n-curses. (group project)
 
-#####Grade ``(122/125)`` ``(122/125)``
+#####Grade ``(122/100)`` ``(122/125)``
 --------  -----------------------
 
 <br>
